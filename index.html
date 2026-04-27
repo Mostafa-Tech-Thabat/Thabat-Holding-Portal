@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Thabat Holding — Investor Portal</title>
+<!-- Security: No credentials in this file. Auth via config.js only. -->
+<script src="config.js"></script>
+<script src="data.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F7F6F2;--surface:#FFF;--surface-2:#F2F1EC;--border:#E5E3DC;--border-2:#D4D1C8;--ink:#1A1A18;--ink-mid:#3D3D38;--ink-soft:#6B6B63;--ink-dim:#9B9B90;--gold:#B8860B;--gold-light:#D4A017;--gold-bg:#FBF7EE;--gold-border:#E8D5A0;--green:#1A7A4A;--green-bg:#EBF7F1;--green-border:#A8D9BC;--red:#C0392B;--red-bg:#FDEDEC;--blue:#1A5FA8;--blue-bg:#EBF2FB;--teal:#0A7A72;--orange:#C45E00;--purple:#6B4FA8;--shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--shadow-md:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 12px 32px rgba(0,0,0,.12);--r:12px;--rs:8px;--rl:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Geist',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;font-size:14px;line-height:1.5}
+
+/* LOGIN */
+#login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--surface);overflow:hidden;position:relative}
+#login-screen::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(184,134,11,.06),transparent 70%);pointer-events:none}
+.login-wrap{display:flex;width:920px;max-width:95vw;min-height:540px;box-shadow:var(--shadow-lg);border-radius:var(--rl);overflow:hidden;position:relative;z-index:1}
+.login-left{flex:1;background:linear-gradient(160deg,#1A1A18,#2D2D28);padding:52px 44px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.login-left::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(184,134,11,.12),transparent 50%),radial-gradient(circle at 80% 20%,rgba(26,122,74,.08),transparent 50%)}
+.login-left-inner{position:relative;z-index:1}
+.login-logo{width:46px;height:46px;background:linear-gradient(135deg,var(--gold-light),var(--gold));border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px}
+.login-left h1{font-family:'Instrument Serif',serif;font-size:32px;color:#F7F6F2;line-height:1.2;margin-bottom:12px}
+.login-left p{font-size:13px;color:rgba(247,246,242,.45);line-height:1.7}
+.login-left-footer{position:relative;z-index:1;font-size:11px;color:rgba(247,246,242,.25);border-top:1px solid rgba(255,255,255,.07);padding-top:16px;line-height:1.6}
+.login-right{width:400px;background:var(--surface);padding:52px 44px;display:flex;flex-direction:column;justify-content:center}
+.login-right h2{font-family:'Instrument Serif',serif;font-size:24px;margin-bottom:6px}
+.login-sub{font-size:13px;color:var(--ink-soft);margin-bottom:32px}
+.form-field{margin-bottom:16px}
+.form-field label{display:block;font-size:12px;font-weight:500;color:var(--ink-mid);margin-bottom:6px}
+.form-field input,.form-field select{width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:11px 14px;font-family:'Geist',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}
+.form-field input:focus,.form-field select:focus{border-color:var(--gold);background:var(--surface);box-shadow:0 0 0 3px rgba(184,134,11,.08)}
+.login-btn{width:100%;background:var(--ink);color:#F7F6F2;border:none;border-radius:var(--rs);padding:13px;font-family:'Geist',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-top:8px;transition:background .15s,transform .1s}
+.login-btn:hover{background:#2D2D28}
+.login-btn:disabled{opacity:.6;cursor:not-allowed}
+.login-error{background:var(--red-bg);border:1px solid rgba(192,57,43,.2);color:var(--red);border-radius:var(--rs);padding:10px 14px;font-size:13px;margin-top:12px;display:none}
+.login-loading{background:var(--gold-bg);border:1px solid var(--gold-border);color:var(--gold);border-radius:var(--rs);padding:10px 14px;font-size:13px;margin-top:12px;display:none}
+
+/* APP */
+#app{display:none;min-height:100vh}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:224px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+.sb-header{padding:18px 14px 14px;border-bottom:1px solid var(--border);flex-shrink:0}
+.sb-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.sb-logo{width:30px;height:30px;background:linear-gradient(135deg,var(--gold-light),var(--gold));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.sb-brand-name{font-family:'Instrument Serif',serif;font-size:14px;color:var(--ink);line-height:1.2}
+.sb-brand-sub{font-size:10px;color:var(--ink-dim);letter-spacing:.06em}
+.sb-user{display:flex;align-items:center;gap:9px;padding:9px 11px;background:var(--surface-2);border-radius:var(--rs)}
+.sb-avatar{width:30px;height:30px;background:linear-gradient(135deg,#2D2D28,var(--ink));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#F7F6F2;flex-shrink:0}
+.sb-user-name{font-size:12px;font-weight:500;color:var(--ink)}
+.sb-user-role{font-size:10px;color:var(--ink-dim)}
+.sb-nav{flex:1;padding:10px 8px}
+.nav-section-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);padding:0 8px;margin-bottom:3px;margin-top:12px}
+.nav-section-label:first-child{margin-top:0}
+.nav-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:var(--rs);cursor:pointer;font-size:13px;color:var(--ink-soft);transition:all .12s;margin-bottom:1px}
+.nav-item:hover{background:var(--surface-2);color:var(--ink)}
+.nav-item.active{background:var(--ink);color:#F7F6F2}
+.nav-icon{font-size:13px;width:17px;text-align:center;flex-shrink:0}
+.nav-badge{margin-left:auto;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:10px;font-size:9px;font-weight:600;padding:1px 6px}
+.nav-item.active .nav-badge{background:rgba(255,255,255,.15);color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.2)}
+.sb-footer{padding:10px 8px;border-top:1px solid var(--border)}
+.logout-btn{display:flex;align-items:center;gap:8px;width:100%;padding:8px 10px;border-radius:var(--rs);background:none;border:1px solid var(--border);color:var(--ink-soft);font-family:'Geist',sans-serif;font-size:12px;cursor:pointer;transition:all .12s}
+.logout-btn:hover{background:var(--red-bg);border-color:rgba(192,57,43,.2);color:var(--red)}
+
+/* MAIN */
+.main{margin-left:224px;min-height:100vh}
+.topbar{position:sticky;top:0;background:rgba(247,246,242,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:54px;display:flex;align-items:center;justify-content:space-between;z-index:50;gap:12px}
+.topbar-left{display:flex;align-items:center;gap:12px;flex:1}
+.topbar-title{font-family:'Instrument Serif',serif;font-size:17px;color:var(--ink);white-space:nowrap}
+
+/* SEARCH */
+.search-wrap{position:relative;flex:1;max-width:380px}
+.search-input{width:100%;padding:8px 14px 8px 36px;border:1.5px solid var(--border);border-radius:20px;background:var(--surface);font-family:'Geist',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}
+.search-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,134,11,.08)}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink-dim);font-size:14px}
+.search-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow-md);z-index:200;display:none;max-height:320px;overflow-y:auto}
+.sd-item{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.04);transition:background .1s}
+.sd-item:hover{background:var(--surface-2)}
+.sd-icon{font-size:16px;flex-shrink:0}
+.sd-label{font-size:13px;font-weight:500;color:var(--ink);flex:1}
+.sd-sub{font-size:11px;color:var(--ink-dim)}
+.sd-empty,.sd-more{padding:12px 14px;font-size:13px;color:var(--ink-dim);text-align:center}
+.sd-more{color:var(--gold);cursor:pointer;font-weight:500}
+.sd-more:hover{background:var(--gold-bg)}
+
+.topbar-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.topbar-chip{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-soft);padding:5px 10px;background:var(--surface);border:1px solid var(--border);border-radius:20px}
+.topbar-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+.schedule-btn{display:flex;align-items:center;gap:6px;background:var(--green);color:white;border:none;border-radius:var(--rs);padding:8px 14px;font-family:'Geist',sans-serif;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap}
+.schedule-btn:hover{background:var(--teal)}
+
+/* PAGES */
+.page{display:none;padding:24px 28px;animation:fadeIn .28s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* COMPONENTS */
+.section-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px}
+.notice-strip{background:var(--blue-bg);border:1px solid rgba(26,95,168,.15);border-radius:var(--r);padding:12px 16px;margin-bottom:20px;display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--blue);line-height:1.6}
+.notice-strip.gold{background:var(--gold-bg);border-color:var(--gold-border);color:var(--gold)}
+.metric-row{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.metric-card{flex:1;min-width:140px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 16px;box-shadow:var(--shadow-sm);transition:box-shadow .2s,transform .2s}
+.metric-card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.metric-label{font-size:11px;color:var(--ink-dim);margin-bottom:6px}
+.metric-value{font-family:'Instrument Serif',serif;font-size:26px;color:var(--ink);line-height:1;margin-bottom:3px}
+.metric-value.green{color:var(--green)}.metric-value.gold{color:var(--gold)}
+.metric-sub{font-size:11px;color:var(--ink-dim)}
+.two-col{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-bottom:20px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow-sm)}
+.card-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border)}
+.card-title{font-size:13px;font-weight:500;color:var(--ink)}
+.card-body{padding:14px 18px}
+.alloc-row{display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:1px solid var(--border)}
+.alloc-row:last-child{border-bottom:none}
+.alloc-color{width:3px;height:24px;border-radius:2px;flex-shrink:0}
+.alloc-name{font-size:12px;color:var(--ink-mid);flex:1}
+.alloc-bar-wrap{flex:2}
+.alloc-bar-bg{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.alloc-bar-fill{height:100%;border-radius:2px}
+.alloc-amount{font-size:12px;font-weight:500;color:var(--ink);min-width:90px;text-align:right}
+
+/* TABLES */
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:20px;box-shadow:var(--shadow-sm)}
+.table-toolbar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.table-toolbar input,.table-toolbar select{padding:7px 12px;border:1.5px solid var(--border);border-radius:var(--rs);background:var(--surface-2);font-family:'Geist',sans-serif;font-size:12px;color:var(--ink);outline:none}
+.table-toolbar input:focus,.table-toolbar select:focus{border-color:var(--gold)}
+.add-entity-btn{margin-left:auto;background:var(--ink);color:#F7F6F2;border:none;border-radius:var(--rs);padding:8px 14px;font-family:'Geist',sans-serif;font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px}
+.add-entity-btn:hover{background:#2D2D28}
+.data-table{width:100%;border-collapse:collapse}
+.data-table thead tr{background:var(--surface-2);border-bottom:1px solid var(--border)}
+.data-table th{padding:10px 14px;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-dim);text-align:left;white-space:nowrap}
+.data-table td{padding:11px 14px;font-size:12px;color:var(--ink-mid);border-bottom:1px solid var(--border);vertical-align:middle}
+.data-table tbody tr:last-child td{border-bottom:none}
+.data-table tbody tr:hover{background:var(--surface-2);cursor:pointer}
+.data-table tbody tr.total-row{background:var(--surface-2);font-weight:600;cursor:default}
+.data-table tbody tr.total-row:hover{background:var(--surface-2)}
+.co-cell{display:flex;align-items:center;gap:9px}
+.co-icon{width:28px;height:28px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.co-name{font-size:12px;font-weight:500;color:var(--ink)}
+.co-type{font-size:10px;color:var(--ink-dim)}
+.status-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:500}
+.status-pill::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
+.status-pill.active{background:var(--green-bg);color:var(--green)}
+.status-pill.cancelled{background:var(--red-bg);color:var(--red)}
+.status-pill.hold{background:var(--surface-2);color:var(--ink-dim)}
+.geo-tag{background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:10px;color:var(--ink-soft)}
+.pos{color:var(--green)}.neg{color:var(--red)}
+
+/* OWNERSHIP */
+.shareholders-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px}
+.shareholder-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:14px 10px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm)}
+.shareholder-card:hover{border-color:var(--gold);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.shareholder-card.highlighted{border-color:var(--gold);background:var(--gold-bg)}
+.shareholder-card.dimmed{opacity:.4;pointer-events:none}
+.sh-avatar{width:38px;height:38px;background:linear-gradient(135deg,#2D2D28,var(--ink));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#F7F6F2;margin:0 auto 8px}
+.sh-name{font-size:11px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.sh-pct{font-family:'Instrument Serif',serif;font-size:22px;color:var(--gold);margin-bottom:2px}
+.sh-label{font-size:9px;color:var(--ink-dim)}
+.filter-hint{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-dim);padding:10px 14px;background:var(--surface-2);border-radius:var(--rs);margin-bottom:16px}
+.breakdown-panel{background:var(--surface);border:1.5px solid var(--gold-border);border-radius:var(--r);padding:20px;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+.breakdown-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.breakdown-avatar{width:44px;height:44px;background:linear-gradient(135deg,#2D2D28,var(--ink));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#F7F6F2;flex-shrink:0}
+.breakdown-name{font-family:'Instrument Serif',serif;font-size:18px;color:var(--ink)}
+.breakdown-sub{font-size:12px;color:var(--ink-soft)}
+.clear-filter-btn{margin-left:auto;background:none;border:1px solid var(--border);border-radius:var(--rs);padding:6px 12px;font-family:'Geist',sans-serif;font-size:12px;cursor:pointer;color:var(--ink-soft)}
+.clear-filter-btn:hover{background:var(--red-bg);color:var(--red);border-color:rgba(192,57,43,.2)}
+.breakdown-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.breakdown-metric{background:var(--surface-2);border-radius:var(--rs);padding:12px}
+.bm-label{font-size:11px;color:var(--ink-dim);margin-bottom:4px}
+.bm-value{font-family:'Instrument Serif',serif;font-size:20px;color:var(--ink)}
+.breakdown-table-wrap{border:1px solid var(--border);border-radius:var(--rs);overflow:hidden}
+.ownership-tree-container{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px;overflow-x:auto;margin-top:16px}
+.tree-title{font-family:'Instrument Serif',serif;font-size:16px;color:var(--ink);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.tree-svg{width:100%;min-width:900px}
+
+/* TIMELINE */
+.timeline-wrap{position:relative;padding:40px 40px 20px;margin-bottom:24px;overflow-x:auto}
+.timeline-line{position:absolute;left:40px;right:40px;top:60px;height:3px;background:var(--green);border-radius:2px}
+.timeline-point{position:absolute;top:48px;transform:translateX(-50%)}
+.timeline-dot{width:14px;height:14px;background:var(--green);border-radius:50%;border:3px solid white;box-shadow:0 0 0 2px var(--green);margin:0 auto}
+.timeline-year{font-size:11px;font-weight:600;color:var(--green);text-align:center;margin-top:6px}
+.timeline-companies{margin-top:10px;display:flex;flex-direction:column;gap:3px}
+.timeline-company{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:10px;color:var(--ink-mid);white-space:nowrap;text-align:center;box-shadow:var(--shadow-sm)}
+.timeline-stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding:20px 0 0}
+.ts-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px;text-align:center}
+.ts-num{display:block;font-family:'Instrument Serif',serif;font-size:28px;color:var(--green);line-height:1;margin-bottom:4px}
+.ts-lbl{font-size:11px;color:var(--ink-dim)}
+
+/* LEGEND */
+.legend-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--border)}
+.legend-row:last-child{border-bottom:none}
+.legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.legend-name{font-size:12px;color:var(--ink-mid);flex:1}
+.legend-pct{font-size:12px;font-weight:500;color:var(--ink)}
+
+/* DOCUMENTS */
+.doc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.doc-item{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);cursor:pointer;transition:all .15s}
+.doc-item:hover{border-color:var(--gold);background:var(--gold-bg)}
+.doc-icon{width:34px;height:34px;background:var(--surface-2);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.doc-name{font-size:12px;font-weight:500;color:var(--ink)}
+.doc-meta{font-size:10px;color:var(--ink-dim);margin-top:1px}
+.doc-new{font-size:9px;font-weight:600;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:4px;padding:1px 5px;margin-left:auto}
+
+/* SECTOR SVG */
+.sector-wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+#sector-svg{flex-shrink:0}
+
+/* ADMIN */
+.admin-user-row{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);background:var(--surface)}
+.admin-user-row:last-child{border-bottom:none}
+.au-avatar{width:36px;height:36px;background:linear-gradient(135deg,#2D2D28,var(--ink));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#F7F6F2;flex-shrink:0}
+.au-name{font-size:13px;font-weight:500;color:var(--ink)}
+.au-role{font-size:11px;color:var(--ink-dim)}
+.au-pct{font-family:'Instrument Serif',serif;font-size:18px;color:var(--gold);margin-left:auto;min-width:50px;text-align:right}
+.au-actions{display:flex;gap:6px;margin-left:12px}
+.au-btn{padding:5px 12px;border:1px solid var(--border);border-radius:var(--rs);background:var(--surface-2);font-family:'Geist',sans-serif;font-size:11px;cursor:pointer}
+.au-btn:hover{background:var(--surface);border-color:var(--gold);color:var(--gold)}
+.admin-user-list{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:12px}
+
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);width:680px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg);animation:slideUp .22s ease}
+.modal-box.narrow{width:480px}
+@keyframes slideUp{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.modal-title{font-family:'Instrument Serif',serif;font-size:18px;color:var(--ink)}
+.modal-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-dim);line-height:1}
+.modal-close:hover{color:var(--ink)}
+.modal-body{padding:20px}
+.modal-footer{padding:16px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px}
+.btn-primary{background:var(--ink);color:#F7F6F2;border:none;border-radius:var(--rs);padding:10px 20px;font-family:'Geist',sans-serif;font-size:13px;font-weight:500;cursor:pointer}
+.btn-primary:hover{background:#2D2D28}
+.btn-secondary{background:var(--surface-2);color:var(--ink-mid);border:1px solid var(--border);border-radius:var(--rs);padding:10px 20px;font-family:'Geist',sans-serif;font-size:13px;cursor:pointer}
+.modal-entity-header{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:16px}
+.modal-entity-icon{width:48px;height:48px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.modal-entity-name{font-family:'Instrument Serif',serif;font-size:22px;color:var(--ink);margin-bottom:3px}
+.modal-entity-sub{font-size:12px;color:var(--ink-soft)}
+.modal-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.mm-item{background:var(--surface-2);border-radius:var(--rs);padding:12px}
+.mm-label{font-size:10px;color:var(--ink-dim);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em}
+.mm-val{font-family:'Instrument Serif',serif;font-size:18px;color:var(--ink)}
+.modal-section-title{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.upload-doc-btn{background:var(--ink);color:#F7F6F2;border:none;border-radius:6px;padding:4px 10px;font-family:'Geist',sans-serif;font-size:11px;cursor:pointer}
+.upload-doc-btn:hover{background:#2D2D28}
+.no-docs{font-size:13px;color:var(--ink-dim);text-align:center;padding:24px;background:var(--surface-2);border-radius:var(--rs)}
+.upload-drop-zone{border:2px dashed var(--border);border-radius:var(--r);padding:32px;text-align:center;cursor:pointer;transition:border-color .15s;position:relative;margin-top:8px}
+.upload-drop-zone:hover{border-color:var(--gold);background:var(--gold-bg)}
+.udz-icon{font-size:28px;margin-bottom:8px}
+.udz-text{font-size:13px;font-weight:500;color:var(--ink-mid)}
+.udz-sub{font-size:11px;color:var(--ink-dim);margin-top:4px}
+
+/* SEARCH PAGE */
+.search-meta{font-size:13px;color:var(--ink-soft);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.search-group{margin-bottom:20px}
+.search-group-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:8px}
+.search-result-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);cursor:pointer;margin-bottom:6px;transition:all .15s}
+.search-result-item:hover{border-color:var(--gold);background:var(--gold-bg)}
+.sri-icon{font-size:18px;flex-shrink:0}
+.sri-name{font-size:13px;font-weight:500;color:var(--ink)}
+.sri-sub{font-size:11px;color:var(--ink-dim)}
+.sri-arrow{margin-left:auto;color:var(--ink-dim);font-size:16px}
+.empty-state{text-align:center;padding:60px 20px;color:var(--ink-dim)}
+.empty-icon{font-size:40px;margin-bottom:12px}
+.empty-title{font-family:'Instrument Serif',serif;font-size:20px;color:var(--ink);margin-bottom:6px}
+.empty-sub{font-size:13px}
+
+/* PROFILE */
+.profile-header{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px;display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.profile-avatar-lg{width:60px;height:60px;background:linear-gradient(135deg,#2D2D28,var(--ink));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#F7F6F2;flex-shrink:0}
+.profile-name{font-family:'Instrument Serif',serif;font-size:22px;color:var(--ink);margin-bottom:4px}
+.profile-role{font-size:13px;color:var(--ink-soft);margin-bottom:6px}
+.profile-tag{display:inline-block;background:var(--gold-bg);border:1px solid var(--gold-border);color:var(--gold);font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
+.activity-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.activity-item:last-child{border-bottom:none}
+.activity-icon{width:30px;height:30px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:var(--surface-2)}
+.activity-text{font-size:12px;color:var(--ink-mid);line-height:1.5;flex:1}
+
+@media(max-width:900px){.sidebar{display:none}.main{margin-left:0}.two-col,.three-col{grid-template-columns:1fr}.shareholders-grid{grid-template-columns:repeat(3,1fr)}.login-left{display:none}.login-right{width:100%}.page{padding:16px 14px}.modal-metrics{grid-template-columns:1fr 1fr}.timeline-stats{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-wrap">
+    <div class="login-left">
+      <div class="login-left-inner">
+        <div class="login-logo">⬡</div>
+        <h1>Thabat<br/>Holding</h1>
+        <p style="margin-top:12px">Almunif Family · Investor Portal<br/>بوابة المستثمرين</p>
+        <p style="margin-top:16px;font-size:11px;color:rgba(247,246,242,.25)">Founded 1998 · +40 Investments · 8 Countries<br/>+700 Employees · +130 Retail Stores</p>
+      </div>
+      <div class="login-left-footer">Portfolio valuations conducted in accordance with IFRS and CMA guidelines. All amounts in SAR unless otherwise stated.</div>
+    </div>
+    <div class="login-right">
+      <h2>Sign In</h2>
+      <p class="login-sub">Enter your credentials to access the portal</p>
+      <div class="form-field"><label>Username</label><input type="text" id="f-user" autocomplete="off" spellcheck="false"/></div>
+      <div class="form-field"><label>Password</label><input type="password" id="f-pass" autocomplete="off"/></div>
+      <button class="login-btn" id="login-btn" onclick="doLogin()">Access Portal →</button>
+      <div class="login-loading" id="login-loading">⏳ Verifying credentials…</div>
+      <div class="login-error" id="login-error"></div>
+    </div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sb-header">
+      <div class="sb-brand"><div class="sb-logo">⬡</div><div><div class="sb-brand-name">Thabat Holding</div><div class="sb-brand-sub">Investor Portal</div></div></div>
+      <div class="sb-user"><div class="sb-avatar" id="sb-avatar"></div><div><div class="sb-user-name" id="sb-name"></div><div class="sb-user-role" id="sb-role"></div></div></div>
+    </div>
+    <div class="sb-nav">
+      <div class="nav-item active" onclick="showPage('dashboard',this)"><span class="nav-icon">⊞</span> Dashboard</div>
+      <div class="nav-item" onclick="showPage('portfolio',this)"><span class="nav-icon">◫</span> Portfolio</div>
+      <div class="nav-item" onclick="showPage('realestate',this)"><span class="nav-icon">⌂</span> Real Estate</div>
+      <div class="nav-item" onclick="showPage('ownership',this)"><span class="nav-icon">◉</span> Ownership</div>
+      <div class="nav-item" onclick="showPage('timeline',this)"><span class="nav-icon">◷</span> Journey</div>
+      <div class="nav-item" onclick="showPage('documents',this);renderDocumentsPage()"><span class="nav-icon">☐</span> Documents</div>
+      <div id="admin-nav-section" style="display:none">
+        <div class="nav-section-label">Admin</div>
+        <div class="nav-item" onclick="showPage('admin',this)"><span class="nav-icon">⚙</span> Manage Portal</div>
+      </div>
+      <div class="nav-section-label">Account</div>
+      <div class="nav-item" onclick="showPage('profile',this)"><span class="nav-icon">👤</span> My Profile</div>
+    </div>
+    <div class="sb-footer"><button class="logout-btn" onclick="doLogout()">⏻ Sign Out</button></div>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-title" id="page-title">Dashboard</div>
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input class="search-input" id="global-search" placeholder="Search companies, assets, shareholders…" oninput="onSearchInput(event)" onkeydown="onSearchKeydown(event)" autocomplete="off"/>
+          <div class="search-dropdown" id="search-dropdown"></div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="schedule-btn" onclick="alert('Contact: admin@thabatholding.com')">📅 Schedule Call</button>
+        <div class="topbar-chip"><span class="dot"></span><span id="today-date"></span></div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD PAGE -->
+    <div class="page active" id="page-dashboard">
+      <div style="margin-bottom:18px"><div style="font-family:'Instrument Serif',serif;font-size:28px;color:var(--ink)" id="welcome-name">Welcome</div><div style="font-size:13px;color:var(--ink-soft)">Thabat Holding · Investor Portal · Valuation Date: <strong>Dec 31, 2025</strong></div></div>
+      <div class="notice-strip">📊 Portfolio valuations conducted annually by an independent third-party valuer — IFRS & CMA guidelines. All amounts in SAR unless stated otherwise.</div>
+      <div class="section-label">PORTFOLIO OVERVIEW</div>
+      <div class="metric-row">
+        <div class="metric-card"><div class="metric-label">Fair Value (Market)</div><div class="metric-value gold" id="stat-portfolio-fv">—</div><div class="metric-sub">Total portfolio</div></div>
+        <div class="metric-card"><div class="metric-label">Investments</div><div class="metric-value" id="stat-companies">—</div><div class="metric-sub green">Portfolio companies</div></div>
+        <div class="metric-card"><div class="metric-label">Real Estate Assets</div><div class="metric-value" id="stat-re">—</div><div class="metric-sub">Properties & land</div></div>
+        <div class="metric-card"><div class="metric-label">Real Estate Value</div><div class="metric-value" id="stat-re-val">—</div></div>
+        <div class="metric-card"><div class="metric-label">Total Dividends</div><div class="metric-value green" id="stat-dividends">—</div></div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-card"><div class="metric-label">Geo Presence</div><div class="metric-value" id="stat-geo">—</div></div>
+        <div class="metric-card"><div class="metric-label">Employees</div><div class="metric-value" id="stat-employees">—</div></div>
+        <div class="metric-card"><div class="metric-label">Retail Stores</div><div class="metric-value" id="stat-stores">—</div></div>
+        <div class="metric-card"><div class="metric-label">Clients</div><div class="metric-value" id="stat-clients">—</div></div>
+        <div class="metric-card"><div class="metric-label">Founded</div><div class="metric-value" id="stat-founded">—</div></div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Top Portfolio Performers (by Market FV)</div></div>
+          <div class="card-body" id="top-performers"></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Portfolio by Sector</div></div>
+          <div class="card-body">
+            <div class="sector-wrap">
+              <svg id="sector-svg" width="160" height="160" viewBox="0 0 160 160"></svg>
+              <div id="sector-legend" style="flex:1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PORTFOLIO PAGE -->
+    <div class="page" id="page-portfolio">
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <input type="text" id="portfolio-search" placeholder="🔍 Search investments…" oninput="renderPortfolio()" style="min-width:180px"/>
+          <select id="sector-filter" onchange="renderPortfolio()">
+            <option value="">All Sectors</option>
+            <option>Retail</option><option>VC &amp; Fund</option><option>SAAS</option>
+            <option>Logistics &amp; Distribution</option><option>Education</option>
+            <option>Hospitality</option><option>Entertainment</option><option>Real Estate</option>
+          </select>
+          <select id="geo-filter" onchange="renderPortfolio()">
+            <option value="">All Regions</option>
+            <option>KSA</option><option>USA</option><option>Germany</option>
+          </select>
+          <button class="add-entity-btn" onclick="openAddInvestment()">+ Add Investment</button>
+        </div>
+        <table class="data-table">
+          <thead><tr>
+            <th>Company</th><th>Region</th><th>Year</th><th>Ownership</th>
+            <th>Cumulative Inv.</th><th>Fair Value (Market)</th><th>MOIC</th>
+            <th>Unrealized G/L</th><th>Dividends</th><th>Status</th>
+          </tr></thead>
+          <tbody id="portfolio-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- REAL ESTATE PAGE -->
+    <div class="page" id="page-realestate">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <div style="font-family:'Instrument Serif',serif;font-size:22px">Real Estate Portfolio</div>
+        <button class="add-entity-btn" onclick="openAddRealEstate()">+ Add Property</button>
+      </div>
+      <div class="section-label">INSIDE KSA</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Acc. Xero</th><th>Description</th><th>Date</th><th>Cost Amt</th><th>Valuation</th><th>Share %</th><th>Space</th><th>Status</th></tr></thead>
+          <tbody id="re-ksa-tbody"></tbody>
+        </table>
+      </div>
+      <div class="section-label">OUTSIDE KSA</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Acc. Xero</th><th>Description</th><th>Date</th><th>Cost Amt</th><th>Valuation</th><th>Annual Rent</th><th>Share %</th><th>Space</th><th>Status</th></tr></thead>
+          <tbody id="re-out-tbody"></tbody>
+        </table>
+      </div>
+      <div class="table-wrap" style="background:var(--green);border-color:var(--green)">
+        <table class="data-table">
+          <tbody><tr id="re-grand-total" style="color:white;font-weight:600">
+            <td colspan="3"><strong>Total Current</strong></td><td>—</td><td>—</td><td>—</td><td colspan="2"></td>
+          </tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- OWNERSHIP PAGE -->
+    <div class="page" id="page-ownership">
+      <div id="ownership-content"></div>
+    </div>
+
+    <!-- TIMELINE PAGE -->
+    <div class="page" id="page-timeline">
+      <div style="font-family:'Instrument Serif',serif;font-size:26px;margin-bottom:4px">Thabat Journey</div>
+      <div style="font-size:13px;color:var(--ink-soft);margin-bottom:20px">Since 1998 — building a diversified investment holding</div>
+      <div id="timeline-content"></div>
+    </div>
+
+    <!-- DOCUMENTS PAGE -->
+    <div class="page" id="page-documents">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <div style="font-family:'Instrument Serif',serif;font-size:22px">Documents</div>
+        <div style="font-size:12px;color:var(--ink-dim)">Open any entity to upload documents to it</div>
+      </div>
+      <div id="documents-content"><div class="empty-state"><div class="empty-icon">📂</div><div class="empty-title">No documents uploaded yet</div><div class="empty-sub">Open any investment, real estate asset, or shareholder profile to upload documents.</div></div></div>
+    </div>
+
+    <!-- SEARCH PAGE -->
+    <div class="page" id="page-search">
+      <div style="font-family:'Instrument Serif',serif;font-size:22px;margin-bottom:16px">Search Results</div>
+      <div id="search-results-content"></div>
+    </div>
+
+    <!-- ADMIN PAGE -->
+    <div class="page" id="page-admin">
+      <div style="font-family:'Instrument Serif',serif;font-size:22px;margin-bottom:16px">Admin — Manage Portal</div>
+      <div class="notice-strip gold">⚠️ Admin access only. Changes here affect all users and data.</div>
+      <div class="section-label">USER MANAGEMENT</div>
+      <div id="admin-users-content"></div>
+      <div class="section-label" style="margin-top:20px">EXPORT CONFIG</div>
+      <div class="card"><div class="card-body">
+        <p style="font-size:13px;color:var(--ink-mid);margin-bottom:12px">Download the updated config.js after adding/editing users. Upload to your hosting to apply changes.</p>
+        <button class="add-entity-btn" onclick="alert('After adding users, regenerate config.js using the hash tool and re-upload to GitHub Pages.')">📥 Instructions: Update config.js</button>
+      </div></div>
+    </div>
+
+    <!-- PROFILE PAGE -->
+    <div class="page" id="page-profile">
+      <div class="profile-header">
+        <div class="profile-avatar-lg" id="profile-avatar"></div>
+        <div><div class="profile-name" id="profile-name"></div><div class="profile-role" id="profile-role"></div><span class="profile-tag" id="profile-tag"></span></div>
+      </div>
+      <div class="two-col">
+        <div class="card"><div class="card-header"><div class="card-title">Account Details</div></div><div class="card-body">
+          <div class="activity-item"><div class="activity-icon">✓</div><div class="activity-text"><strong>Status:</strong> <span style="color:var(--green)">Active</span></div></div>
+          <div class="activity-item"><div class="activity-icon">🏢</div><div class="activity-text"><strong>Company:</strong> Thabat Holding — Since 1998</div></div>
+          <div class="activity-item"><div class="activity-icon">🌍</div><div class="activity-text"><strong>Region:</strong> Kingdom of Saudi Arabia</div></div>
+          <div class="activity-item"><div class="activity-icon">📅</div><div class="activity-text"><strong>Valuation Date:</strong> Dec 31, 2025</div></div>
+        </div></div>
+        <div class="card"><div class="card-header"><div class="card-title">My Shareholding</div></div>
+          <div class="card-body" style="display:flex;flex-direction:column;align-items:center;padding:28px;text-align:center">
+            <div id="prof-pct" style="font-family:'Instrument Serif',serif;font-size:52px;color:var(--gold);line-height:1">—%</div>
+            <div style="font-size:13px;color:var(--ink-soft);margin-top:8px">Ownership in Thabat Holding</div>
+            <div style="margin-top:12px;font-size:11px;color:var(--ink-dim)">Almunif Family · 6 shareholders</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ENTITY DETAIL MODAL -->
+<div class="modal-overlay" id="entity-modal" onclick="if(event.target===this)closeEntityModal()">
+  <div class="modal-box">
+    <div class="modal-header"><div class="modal-title">Entity Details</div><button class="modal-close" onclick="closeEntityModal()">✕</button></div>
+    <div class="modal-body" id="entity-modal-body"></div>
+  </div>
+</div>
+
+<!-- UPLOAD MODAL -->
+<div class="modal-overlay" id="upload-modal" onclick="if(event.target===this)closeUploadModal()">
+  <div class="modal-box narrow">
+    <div class="modal-header"><div class="modal-title">Upload Document</div><button class="modal-close" onclick="closeUploadModal()">✕</button></div>
+    <div class="modal-body"><div id="upload-form"></div></div>
+    <div class="modal-footer"><button class="btn-secondary" onclick="closeUploadModal()">Cancel</button><button class="btn-primary" onclick="submitUpload()">Upload Document</button></div>
+  </div>
+</div>
+
+<!-- ADD INVESTMENT MODAL -->
+<div class="modal-overlay" id="add-investment-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box narrow">
+    <div class="modal-header"><div class="modal-title">Add New Investment</div><button class="modal-close" onclick="document.getElementById('add-investment-modal').classList.remove('open')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-field"><label>Company Name *</label><input type="text" id="ai-name" placeholder="e.g. TechCo"/></div>
+      <div class="form-field"><label>Sector</label>
+        <select id="ai-sector">
+          <option>Retail</option><option>VC &amp; Fund</option><option>SAAS</option>
+          <option>Logistics &amp; Distribution</option><option>Education</option>
+          <option>Hospitality</option><option>Entertainment</option><option>Real Estate</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-field"><label>Geography</label><input type="text" id="ai-geo" placeholder="KSA" value="KSA"/></div>
+      <div class="form-field"><label>Year of Investment</label><input type="number" id="ai-year" placeholder="2025"/></div>
+      <div class="form-field"><label>Ownership %</label><input type="number" id="ai-ownership" placeholder="e.g. 25"/></div>
+      <div class="form-field"><label>Cumulative Investment (SAR)</label><input type="text" id="ai-cuminv" placeholder="e.g. 1,000,000"/></div>
+      <div class="form-field"><label>Fair Value Market (SAR)</label><input type="text" id="ai-fv" placeholder="e.g. 2,500,000"/></div>
+    </div>
+    <div class="modal-footer"><button class="btn-secondary" onclick="document.getElementById('add-investment-modal').classList.remove('open')">Cancel</button><button class="btn-primary" onclick="submitAddInvestment()">Add Investment</button></div>
+  </div>
+</div>
+
+<!-- ADD REAL ESTATE MODAL -->
+<div class="modal-overlay" id="add-re-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box narrow">
+    <div class="modal-header"><div class="modal-title">Add Real Estate Asset</div><button class="modal-close" onclick="document.getElementById('add-re-modal').classList.remove('open')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-field"><label>Property Name *</label><input type="text" id="are-name" placeholder="e.g. RE New Property Riyadh"/></div>
+      <div class="form-field"><label>Location / Details</label><input type="text" id="are-details" placeholder="Riyadh - KSA"/></div>
+      <div class="form-field"><label>Share %</label><input type="number" id="are-share" placeholder="e.g. 50"/></div>
+      <div class="form-field"><label>Cost Amount (SAR)</label><input type="text" id="are-cost" placeholder="e.g. 1,500,000"/></div>
+      <div class="form-field"><label>Valuation (SAR)</label><input type="text" id="are-val" placeholder="e.g. 2,000,000"/></div>
+      <div class="form-field"><label>Space</label><input type="text" id="are-space" placeholder="e.g. 500 m²"/></div>
+    </div>
+    <div class="modal-footer"><button class="btn-secondary" onclick="document.getElementById('add-re-modal').classList.remove('open')">Cancel</button><button class="btn-primary" onclick="submitAddRealEstate()">Add Property</button></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
