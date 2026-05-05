@@ -1,637 +1,1270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Thabat Holding — Investor Portal</title>
+<script src="config.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#F7F6F2;--surface:#FFF;--surface-2:#F2F1EC;--border:#E5E3DC;--ink:#1A1A18;--ink-mid:#3D3D38;--ink-soft:#6B6B63;--ink-dim:#9B9B90;--gold:#B8860B;--gold-light:#D4A017;--gold-bg:#FBF7EE;--gold-border:#E8D5A0;--green:#1A7A4A;--green-bg:#EBF7F1;--green-border:#A8D9BC;--red:#C0392B;--red-bg:#FDEDEC;--blue:#1A5FA8;--blue-bg:#EBF2FB;--teal:#0A7A72;--orange:#C45E00;--purple:#6B4FA8;--sh:0 1px 3px rgba(0,0,0,.06);--shm:0 4px 12px rgba(0,0,0,.08);--shl:0 12px 32px rgba(0,0,0,.12);--r:12px;--rs:8px;--rl:16px}
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Geist',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;font-size:14px;line-height:1.5}
-#ls{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--surface);overflow:hidden;position:relative}
-#ls::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(184,134,11,.06),transparent 70%);pointer-events:none}
-.lw{display:flex;width:920px;max-width:95vw;min-height:540px;box-shadow:var(--shl);border-radius:var(--rl);overflow:hidden;position:relative;z-index:1}
-.ll{flex:1;background:linear-gradient(160deg,#1A1A18,#2D2D28);padding:52px 44px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.ll::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(184,134,11,.12),transparent 50%),radial-gradient(circle at 80% 20%,rgba(26,122,74,.08),transparent 50%)}
-.lli{position:relative;z-index:1}.llogo{width:46px;height:46px;background:linear-gradient(135deg,var(--gold-light),var(--gold));border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px}
-.ll h1{font-family:'Instrument Serif',serif;font-size:32px;color:#F7F6F2;line-height:1.2;margin-bottom:12px}
-.ll p{font-size:13px;color:rgba(247,246,242,.45);line-height:1.7}
-.llf{position:relative;z-index:1;font-size:11px;color:rgba(247,246,242,.25);border-top:1px solid rgba(255,255,255,.07);padding-top:16px;line-height:1.6}
-.lr2{width:400px;background:var(--surface);padding:52px 44px;display:flex;flex-direction:column;justify-content:center}
-.lr2 h2{font-family:'Instrument Serif',serif;font-size:24px;margin-bottom:6px}
-.lsub{font-size:13px;color:var(--ink-soft);margin-bottom:32px}
-.ff{margin-bottom:16px}.ff label{display:block;font-size:12px;font-weight:500;color:var(--ink-mid);margin-bottom:6px}
-.ff input{width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:12px 14px;font-family:'Geist',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}
-.ff input:focus{border-color:var(--gold);background:var(--surface);box-shadow:0 0 0 3px rgba(184,134,11,.08)}
-.lbtn{width:100%;background:var(--ink);color:#F7F6F2;border:none;border-radius:var(--rs);padding:13px;font-family:'Geist',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-top:8px;transition:background .15s}
-.lbtn:hover{background:#2D2D28}.lbtn:disabled{opacity:.6;cursor:not-allowed}
-.lerr{background:var(--red-bg);border:1px solid rgba(192,57,43,.2);color:var(--red);border-radius:var(--rs);padding:10px 14px;font-size:13px;margin-top:12px;display:none}
-.lld{background:var(--gold-bg);border:1px solid var(--gold-border);color:var(--gold);border-radius:var(--rs);padding:10px 14px;font-size:13px;margin-top:12px;display:none}
-#app{display:none;min-height:100vh}
-.sb{position:fixed;left:0;top:0;bottom:0;width:218px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;overflow-y:auto}
-.sbh{padding:16px 13px 12px;border-bottom:1px solid var(--border)}
-.sbb{display:flex;align-items:center;gap:9px;margin-bottom:11px}
-.sblog{width:29px;height:29px;background:linear-gradient(135deg,var(--gold-light),var(--gold));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
-.sbn{font-family:'Instrument Serif',serif;font-size:14px;color:var(--ink);line-height:1.2}
-.sbs{font-size:10px;color:var(--ink-dim)}
-.sbu{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surface-2);border-radius:var(--rs)}
-.sbav{width:29px;height:29px;background:linear-gradient(135deg,#2D2D28,var(--ink));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#F7F6F2;flex-shrink:0}
-.sbun{font-size:12px;font-weight:500;color:var(--ink)}.sbur{font-size:10px;color:var(--ink-dim)}
-.sbnav{flex:1;padding:8px 7px}
-.nl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);padding:0 7px;margin-bottom:3px;margin-top:11px}
-.ni{display:flex;align-items:center;gap:7px;padding:8px 9px;border-radius:var(--rs);cursor:pointer;font-size:12px;color:var(--ink-soft);transition:all .12s;margin-bottom:1px}
-.ni:hover{background:var(--surface-2);color:var(--ink)}.ni.active{background:var(--ink);color:#F7F6F2}
-.nii{font-size:13px;width:16px;text-align:center;flex-shrink:0}
-.sbft{padding:9px 7px;border-top:1px solid var(--border)}
-.lout{display:flex;align-items:center;gap:7px;width:100%;padding:8px 9px;border-radius:var(--rs);background:none;border:1px solid var(--border);color:var(--ink-soft);font-family:'Geist',sans-serif;font-size:12px;cursor:pointer;transition:all .12s}
-.lout:hover{background:var(--red-bg);border-color:rgba(192,57,43,.2);color:var(--red)}
-.main{margin-left:218px;min-height:100vh}
-.tb{position:sticky;top:0;background:rgba(247,246,242,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between;z-index:50;gap:10px}
-.tbl{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
-.tbt{font-family:'Instrument Serif',serif;font-size:16px;color:var(--ink);white-space:nowrap}
-.sw{position:relative;flex:1;max-width:340px}
-.sinp{width:100%;padding:7px 13px 7px 32px;border:1.5px solid var(--border);border-radius:20px;background:var(--surface);font-family:'Geist',sans-serif;font-size:12px;color:var(--ink);outline:none;transition:border-color .15s}
-.sinp:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,134,11,.08)}
-.sico{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--ink-dim);font-size:13px}
-.sdrop{position:absolute;top:calc(100% + 5px);left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shm);z-index:200;display:none;max-height:290px;overflow-y:auto}
-.sdi{display:flex;align-items:center;gap:9px;padding:9px 13px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.03);transition:background .1s}
-.sdi:hover{background:var(--surface-2)}.sdic{font-size:15px;flex-shrink:0}
-.sdil{font-size:12px;font-weight:500;color:var(--ink);flex:1}.sdis{font-size:10px;color:var(--ink-dim)}
-.sde,.sdm{padding:11px 13px;font-size:12px;color:var(--ink-dim);text-align:center}
-.sdm{color:var(--gold);cursor:pointer;font-weight:500}
-.tbr{display:flex;align-items:center;gap:7px;flex-shrink:0}
-.tbc{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-soft);padding:4px 9px;background:var(--surface);border:1px solid var(--border);border-radius:20px}
-.tbc .dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
-.scbtn{display:flex;align-items:center;gap:5px;background:var(--green);color:white;border:none;border-radius:var(--rs);padding:7px 12px;font-family:'Geist',sans-serif;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap}
-.scbtn:hover{background:var(--teal)}
-.page{display:none;padding:20px 24px;animation:fi .25s ease}.page.active{display:block}
-@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-.sl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:9px}
-.ns{background:var(--blue-bg);border:1px solid rgba(26,95,168,.15);border-radius:var(--r);padding:11px 15px;margin-bottom:16px;font-size:12px;color:var(--blue);line-height:1.6}
-.ns.gld{background:var(--gold-bg);border-color:var(--gold-border);color:var(--gold)}
-.mr{display:flex;gap:9px;margin-bottom:16px;flex-wrap:wrap}
-.mc{flex:1;min-width:125px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:15px 13px;box-shadow:var(--sh);transition:box-shadow .2s,transform .2s}
-.mc:hover{box-shadow:var(--shm);transform:translateY(-1px)}
-.mcl{font-size:10px;color:var(--ink-dim);margin-bottom:5px}.mcv{font-family:'Instrument Serif',serif;font-size:24px;color:var(--ink);line-height:1;margin-bottom:2px}
-.mcv.g{color:var(--green)}.mcv.go{color:var(--gold)}.mcs{font-size:10px;color:var(--ink-dim)}
-.tc{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;margin-bottom:16px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh)}
-.ch{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border)}
-.ct{font-size:13px;font-weight:500;color:var(--ink)}.cb{padding:12px 16px}
-.ar{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)}.ar:last-child{border-bottom:none}
-.ac{width:3px;height:22px;border-radius:2px;flex-shrink:0}.an{font-size:12px;color:var(--ink-mid);flex:1}
-.abw{flex:2}.abb{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
-.abf{height:100%;border-radius:2px}.aa{font-size:12px;font-weight:500;color:var(--ink);min-width:82px;text-align:right}
-.tw{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:16px;box-shadow:var(--sh)}
-.ttb{display:flex;align-items:center;gap:8px;padding:10px 13px;border-bottom:1px solid var(--border);flex-wrap:wrap}
-.ttb input,.ttb select{padding:6px 10px;border:1.5px solid var(--border);border-radius:var(--rs);background:var(--surface-2);font-family:'Geist',sans-serif;font-size:11px;color:var(--ink);outline:none}
-.ttb input:focus,.ttb select:focus{border-color:var(--gold)}
-.adb{margin-left:auto;background:var(--ink);color:#F7F6F2;border:none;border-radius:var(--rs);padding:6px 12px;font-family:'Geist',sans-serif;font-size:11px;font-weight:500;cursor:pointer}
-.adb:hover{background:#2D2D28}
-.dt{width:100%;border-collapse:collapse}
-.dt thead tr{background:var(--surface-2);border-bottom:1px solid var(--border)}
-.dt th{padding:9px 12px;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-dim);text-align:left;white-space:nowrap}
-.dt td{padding:10px 12px;font-size:12px;color:var(--ink-mid);border-bottom:1px solid var(--border);vertical-align:middle}
-.dt tbody tr:last-child td{border-bottom:none}
-.dt tbody tr:hover{background:var(--surface-2);cursor:pointer}
-.dt tbody tr.ttr{background:var(--surface-2);font-weight:600;cursor:default}.dt tbody tr.ttr:hover{background:var(--surface-2)}
-.cc{display:flex;align-items:center;gap:8px}
-.ci{width:26px;height:26px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
-.cn{font-size:12px;font-weight:500;color:var(--ink)}.cty{font-size:10px;color:var(--ink-dim)}
-.sp{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:500}
-.sp::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
-.sp.active{background:var(--green-bg);color:var(--green)}.sp.cancelled{background:var(--red-bg);color:var(--red)}
-.gt{background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:10px;color:var(--ink-soft)}
-.pos{color:var(--green)}.neg{color:var(--red)}
-.shg{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:13px}
-.shc{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:var(--sh)}
-.shc:hover{border-color:var(--gold);box-shadow:var(--shm);transform:translateY(-2px)}
-.shc.hl{border-color:var(--gold);background:var(--gold-bg)}.shc.dm{opacity:.35;pointer-events:none}
-.shav{width:34px;height:34px;background:linear-gradient(135deg,#2D2D28,var(--ink));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#F7F6F2;margin:0 auto 7px}
-.shn{font-size:11px;font-weight:500;color:var(--ink);margin-bottom:3px}
-.shp{font-family:'Instrument Serif',serif;font-size:20px;color:var(--gold);margin-bottom:1px}.shl{font-size:9px;color:var(--ink-dim)}
-.fh{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-dim);padding:9px 12px;background:var(--surface-2);border-radius:var(--rs);margin-bottom:13px}
-.bp{background:var(--surface);border:1.5px solid var(--gold-border);border-radius:var(--r);padding:16px;margin-bottom:13px}
-.bph{display:flex;align-items:center;gap:11px;margin-bottom:13px;padding-bottom:11px;border-bottom:1px solid var(--border)}
-.bpav{width:40px;height:40px;background:linear-gradient(135deg,#2D2D28,var(--ink));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#F7F6F2;flex-shrink:0}
-.bpn{font-family:'Instrument Serif',serif;font-size:16px;color:var(--ink)}.bps{font-size:11px;color:var(--ink-soft)}
-.cfb{margin-left:auto;background:none;border:1px solid var(--border);border-radius:var(--rs);padding:5px 10px;font-family:'Geist',sans-serif;font-size:11px;cursor:pointer;color:var(--ink-soft)}
-.cfb:hover{background:var(--red-bg);color:var(--red)}
-.bpm{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:13px}
-.bmi{background:var(--surface-2);border-radius:var(--rs);padding:10px}
-.bml{font-size:9px;color:var(--ink-dim);margin-bottom:3px}.bmv{font-family:'Instrument Serif',serif;font-size:17px;color:var(--ink)}
-.otc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px;overflow-x:auto;margin-top:13px}
-.ott{font-family:'Instrument Serif',serif;font-size:15px;color:var(--ink);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
-.tsvg{width:100%;min-width:840px}
-.twrap{position:relative;padding:32px 32px 14px;margin-bottom:20px;overflow-x:auto;min-height:150px}
-.tline{position:absolute;left:32px;right:32px;top:52px;height:3px;background:var(--green);border-radius:2px}
-.tp{position:absolute;top:40px;transform:translateX(-50%)}
-.tdot{width:12px;height:12px;background:var(--green);border-radius:50%;border:3px solid white;box-shadow:0 0 0 2px var(--green);margin:0 auto}
-.tyr{font-size:10px;font-weight:600;color:var(--green);text-align:center;margin-top:5px}
-.tcos{margin-top:8px;display:flex;flex-direction:column;gap:2px}
-.tco{background:var(--surface);border:1px solid var(--border);border-radius:5px;padding:3px 6px;font-size:9px;color:var(--ink-mid);white-space:nowrap;text-align:center}
-.tstats{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;padding:14px 0 0}
-.tsi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:13px;text-align:center}
-.tsn{display:block;font-family:'Instrument Serif',serif;font-size:25px;color:var(--green);line-height:1;margin-bottom:3px}
-.tsl{font-size:10px;color:var(--ink-dim)}
-.lr{display:flex;align-items:center;gap:7px;padding:4px 0;border-bottom:1px solid var(--border)}.lr:last-child{border-bottom:none}
-.ld{width:8px;height:8px;border-radius:2px;flex-shrink:0}.ln{font-size:11px;color:var(--ink-mid);flex:1}.lp{font-size:11px;font-weight:500;color:var(--ink)}
-.dg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:13px}
-.di{display:flex;align-items:center;gap:9px;padding:10px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);cursor:pointer;transition:all .15s}
-.di:hover{border-color:var(--gold);background:var(--gold-bg)}
-.dii{width:30px;height:30px;background:var(--surface-2);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.din{font-size:11px;font-weight:500;color:var(--ink)}.dime{font-size:10px;color:var(--ink-dim);margin-top:1px}
-.ph{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px;display:flex;align-items:center;gap:15px;margin-bottom:14px}
-.pav{width:55px;height:55px;background:linear-gradient(135deg,#2D2D28,var(--ink));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#F7F6F2;flex-shrink:0}
-.pn{font-family:'Instrument Serif',serif;font-size:20px;color:var(--ink);margin-bottom:3px}
-.pr{font-size:12px;color:var(--ink-soft);margin-bottom:5px}
-.ptg{display:inline-block;background:var(--gold-bg);border:1px solid var(--gold-border);color:var(--gold);font-size:10px;font-weight:500;padding:2px 9px;border-radius:20px}
-.ait{display:flex;gap:9px;padding:9px 0;border-bottom:1px solid var(--border)}.ait:last-child{border-bottom:none}
-.aii{width:27px;height:27px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:var(--surface-2)}
-.aitxt{font-size:12px;color:var(--ink-mid);line-height:1.5;flex:1}
-.mo{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:300;display:none;align-items:center;justify-content:center;padding:16px}
-.mo.open{display:flex}
-.mb{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);width:640px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:var(--shl);animation:su .2s ease}
-.mb.nw{width:440px}
-@keyframes su{from{transform:translateY(13px);opacity:0}to{transform:translateY(0);opacity:1}}
-.mh{display:flex;align-items:center;justify-content:space-between;padding:13px 17px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
-.mt2{font-family:'Instrument Serif',serif;font-size:16px;color:var(--ink)}
-.mc2{background:none;border:none;font-size:18px;cursor:pointer;color:var(--ink-dim);line-height:1}
-.mbd{padding:17px}.mft{padding:12px 17px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
-.bp2{background:var(--ink);color:#F7F6F2;border:none;border-radius:var(--rs);padding:8px 16px;font-family:'Geist',sans-serif;font-size:12px;font-weight:500;cursor:pointer}
-.bp2:hover{background:#2D2D28}
-.bs{background:var(--surface-2);color:var(--ink-mid);border:1px solid var(--border);border-radius:var(--rs);padding:8px 16px;font-family:'Geist',sans-serif;font-size:12px;cursor:pointer}
-.meh{display:flex;align-items:center;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--border);margin-bottom:13px}
-.mei{width:44px;height:44px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
-.men{font-family:'Instrument Serif',serif;font-size:20px;color:var(--ink);margin-bottom:2px}.mes{font-size:11px;color:var(--ink-soft)}
-.mmet{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
-.mmi{background:var(--surface-2);border-radius:var(--rs);padding:10px}
-.mml{font-size:9px;color:var(--ink-dim);margin-bottom:2px;text-transform:uppercase;letter-spacing:.06em}.mmv{font-family:'Instrument Serif',serif;font-size:16px;color:var(--ink)}
-.mst{font-size:11px;font-weight:600;color:var(--ink);margin-bottom:9px;display:flex;align-items:center;gap:8px}
-.udb{background:var(--ink);color:#F7F6F2;border:none;border-radius:5px;padding:3px 8px;font-family:'Geist',sans-serif;font-size:10px;cursor:pointer}
-.ndoc{font-size:12px;color:var(--ink-dim);text-align:center;padding:18px;background:var(--surface-2);border-radius:var(--rs)}
-.udz{border:2px dashed var(--border);border-radius:var(--r);padding:26px;text-align:center;cursor:pointer;transition:border-color .15s;position:relative;margin-top:7px}
-.udz:hover{border-color:var(--gold);background:var(--gold-bg)}
-.udzi{font-size:24px;margin-bottom:7px}.udzt{font-size:12px;font-weight:500;color:var(--ink-mid)}.udzs{font-size:10px;color:var(--ink-dim);margin-top:2px}
-.ff select{width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:11px 14px;font-family:'Geist',sans-serif;font-size:14px;color:var(--ink);outline:none}
-.ff select:focus{border-color:var(--gold)}
-.srm{font-size:12px;color:var(--ink-soft);margin-bottom:13px;padding-bottom:10px;border-bottom:1px solid var(--border)}
-.srg{margin-bottom:16px}.srgl{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:6px}
-.sri{display:flex;align-items:center;gap:10px;padding:10px 13px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);cursor:pointer;margin-bottom:5px;transition:all .15s}
-.sri:hover{border-color:var(--gold);background:var(--gold-bg)}
-.srio{font-size:16px;flex-shrink:0}.srin{font-size:12px;font-weight:500;color:var(--ink)}.sris{font-size:10px;color:var(--ink-dim)}.sria{margin-left:auto;color:var(--ink-dim)}
-.emp{text-align:center;padding:45px 20px;color:var(--ink-dim)}
-.empi{font-size:34px;margin-bottom:9px}.empt{font-family:'Instrument Serif',serif;font-size:17px;color:var(--ink);margin-bottom:4px}.emps{font-size:12px}
-.aurl{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:10px}
-.aurr{display:flex;align-items:center;gap:10px;padding:10px 13px;border-bottom:1px solid var(--border)}
-.aurr:last-child{border-bottom:none}
-.auav{width:32px;height:32px;background:linear-gradient(135deg,#2D2D28,var(--ink));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#F7F6F2;flex-shrink:0}
-.aun{font-size:12px;font-weight:500;color:var(--ink)}.auro{font-size:10px;color:var(--ink-dim)}.aup{font-family:'Instrument Serif',serif;font-size:16px;color:var(--gold);margin-left:auto}
-@media(max-width:820px){.sb{display:none}.main{margin-left:0}.tc{grid-template-columns:1fr}.shg{grid-template-columns:repeat(3,1fr)}.ll{display:none}.lr2{width:100%}.page{padding:13px 11px}.mmet{grid-template-columns:1fr 1fr}.tstats{grid-template-columns:repeat(3,1fr)}}
+:root {
+  --bg: #F7F6F2;
+  --surface: #FFFFFF;
+  --surface-2: #F2F1EC;
+  --border: #E5E3DC;
+  --border-2: #D4D1C8;
+  --ink: #1A1A18;
+  --ink-mid: #3D3D38;
+  --ink-soft: #6B6B63;
+  --ink-dim: #9B9B90;
+  --gold: #B8860B;
+  --gold-light: #D4A017;
+  --gold-bg: #FBF7EE;
+  --gold-border: #E8D5A0;
+  --green: #1A7A4A;
+  --green-bg: #EBF7F1;
+  --green-border: #A8D9BC;
+  --red: #C0392B;
+  --red-bg: #FDEDEB;
+  --blue: #1A4A8A;
+  --blue-bg: #EBF0F7;
+  --blue-border: #A8BDD9;
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Geist', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
+
+/* ── LOGIN ── */
+#login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1A1A18 0%, #2D2D28 50%, #1A1A18 100%);
+}
+.login-box {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 48px 44px;
+  width: 400px;
+  box-shadow: var(--shadow-lg);
+}
+.login-logo {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.login-logo-mark {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px; color: #fff;
+  margin: 0 auto 14px;
+}
+.login-logo h1 { font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--ink); }
+.login-logo p { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+.login-field { margin-bottom: 16px; }
+.login-field label { display: block; font-size: 12px; font-weight: 500; color: var(--ink-soft); margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase; }
+.login-field input {
+  width: 100%; padding: 11px 14px;
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  font-family: 'Geist', sans-serif;
+  font-size: 14px; color: var(--ink);
+  background: var(--bg);
+  outline: none; transition: border 0.2s;
+}
+.login-field input:focus { border-color: var(--gold); }
+.login-btn {
+  width: 100%; padding: 12px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: none; border-radius: 8px;
+  font-family: 'Geist', sans-serif;
+  font-size: 14px; font-weight: 600;
+  color: #fff; cursor: pointer;
+  margin-top: 8px; transition: opacity 0.2s;
+}
+.login-btn:hover { opacity: 0.9; }
+.login-error { color: var(--red); font-size: 13px; margin-top: 10px; text-align: center; display: none; }
+
+/* ── APP SHELL ── */
+#app { display: none; flex-direction: column; min-height: 100vh; }
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 28px;
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.topbar-left { display: flex; align-items: center; gap: 14px; }
+.topbar-logo {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif; font-size: 15px; color: #fff;
+}
+.topbar-name { font-family: 'Instrument Serif', serif; font-size: 17px; color: var(--ink); }
+.topbar-right { display: flex; align-items: center; gap: 14px; }
+.user-chip {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 12px 5px 6px;
+  background: var(--surface-2); border-radius: 20px;
+  font-size: 13px; color: var(--ink-mid);
+}
+.user-avatar {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; color: #fff;
+}
+.logout-btn {
+  background: none; border: 1px solid var(--border-2);
+  border-radius: 7px; padding: 5px 12px;
+  font-family: 'Geist', sans-serif; font-size: 13px;
+  color: var(--ink-soft); cursor: pointer; transition: all 0.2s;
+}
+.logout-btn:hover { border-color: var(--red); color: var(--red); }
+
+/* ── NAV TABS ── */
+.nav-tabs {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 28px;
+  display: flex; gap: 2px;
+}
+.nav-tab {
+  padding: 12px 18px;
+  font-size: 13px; font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer; border: none; background: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s; white-space: nowrap;
+}
+.nav-tab:hover { color: var(--ink); }
+.nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── CONTENT ── */
+.content { flex: 1; padding: 28px; max-width: 1200px; margin: 0 auto; width: 100%; }
+
+/* ── SECTION HEADER ── */
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.section-title { font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--ink); }
+.section-subtitle { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+.card-title {
+  font-size: 13px; font-weight: 600;
+  color: var(--ink-soft); letter-spacing: 0.05em;
+  text-transform: uppercase; margin-bottom: 16px;
+}
+
+/* ── TREE NODE ── */
+.tree-container { padding: 8px 0; }
+
+.tree-node {
+  margin-bottom: 4px;
+}
+.tree-node-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  cursor: default;
+}
+.tree-node-header:hover { background: var(--surface-2); border-color: var(--border); }
+
+.tree-toggle {
+  width: 20px; height: 20px; border-radius: 4px;
+  border: 1px solid var(--border-2);
+  background: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0;
+  font-size: 10px; color: var(--ink-soft);
+  transition: all 0.15s;
+}
+.tree-toggle:hover { background: var(--gold-bg); border-color: var(--gold-border); color: var(--gold); }
+.tree-toggle.has-children { opacity: 1; }
+.tree-toggle.no-children { opacity: 0; pointer-events: none; }
+
+.tree-icon {
+  width: 34px; height: 34px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0;
+  font-weight: 600; font-family: 'Instrument Serif', serif;
+}
+.icon-holding { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #fff; }
+.icon-category { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+.icon-company { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+.icon-realestate { background: #F3EBF7; color: #7A1A7A; border: 1px solid #D9A8D9; }
+.icon-fund { background: #FBF3EB; color: #8A4A1A; border: 1px solid #D9C0A8; }
+.icon-shareholder { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+
+.tree-label { flex: 1; }
+.tree-label-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+.tree-label-sub { font-size: 12px; color: var(--ink-soft); margin-top: 1px; }
+
+.tree-actions { display: flex; gap: 6px; opacity: 0; transition: opacity 0.15s; }
+.tree-node-header:hover .tree-actions { opacity: 1; }
+
+.tree-action-btn {
+  padding: 4px 10px; border-radius: 5px; font-size: 12px;
+  border: 1px solid var(--border-2); background: var(--surface);
+  color: var(--ink-soft); cursor: pointer; font-family: 'Geist', sans-serif;
+  transition: all 0.15s; white-space: nowrap;
+}
+.tree-action-btn:hover { background: var(--gold-bg); border-color: var(--gold-border); color: var(--gold); }
+.tree-action-btn.docs { background: var(--blue-bg); border-color: var(--blue-border); color: var(--blue); }
+.tree-action-btn.docs:hover { background: var(--blue); color: #fff; }
+
+.tree-children {
+  margin-left: 34px;
+  padding-left: 16px;
+  border-left: 1px dashed var(--border-2);
+  margin-top: 2px;
+}
+.tree-children.collapsed { display: none; }
+
+/* ownership % badge */
+.ownership-badge {
+  font-size: 11px; font-weight: 600;
+  padding: 2px 8px; border-radius: 10px;
+  background: var(--gold-bg); color: var(--gold);
+  border: 1px solid var(--gold-border);
+  flex-shrink: 0;
+}
+
+/* ── SHAREHOLDER SECTION ── */
+.search-bar-wrap { position: relative; margin-bottom: 20px; }
+.search-bar-wrap input {
+  width: 100%; padding: 12px 16px 12px 42px;
+  border: 1px solid var(--border-2); border-radius: 10px;
+  font-family: 'Geist', sans-serif; font-size: 14px;
+  background: var(--surface); color: var(--ink);
+  outline: none; transition: border 0.2s;
+}
+.search-bar-wrap input:focus { border-color: var(--gold); }
+.search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-dim); font-size: 16px; pointer-events: none; }
+.search-suggestions {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--surface); border: 1px solid var(--border-2);
+  border-radius: 10px; box-shadow: var(--shadow-lg);
+  z-index: 50; overflow: hidden; margin-top: 4px;
+}
+.search-suggestion-item {
+  padding: 10px 16px; cursor: pointer;
+  font-size: 13px; color: var(--ink-mid);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s;
+  display: flex; align-items: center; gap: 10px;
+}
+.search-suggestion-item:last-child { border-bottom: none; }
+.search-suggestion-item:hover { background: var(--gold-bg); }
+.search-suggestion-item .sug-icon {
+  width: 26px; height: 26px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; flex-shrink: 0;
+}
+.search-suggestion-item .sug-type { font-size: 11px; color: var(--ink-dim); margin-left: auto; }
+
+/* ── HIERARCHY VIEW (search result) ── */
+.hierarchy-view {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+  display: none;
+}
+.hierarchy-view.visible { display: block; }
+.hierarchy-title {
+  font-family: 'Instrument Serif', serif; font-size: 18px;
+  color: var(--ink); margin-bottom: 16px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.hierarchy-close {
+  margin-left: auto; font-size: 13px; color: var(--ink-soft);
+  cursor: pointer; padding: 4px 10px; border-radius: 6px;
+  border: 1px solid var(--border-2); background: var(--surface);
+  font-family: 'Geist', sans-serif; transition: all 0.15s;
+}
+.hierarchy-close:hover { border-color: var(--red); color: var(--red); }
+
+.hier-node {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  margin-bottom: 6px;
+}
+.hier-node-label { font-size: 13px; font-weight: 500; color: var(--ink); flex: 1; }
+.hier-node-role { font-size: 12px; color: var(--ink-soft); }
+.hier-pct {
+  font-size: 12px; font-weight: 600;
+  padding: 2px 8px; border-radius: 8px;
+  background: var(--gold-bg); color: var(--gold);
+  border: 1px solid var(--gold-border);
+}
+.hier-section { margin-bottom: 14px; }
+.hier-section-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dim); margin-bottom: 8px; }
+.hier-indent { margin-left: 24px; border-left: 1px dashed var(--border-2); padding-left: 12px; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 200; display: none;
+  align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--surface); border-radius: 14px;
+  padding: 28px; width: 500px; max-width: 95vw;
+  max-height: 85vh; overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+.modal-title { font-family: 'Instrument Serif', serif; font-size: 20px; margin-bottom: 20px; }
+.modal-field { margin-bottom: 14px; }
+.modal-field label { display: block; font-size: 12px; font-weight: 500; color: var(--ink-soft); margin-bottom: 5px; letter-spacing: 0.04em; text-transform: uppercase; }
+.modal-field input, .modal-field textarea, .modal-field select {
+  width: 100%; padding: 9px 12px;
+  border: 1px solid var(--border-2); border-radius: 7px;
+  font-family: 'Geist', sans-serif; font-size: 13px;
+  color: var(--ink); background: var(--bg); outline: none;
+  transition: border 0.2s;
+}
+.modal-field input:focus, .modal-field textarea:focus, .modal-field select:focus { border-color: var(--gold); }
+.modal-field textarea { resize: vertical; min-height: 80px; }
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+.btn { padding: 9px 18px; border-radius: 7px; font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+.btn-primary { background: var(--gold); border: none; color: #fff; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-secondary { background: none; border: 1px solid var(--border-2); color: var(--ink-soft); }
+.btn-secondary:hover { border-color: var(--ink-soft); color: var(--ink); }
+.btn-danger { background: none; border: 1px solid var(--red); color: var(--red); }
+.btn-danger:hover { background: var(--red-bg); }
+
+/* docs list in modal */
+.doc-list { margin-top: 12px; }
+.doc-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: 7px;
+  border: 1px solid var(--border); margin-bottom: 6px;
+  font-size: 13px;
+}
+.doc-item-name { flex: 1; color: var(--ink-mid); }
+.doc-item-type { font-size: 11px; padding: 2px 8px; border-radius: 6px; }
+.type-cr { background: var(--blue-bg); color: var(--blue); }
+.type-aoa { background: var(--green-bg); color: var(--green); }
+.type-audit { background: var(--gold-bg); color: var(--gold); }
+.type-other { background: var(--surface-2); color: var(--ink-soft); }
+.doc-remove { background: none; border: none; color: var(--ink-dim); cursor: pointer; font-size: 16px; }
+.doc-remove:hover { color: var(--red); }
+
+/* add doc row */
+.add-doc-row { display: flex; gap: 8px; margin-top: 8px; }
+.add-doc-row input, .add-doc-row select { flex: 1; }
+
+/* shareholder grid */
+.sh-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px; margin-bottom: 24px;
+}
+.sh-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; text-align: center;
+  box-shadow: var(--shadow); position: relative;
+}
+.sh-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif; font-size: 18px; color: #fff;
+}
+.sh-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+.sh-role { font-size: 12px; color: var(--ink-soft); }
+.sh-edit-btn {
+  position: absolute; top: 8px; right: 8px;
+  background: none; border: 1px solid var(--border-2);
+  border-radius: 5px; padding: 3px 8px; font-size: 11px;
+  color: var(--ink-dim); cursor: pointer; font-family: 'Geist', sans-serif;
+  transition: all 0.15s;
+}
+.sh-edit-btn:hover { background: var(--gold-bg); border-color: var(--gold-border); color: var(--gold); }
+
+/* tabs inside ownership */
+.inner-tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.inner-tab {
+  padding: 9px 16px; font-size: 13px; font-weight: 500;
+  color: var(--ink-soft); cursor: pointer; border: none; background: none;
+  border-bottom: 2px solid transparent; transition: all 0.2s;
+}
+.inner-tab:hover { color: var(--ink); }
+.inner-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+.inner-tab-content { display: none; }
+.inner-tab-content.active { display: block; }
 </style>
 </head>
 <body>
-<!-- LOGIN -->
-<div id="ls">
-  <div class="lw">
-    <div class="ll">
-      <div class="lli"><div class="llogo">⬡</div><h1>Thabat<br/>Holding</h1><p style="margin-top:12px">Almunif Family · Investor Portal<br/>بوابة المستثمرين</p><p style="margin-top:14px;font-size:11px;color:rgba(247,246,242,.22)">Founded 1998 · +40 Investments · 8 Countries</p></div>
-      <div class="llf">Portfolio valuations conducted in accordance with IFRS and CMA guidelines. All amounts in SAR unless otherwise stated.</div>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <div class="login-logo-mark">ث</div>
+      <h1>Thabat Holding</h1>
+      <p>Investor Portal — Almunif Family Office</p>
     </div>
-    <div class="lr2">
-      <h2>Sign In</h2><p class="lsub">Enter your credentials to access the portal</p>
-      <div class="ff"><label>Username</label><input type="text" id="fu" autocomplete="off" spellcheck="false" placeholder="Enter your username"/></div>
-      <div class="ff"><label>Password</label><input type="password" id="fp" autocomplete="off" placeholder="Enter your password"/></div>
-      <button class="lbtn" id="lbtn" onclick="doLogin()">Access Portal →</button>
-      <div class="lld" id="lld">⏳ Verifying…</div>
-      <div class="lerr" id="lerr"></div>
+    <div class="login-field">
+      <label>Username</label>
+      <input type="text" id="login-user" placeholder="Enter your username" autocomplete="off"/>
     </div>
+    <div class="login-field">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="Enter your password"/>
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-error" id="login-error">Invalid username or password. Please try again.</div>
   </div>
 </div>
 
 <!-- APP -->
 <div id="app">
-  <nav class="sb">
-    <div class="sbh">
-      <div class="sbb"><div class="sblog">⬡</div><div><div class="sbn">Thabat Holding</div><div class="sbs">Investor Portal</div></div></div>
-      <div class="sbu"><div class="sbav" id="sbav"></div><div><div class="sbun" id="sbun"></div><div class="sbur" id="sbur"></div></div></div>
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">ث</div>
+      <span class="topbar-name">Thabat Holding</span>
     </div>
-    <div class="sbnav">
-      <div class="ni active" onclick="pg('dashboard',this)"><span class="nii">⊞</span>Dashboard</div>
-      <div class="ni" onclick="pg('portfolio',this)"><span class="nii">◫</span>Portfolio</div>
-      <div class="ni" onclick="pg('realestate',this)"><span class="nii">⌂</span>Real Estate</div>
-      <div class="ni" onclick="pg('ownership',this)"><span class="nii">◉</span>Ownership</div>
-      <div class="ni" onclick="pg('timeline',this)"><span class="nii">◷</span>Journey</div>
-      <div class="ni" onclick="pg('documents',this);rdocs()"><span class="nii">☐</span>Documents</div>
-      <div id="adnav" style="display:none"><div class="nl">Admin</div><div class="ni" onclick="pg('admin',this)"><span class="nii">⚙</span>Manage</div></div>
-      <div class="nl">Account</div>
-      <div class="ni" onclick="pg('profile',this)"><span class="nii">👤</span>My Profile</div>
-    </div>
-    <div class="sbft"><button class="lout" onclick="doLogout()">⏻ Sign Out</button></div>
-  </nav>
-  <div class="main">
-    <div class="tb">
-      <div class="tbl">
-        <div class="tbt" id="pgtitle">Dashboard</div>
-        <div class="sw"><span class="sico">🔍</span><input class="sinp" id="gs" placeholder="Search companies, assets, shareholders…" oninput="onsi(event)" onkeydown="oski(event)" autocomplete="off"/><div class="sdrop" id="sdrop"></div></div>
+    <div class="topbar-right">
+      <div class="user-chip">
+        <div class="user-avatar" id="topbar-avatar">AB</div>
+        <span id="topbar-name">Abdullah Almunif</span>
       </div>
-      <div class="tbr">
-        <button class="scbtn" onclick="alert('Contact: admin@thabatholding.com')">📅 Schedule Call</button>
-        <div class="tbc"><span class="dot"></span><span id="tdate"></span></div>
-      </div>
+      <button class="logout-btn" onclick="doLogout()">Sign Out</button>
     </div>
+  </div>
 
-    <!-- DASHBOARD -->
-    <div class="page active" id="page-dashboard">
-      <div style="margin-bottom:14px"><div style="font-family:'Instrument Serif',serif;font-size:26px;color:var(--ink)" id="wname">Welcome</div><div style="font-size:12px;color:var(--ink-soft)">Thabat Holding · Investor Portal · Valuation: <strong>Dec 31, 2025</strong></div></div>
-      <div class="ns">📊 Portfolio valuations conducted annually by an independent third-party valuer — IFRS & CMA. All amounts in SAR.</div>
-      <div class="sl">PORTFOLIO OVERVIEW</div>
-      <div class="mr">
-        <div class="mc"><div class="mcl">Fair Value (Market)</div><div class="mcv go" id="sfv">—</div></div>
-        <div class="mc"><div class="mcl">Companies</div><div class="mcv" id="sco">—</div><div class="mcs">Invested</div></div>
-        <div class="mc"><div class="mcl">Real Estate</div><div class="mcv" id="sre">—</div></div>
-        <div class="mc"><div class="mcl">RE Valuation</div><div class="mcv" id="srv">—</div></div>
-        <div class="mc"><div class="mcl">Total Dividends</div><div class="mcv g" id="sdv">—</div></div>
-      </div>
-      <div class="mr">
-        <div class="mc"><div class="mcl">Countries</div><div class="mcv" id="sgeo">—</div></div>
-        <div class="mc"><div class="mcl">Employees</div><div class="mcv" id="semp">—</div></div>
-        <div class="mc"><div class="mcl">Retail Stores</div><div class="mcv" id="sstr">—</div></div>
-        <div class="mc"><div class="mcl">Clients</div><div class="mcv" id="scli">—</div></div>
-        <div class="mc"><div class="mcl">Founded</div><div class="mcv" id="sfnd">—</div></div>
-      </div>
-      <div class="tc">
-        <div class="card"><div class="ch"><div class="ct">Top Portfolio Performers</div></div><div class="cb" id="tperf"></div></div>
-        <div class="card"><div class="ch"><div class="ct">Portfolio by Sector</div></div><div class="cb"><div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap"><svg id="ssvg" width="140" height="140" viewBox="0 0 140 140"></svg><div id="sleg" style="flex:1"></div></div></div></div>
-      </div>
-    </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="switchTab('overview')">Overview</button>
+    <button class="nav-tab" onclick="switchTab('ownership')">Ownership</button>
+    <button class="nav-tab" onclick="switchTab('documents')">Documents</button>
+    <button class="nav-tab" onclick="switchTab('reports')">Reports</button>
+  </div>
 
-    <!-- PORTFOLIO -->
-    <div class="page" id="page-portfolio">
-      <div class="tw">
-        <div class="ttb">
-          <input type="text" id="psrch" placeholder="🔍 Search…" oninput="rport()" style="min-width:150px"/>
-          <select id="psec" onchange="rport()"><option value="">All Sectors</option><option>Retail</option><option>VC &amp; Fund</option><option>SAAS</option><option>Logistics &amp; Distribution</option><option>Education</option><option>Hospitality</option><option>Entertainment</option><option>Real Estate</option></select>
-          <select id="pgeo" onchange="rport()"><option value="">All Regions</option><option>KSA</option><option>USA</option><option>Germany</option></select>
-          <button class="adb" onclick="openMo('m-ainv')">+ Add Investment</button>
+  <div class="content">
+
+    <!-- OVERVIEW TAB -->
+    <div id="tab-overview">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Welcome to Thabat Holding</div>
+          <div class="section-subtitle">Investor portal for the Almunif family office</div>
         </div>
-        <table class="dt"><thead><tr><th>Company</th><th>Region</th><th>Year</th><th>Ownership</th><th>Cum. Investment</th><th>Fair Value (Mkt)</th><th>MOIC</th><th>Unrealized G/L</th><th>Dividends</th><th>Status</th></tr></thead><tbody id="ptbody"></tbody></table>
+      </div>
+      <div class="card">
+        <div class="card-title">Quick Summary</div>
+        <p style="font-size:14px;color:var(--ink-soft);line-height:1.7;">
+          Thabat Holding is the principal investment vehicle of the Almunif family. The portal provides visibility into the investment structure, shareholder registry, and supporting documents across all sectors: Companies, Funds, and Real Estate.
+        </p>
+        <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
+          <div style="background:var(--green-bg);border:1px solid var(--green-border);border-radius:8px;padding:12px 18px;text-align:center;">
+            <div style="font-size:22px;font-family:'Instrument Serif',serif;color:var(--green);" id="stat-companies">5</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:2px;">Companies</div>
+          </div>
+          <div style="background:var(--gold-bg);border:1px solid var(--gold-border);border-radius:8px;padding:12px 18px;text-align:center;">
+            <div style="font-size:22px;font-family:'Instrument Serif',serif;color:var(--gold);" id="stat-funds">2</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:2px;">Funds</div>
+          </div>
+          <div style="background:#F3EBF7;border:1px solid #D9A8D9;border-radius:8px;padding:12px 18px;text-align:center;">
+            <div style="font-size:22px;font-family:'Instrument Serif',serif;color:#7A1A7A;" id="stat-realestate">3</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:2px;">Real Estate</div>
+          </div>
+          <div style="background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:8px;padding:12px 18px;text-align:center;">
+            <div style="font-size:22px;font-family:'Instrument Serif',serif;color:var(--blue);">6</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:2px;">Shareholders</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- REAL ESTATE -->
-    <div class="page" id="page-realestate">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px"><div style="font-family:'Instrument Serif',serif;font-size:19px">Real Estate Portfolio</div><button class="adb" onclick="openMo('m-are')">+ Add Property</button></div>
-      <div class="sl">INSIDE KSA</div>
-      <div class="tw"><table class="dt"><thead><tr><th>Acc.Xero</th><th>Description</th><th>Date</th><th>Cost Amt</th><th>Valuation</th><th>Share %</th><th>Space</th><th>Status</th></tr></thead><tbody id="reksa"></tbody></table></div>
-      <div class="sl">OUTSIDE KSA</div>
-      <div class="tw"><table class="dt"><thead><tr><th>Acc.Xero</th><th>Description</th><th>Date</th><th>Cost Amt</th><th>Valuation</th><th>Annual Rent</th><th>Share %</th><th>Space</th><th>Status</th></tr></thead><tbody id="reout"></tbody></table></div>
-      <div class="tw" style="background:var(--green);border-color:var(--green)"><table class="dt"><tbody><tr id="retot" style="color:white;font-weight:600"><td colspan="3"><strong>Total Current</strong></td><td>—</td><td>—</td><td>—</td><td colspan="2"></td></tr></tbody></table></div>
-    </div>
-
-    <!-- OWNERSHIP -->
-    <div class="page" id="page-ownership"><div id="owncont"></div></div>
-
-    <!-- TIMELINE -->
-    <div class="page" id="page-timeline">
-      <div style="font-family:'Instrument Serif',serif;font-size:22px;margin-bottom:3px">Thabat Journey</div>
-      <div style="font-size:12px;color:var(--ink-soft);margin-bottom:16px">Since 1998 — building a diversified investment holding across 8 countries</div>
-      <div id="tlcont"></div>
-    </div>
-
-    <!-- DOCUMENTS -->
-    <div class="page" id="page-documents">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px"><div style="font-family:'Instrument Serif',serif;font-size:19px">Documents</div><div style="font-size:11px;color:var(--ink-dim)">Click any investment or shareholder to upload</div></div>
-      <div id="docscont"><div class="emp"><div class="empi">📂</div><div class="empt">No documents yet</div><div class="emps">Open any investment or shareholder to upload documents.</div></div></div>
-    </div>
-
-    <!-- SEARCH -->
-    <div class="page" id="page-search"><div style="font-family:'Instrument Serif',serif;font-size:19px;margin-bottom:13px">Search Results</div><div id="srcont"></div></div>
-
-    <!-- ADMIN -->
-    <div class="page" id="page-admin">
-      <div style="font-family:'Instrument Serif',serif;font-size:19px;margin-bottom:13px">Admin — Manage Portal</div>
-      <div class="ns gld">⚠️ Admin access only.</div>
-      <div class="sl">USERS</div><div id="adcont"></div>
-    </div>
-
-    <!-- PROFILE -->
-    <div class="page" id="page-profile">
-      <div class="ph"><div class="pav" id="pav"></div><div><div class="pn" id="pnm"></div><div class="pr" id="prl"></div><span class="ptg" id="ptg"></span></div></div>
-      <div class="tc">
-        <div class="card"><div class="ch"><div class="ct">Account Details</div></div><div class="cb">
-          <div class="ait"><div class="aii">✓</div><div class="aitxt"><strong>Status:</strong> <span style="color:var(--green)">Active</span></div></div>
-          <div class="ait"><div class="aii">🏢</div><div class="aitxt"><strong>Company:</strong> Thabat Holding — Since 1998</div></div>
-          <div class="ait"><div class="aii">🌍</div><div class="aitxt"><strong>Region:</strong> Kingdom of Saudi Arabia</div></div>
-          <div class="ait"><div class="aii">📅</div><div class="aitxt"><strong>Valuation Date:</strong> Dec 31, 2025</div></div>
-        </div></div>
-        <div class="card"><div class="ch"><div class="ct">My Shareholding</div></div><div class="cb" style="display:flex;flex-direction:column;align-items:center;padding:22px;text-align:center">
-          <div id="ppct" style="font-family:'Instrument Serif',serif;font-size:48px;color:var(--gold);line-height:1">—%</div>
-          <div style="font-size:12px;color:var(--ink-soft);margin-top:6px">Ownership in Thabat Holding</div>
-          <div style="margin-top:9px;font-size:10px;color:var(--ink-dim)">Almunif Family · 6 shareholders</div>
-        </div></div>
+    <!-- OWNERSHIP TAB -->
+    <div id="tab-ownership" style="display:none;">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Ownership</div>
+          <div class="section-subtitle">Investment structure and shareholder registry</div>
+        </div>
       </div>
+
+      <div class="inner-tabs">
+        <button class="inner-tab active" onclick="switchInner('investment')">Investment Structure</button>
+        <button class="inner-tab" onclick="switchInner('shareholders')">Shareholder Structure</button>
+      </div>
+
+      <!-- INVESTMENT STRUCTURE -->
+      <div class="inner-tab-content active" id="inner-investment">
+        <div class="card">
+          <div class="card-title">Investment Structure</div>
+          <div class="tree-container" id="investment-tree"></div>
+        </div>
+      </div>
+
+      <!-- SHAREHOLDER STRUCTURE -->
+      <div class="inner-tab-content" id="inner-shareholders">
+        <div class="search-bar-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="sh-search" placeholder="Search for entity, investor, or investment…" oninput="onSearchInput(this.value)" onblur="hideSuggestionsDelay()" autocomplete="off"/>
+          <div class="search-suggestions" id="sh-suggestions" style="display:none;"></div>
+        </div>
+
+        <div class="hierarchy-view" id="hierarchy-view">
+          <div class="hierarchy-title">
+            <span id="hierarchy-entity-icon" class="tree-icon icon-holding" style="width:32px;height:32px;font-size:13px;">ث</span>
+            <span id="hierarchy-entity-name">Thabat Holding</span>
+            <button class="hierarchy-close" onclick="closeHierarchy()">✕ Close</button>
+          </div>
+          <div id="hierarchy-content"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Shareholders</div>
+          <div class="sh-grid" id="sh-grid"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">All Investments (with ownership)</div>
+          <div id="sh-investment-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOCUMENTS TAB -->
+    <div id="tab-documents" style="display:none;">
+      <div class="section-header">
+        <div class="section-title">Documents</div>
+      </div>
+      <div class="card">
+        <p style="font-size:14px;color:var(--ink-soft);">Documents are attached to each investment node. Open the Ownership tab, navigate to an investment, and click the "Docs" button to view or add documents.</p>
+      </div>
+    </div>
+
+    <!-- REPORTS TAB -->
+    <div id="tab-reports" style="display:none;">
+      <div class="section-header">
+        <div class="section-title">Reports</div>
+      </div>
+      <div class="card">
+        <p style="font-size:14px;color:var(--ink-soft);">Financial reports and audit summaries will appear here.</p>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /app -->
+
+<!-- EDIT MODAL -->
+<div class="modal-overlay" id="edit-modal">
+  <div class="modal">
+    <div class="modal-title" id="edit-modal-title">Edit Node</div>
+    <div class="modal-field">
+      <label>Name / Label</label>
+      <input type="text" id="edit-name" placeholder="Entity name"/>
+    </div>
+    <div class="modal-field">
+      <label>Description / Notes</label>
+      <textarea id="edit-desc" placeholder="Optional description"></textarea>
+    </div>
+    <div class="modal-field" id="edit-pct-field">
+      <label>Ownership %</label>
+      <input type="text" id="edit-pct" placeholder="e.g. 100%"/>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEditModal()">Save Changes</button>
     </div>
   </div>
 </div>
 
-<!-- MODALS -->
-<div class="mo" id="m-det" onclick="if(event.target===this)closeMo('m-det')"><div class="mb"><div class="mh"><div class="mt2">Details</div><button class="mc2" onclick="closeMo('m-det')">✕</button></div><div class="mbd" id="m-det-body"></div></div></div>
-<div class="mo" id="m-upl" onclick="if(event.target===this)closeMo('m-upl')"><div class="mb nw"><div class="mh"><div class="mt2">Upload Document</div><button class="mc2" onclick="closeMo('m-upl')">✕</button></div><div class="mbd"><div id="m-upl-form"></div></div><div class="mft"><button class="bs" onclick="closeMo('m-upl')">Cancel</button><button class="bp2" onclick="submitUpl()">Upload</button></div></div></div>
-<div class="mo" id="m-ainv" onclick="if(event.target===this)closeMo('m-ainv')"><div class="mb nw"><div class="mh"><div class="mt2">Add Investment</div><button class="mc2" onclick="closeMo('m-ainv')">✕</button></div><div class="mbd">
-  <div class="ff"><label>Company Name *</label><input type="text" id="ainm" placeholder="e.g. TechCo"/></div>
-  <div class="ff"><label>Sector</label><select id="aisec"><option>Retail</option><option>VC &amp; Fund</option><option>SAAS</option><option>Logistics &amp; Distribution</option><option>Education</option><option>Hospitality</option><option>Entertainment</option><option>Real Estate</option><option>Other</option></select></div>
-  <div class="ff"><label>Geography</label><input type="text" id="aigeo" value="KSA"/></div>
-  <div class="ff"><label>Year of Investment</label><input type="number" id="aiyr" placeholder="2025"/></div>
-  <div class="ff"><label>Ownership %</label><input type="number" id="aiown" placeholder="25"/></div>
-  <div class="ff"><label>Cumulative Investment (SAR)</label><input type="text" id="aicum" placeholder="1,000,000"/></div>
-  <div class="ff"><label>Fair Value Market (SAR)</label><input type="text" id="aifv" placeholder="2,500,000"/></div>
-</div><div class="mft"><button class="bs" onclick="closeMo('m-ainv')">Cancel</button><button class="bp2" onclick="submitInv()">Add Investment</button></div></div></div>
-<div class="mo" id="m-are" onclick="if(event.target===this)closeMo('m-are')"><div class="mb nw"><div class="mh"><div class="mt2">Add Real Estate Asset</div><button class="mc2" onclick="closeMo('m-are')">✕</button></div><div class="mbd">
-  <div class="ff"><label>Property Name *</label><input type="text" id="renm" placeholder="RE New Property Riyadh"/></div>
-  <div class="ff"><label>Location / Details</label><input type="text" id="redet" placeholder="Riyadh - KSA"/></div>
-  <div class="ff"><label>Share %</label><input type="number" id="resh" placeholder="50"/></div>
-  <div class="ff"><label>Cost Amount (SAR)</label><input type="text" id="recost" placeholder="1,500,000"/></div>
-  <div class="ff"><label>Valuation (SAR)</label><input type="text" id="reval" placeholder="2,000,000"/></div>
-  <div class="ff"><label>Space</label><input type="text" id="resp" placeholder="500 m²"/></div>
-</div><div class="mft"><button class="bs" onclick="closeMo('m-are')">Cancel</button><button class="bp2" onclick="submitRE()">Add Property</button></div></div></div>
+<!-- DOCS MODAL -->
+<div class="modal-overlay" id="docs-modal">
+  <div class="modal">
+    <div class="modal-title" id="docs-modal-title">Documents</div>
+    <div class="doc-list" id="docs-list"></div>
+    <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:16px;">
+      <div style="font-size:12px;font-weight:600;color:var(--ink-soft);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;">Add Document</div>
+      <div class="add-doc-row">
+        <input type="text" id="new-doc-name" placeholder="Document name (e.g. CR 2024)"/>
+        <select id="new-doc-type">
+          <option value="cr">CR</option>
+          <option value="aoa">AOA</option>
+          <option value="audit">Audited Financials</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" style="margin-top:10px;width:100%;" onclick="addDocument()">+ Add Document</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeDocsModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- SHAREHOLDER EDIT MODAL -->
+<div class="modal-overlay" id="sh-edit-modal">
+  <div class="modal">
+    <div class="modal-title">Edit Shareholder</div>
+    <div class="modal-field">
+      <label>Full Name</label>
+      <input type="text" id="sh-edit-name"/>
+    </div>
+    <div class="modal-field">
+      <label>Role / Title</label>
+      <input type="text" id="sh-edit-role"/>
+    </div>
+    <div class="modal-field">
+      <label>Initials (2 letters)</label>
+      <input type="text" id="sh-edit-initials" maxlength="2"/>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeShEditModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveShEdit()">Save</button>
+    </div>
+  </div>
+</div>
 
 <script>
-// AUTH — hashes only, no plain passwords
-const __E=[{"h":"61706cd28510f39ee00a6795f761772f27159ffc18fac29e165489e1feb02c8c4efe1a0176b67b9666c62150a8bb0042dc789d92a2e3b87980e77bb064c53bb1","s":"e75167f42c2e7f9bfc3ebbfb4077db2b92e12e750bebe994d94223fb3692c1f5","n":"Abdullah Almunif","r":"Chairman & Group CEO","i":"AA","p":"17.5","t":"Chairman & Group CEO · Thabat Holding","admin":true,"uk":"7d38852ae00d6bc23def586df1f3de8a22ec7d09cd5f32aea01cfe9c1140a2db"},{"h":"549a89cdbfea83700b59a43e8b28fc43fb8ca40c0b20979bb913b9d2f71e3930a15082fe5c47eb49a126616d1418c983355fb3060f42a13e8f2ed939dab4be8b","s":"7f75d838283f6c60a2ec376e66384b736201396999acd2e157f74ca22d3dc81a","n":"Ali Almunif","r":"Shareholder","i":"AL","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"94419b99b12c11133a4dfeccc3e17885974beb48f7827c48239aabfbcad238d8"},{"h":"4955b0ab0554cf6b7662e157f1ecd70c7c45431c945e5ca892ac6247a7da104746ce66ef9d57d8cf5c07988a220a9f9ebc8bb7655fa913772788e37bf13a596d","s":"ff6f8c8a598b1cc7baa927c2d6043cd26f3b47ebb954275a7beeaf616487002b","n":"Ibrahim Almunif","r":"Shareholder","i":"IA","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"9711bcc773b67df9d02c1adc26240b1332048ab8ec17a23732ace9e0c030e0bd"},{"h":"b42dbf6ae57af6b765785e7ac8eb8d7931e4e91bd44fc181931e9be346f941149f146265dc0e8e4dddafcbc3a45fbd105e1d4321e4be7aa86ba8e0a41f55ad2b","s":"19d8983d45bc7b854a23f6ef45f9336ad5fc8f8af3c00fd5e66ba078fe8c1d3d","n":"Maha Almunif","r":"Shareholder","i":"MA","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"d980e1b9ef2c97be6f16b2bbb18e71891a9257942412d69e101524c511642d96"},{"h":"dac6a0dda984c03ad9a5a90b3294404f7edb61dd312abac85c28e435a8578a7398e32d71efeb98233193bcd44e567f2d0a00b8339685576cf1894c18f865330a","s":"c70425dbccb9ff2debde6e2f384e997eab939cbfb23f74f13856c2aa79bc056e","n":"Mari Almunif","r":"Shareholder","i":"MR","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"fbc835d2c63c85a2af298286581b9b77e8f1d5436a7ccbe391fceecce2a4729e"},{"h":"fdac725ea4484bf02dbc8a96bba4b316743db4c12074096240029dacdd4560fb3b7bef9059be01955cd6f7b87c3f628a358d24af6c7c738dcbb39b89b137be24","s":"f5491cade86217ddf4048d4ef22132974475689614a55129ef41bed273fd2572","n":"Munif Almunif","r":"Shareholder","i":"MN","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"4414be8ba7bd32dab555569e9d21acf5e6077112f4ba42c457774954f8e80344"},{"h":"7e5066f7043363b9e08f9763706eb410b2e5dedd0ae67c8ee416f343cc82bd3fed40baa9707a4ece4416d1213f9d90a4bd40580342a15fc0d11078640375a16d","s":"5c5c650bad9480c8f60cc6eed1191a549f6ccc74fc6035724d8a95aac60aec1d","n":"Portal Admin","r":"Administrator","i":"AD","p":"—","t":"Administrator · Thabat Holding","admin":true,"uk":"8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"}];const __L={"7d38852ae00d6bc23def586df1f3de8a22ec7d09cd5f32aea01cfe9c1140a2db":0,"94419b99b12c11133a4dfeccc3e17885974beb48f7827c48239aabfbcad238d8":1,"9711bcc773b67df9d02c1adc26240b1332048ab8ec17a23732ace9e0c030e0bd":2,"d980e1b9ef2c97be6f16b2bbb18e71891a9257942412d69e101524c511642d96":3,"fbc835d2c63c85a2af298286581b9b77e8f1d5436a7ccbe391fceecce2a4729e":4,"4414be8ba7bd32dab555569e9d21acf5e6077112f4ba42c457774954f8e80344":5,"8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918":6};
-
-const _rl={a:0,lu:0};
-async function h256(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
-async function pbkdf(pw,sh,it,ln){const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveBits']);const sa=new Uint8Array(sh.match(/.{2}/g).map(h=>parseInt(h,16)));const bi=await crypto.subtle.deriveBits({name:'PBKDF2',salt:sa,iterations:it,hash:'SHA-512'},km,ln*8);return Array.from(new Uint8Array(bi)).map(x=>x.toString(16).padStart(2,'0')).join('');}
-
-async function doLogin(){
-  const now=Date.now();
-  if(now<_rl.lu){serr('Too many attempts. Wait '+Math.ceil((_rl.lu-now)/1000)+'s.');return;}
-  const u=document.getElementById('fu').value.trim().toLowerCase();
-  const p=document.getElementById('fp').value;
-  if(!u||!p){serr('Please enter username and password.');return;}
-  const btn=document.getElementById('lbtn');btn.disabled=true;
-  document.getElementById('lld').style.display='block';
-  document.getElementById('lerr').style.display='none';
-  try{
-    const uh=await h256(u);
-    const idx=__L[uh];
-    if(idx===undefined)throw new Error('user not found');
-    const e=__E[idx];
-    const comp=await pbkdf(p,e.s,100000,64);
-    if(comp!==e.h)throw new Error('wrong password');
-    _rl.a=0;
-    document.getElementById('lld').style.display='none';
-    boot({n:e.n,r:e.r,i:e.i,p:e.p,t:e.t,admin:!!e.admin});
-  }catch(err){
-    _rl.a++;
-    document.getElementById('lld').style.display='none';
-    btn.disabled=false;
-    if(_rl.a>=5){_rl.lu=Date.now()+30000;_rl.a=0;serr('Locked for 30 seconds.');}
-    else serr('Invalid username or password. '+(5-_rl.a)+' attempt(s) left.');
-  }
-}
-function serr(m){const e=document.getElementById('lerr');e.textContent=m;e.style.display='block';document.getElementById('lbtn').disabled=false;document.getElementById('lld').style.display='none';}
-['fu','fp'].forEach(id=>document.getElementById(id).addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();}));
-
-let _s=null;
-function boot(u){
-  _s=u;
-  document.getElementById('ls').style.display='none';
-  document.getElementById('app').style.display='block';
-  ['sbav','pav'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=u.i;});
-  ['sbun','pnm'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=u.n;});
-  ['sbur','prl'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=u.r;});
-  const pt=document.getElementById('ptg');if(pt)pt.textContent=u.t;
-  const pp=document.getElementById('ppct');if(pp)pp.textContent=u.p+'%';
-  const wn=document.getElementById('wname');if(wn)wn.textContent='Welcome, '+u.n.split(' ')[0];
-  document.getElementById('tdate').textContent=new Date().toLocaleDateString('en-SA',{year:'numeric',month:'long',day:'numeric'});
-  document.getElementById('adnav').style.display=u.admin?'block':'none';
-  rdash();rport();rre();rown();rtl();if(u.admin)radmin();
-}
-function doLogout(){_s=null;document.getElementById('app').style.display='none';document.getElementById('ls').style.display='flex';['fu','fp'].forEach(id=>document.getElementById(id).value='');['lerr','lld'].forEach(id=>document.getElementById(id).style.display='none');document.getElementById('lbtn').disabled=false;}
-
-const _pts={dashboard:'Dashboard',portfolio:'Portfolio',realestate:'Real Estate',ownership:'Ownership Structure',timeline:'Thabat Journey',documents:'Documents',search:'Search',admin:'Admin',profile:'My Profile'};
-function pg(id,el){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));const p2=document.getElementById('page-'+id);if(p2)p2.classList.add('active');document.getElementById('pgtitle').textContent=_pts[id]||id;if(el)el.classList.add('active');}
-
-// DATA
-const D={
-  stats:{founded:1998,employees:700,retailStores:130,clients:20000,totalPortfolioFV:481309004,totalRealEstateVal:18499764,totalDividends:240343144},
-  shareholders:[
-    {id:'sh1',name:'Abdullah Almunif',initials:'AA',pct:17.5,role:'Chairman & Group CEO'},
-    {id:'sh2',name:'Ali Almunif',initials:'AL',pct:16.5,role:'Shareholder'},
-    {id:'sh3',name:'Ibrahim Almunif',initials:'IA',pct:16.5,role:'Shareholder'},
-    {id:'sh4',name:'Maha Almunif',initials:'MA',pct:16.5,role:'Shareholder'},
-    {id:'sh5',name:'Mari Almunif',initials:'MR',pct:16.5,role:'Shareholder'},
-    {id:'sh6',name:'Munif Almunif',initials:'MN',pct:16.5,role:'Shareholder'}
-  ],
-  companies:[
-    {id:'c1',name:'Anoosh',sector:'Retail',geo:'KSA',year:2003,ownership:70,cumInv:null,fvMarket:226380000,moic:'226.38X',unrealized:226014360,dividends:224457337,status:'active'},
-    {id:'c2',name:'Seedra Fund I',sector:'VC & Fund',geo:'KSA',year:2020,ownership:21.08,cumInv:18299730,fvMarket:38953296,moic:'2.13X',unrealized:20653566,dividends:1502972,status:'active'},
-    {id:'c3',name:'Seedra Fund II',sector:'VC & Fund',geo:'KSA',year:2024,ownership:3.84,cumInv:1070272,fvMarket:951200,moic:'0.89X',unrealized:-119073,dividends:0,status:'active'},
-    {id:'c4',name:'9 Round',sector:'Retail',geo:'KSA',year:2015,ownership:47.95,cumInv:2524417,fvMarket:76720000,moic:'30.39X',unrealized:74195583,dividends:3173373,status:'active'},
-    {id:'c5',name:'Road Logistics',sector:'Logistics & Distribution',geo:'KSA',year:2010,ownership:25,cumInv:850000,fvMarket:14750000,moic:'17.35X',unrealized:13900000,dividends:822385,status:'active'},
-    {id:'c6',name:'Matajer',sector:'Logistics & Distribution',geo:'KSA',year:2008,ownership:50,cumInv:null,fvMarket:null,moic:null,unrealized:null,dividends:0,status:'active'},
-    {id:'c7',name:'Bedayaat',sector:'Education',geo:'KSA',year:2013,ownership:17,cumInv:2441284,fvMarket:2500000,moic:'1.02X',unrealized:58716,dividends:0,status:'active'},
-    {id:'c8',name:'Jisr',sector:'SAAS',geo:'KSA',year:2016,ownership:4.55,cumInv:300000,fvMarket:68250000,moic:'227.5X',unrealized:67950000,dividends:4737548,status:'active'},
-    {id:'c9',name:'Salasa',sector:'Logistics & Distribution',geo:'KSA',year:2017,ownership:6.32,cumInv:1184211,fvMarket:42660000,moic:'36.02X',unrealized:41475789,dividends:5649529,status:'active'},
-    {id:'c10',name:'Kease',sector:'Hospitality',geo:'KSA',year:2021,ownership:16,cumInv:630000,fvMarket:3200000,moic:'5.08X',unrealized:2570000,dividends:0,status:'active'},
-    {id:'c11',name:'Prefab',sector:'Real Estate',geo:'KSA',year:2021,ownership:12,cumInv:330000,fvMarket:2400000,moic:'7.27X',unrealized:2070000,dividends:0,status:'active'},
-    {id:'c12',name:'Signit',sector:'SAAS',geo:'KSA',year:2022,ownership:1,cumInv:187950,fvMarket:1302083,moic:'6.93X',unrealized:1114133,dividends:0,status:'active'},
-    {id:'c13',name:'404',sector:'Entertainment',geo:'KSA',year:2022,ownership:50,cumInv:1500000,fvMarket:1500000,moic:'1.00X',unrealized:0,dividends:0,status:'active'},
-    {id:'c14',name:'18 Degree',sector:'Retail',geo:'KSA',year:2022,ownership:30,cumInv:804925,fvMarket:804925,moic:'1.00X',unrealized:0,dividends:0,status:'active'},
-    {id:'c15',name:'Pipe',sector:'SAAS',geo:'USA',year:2021,ownership:null,cumInv:1875000,fvMarket:937500,moic:'0.5X',unrealized:-937500,dividends:0,status:'active'},
-    {id:'c16',name:'Any Move',sector:'SAAS',geo:'Germany',year:2022,ownership:null,cumInv:403390,fvMarket:0,moic:null,unrealized:-403390,dividends:0,status:'active'}
-  ],
-  realEstate:[
-    {id:'re1',accXero:'12060206',name:'RE SH2 Alkhobar',details:'Al Khobar - KSA',date:'Before 2017',costAmt:1200000,valuation:1200000,rent:null,share:33.33,space:'2,500 m²',status:'active'},
-    {id:'re2',accXero:'12060210',name:'RE Ammaria Land – Hamad Alissa',details:'Riyadh - KSA',date:'Before 2017',costAmt:1692142,valuation:5927078,rent:null,share:11.21,space:'176,243 m²',status:'active'},
-    {id:'re3',accXero:'12060204',name:'RE Amirayah Land 1 – Salman',details:'Riyadh - KSA',date:'Mar-17',costAmt:1321126,valuation:1321126,rent:null,share:50,space:'10,000 m²',status:'active'},
-    {id:'re4',accXero:'12060216',name:'RE New Project Maather',details:'Riyadh - KSA',date:'Jan-23',costAmt:1660487,valuation:1660487,rent:null,share:33.33,space:'3,187 m²',status:'cancelled'},
-    {id:'re5',accXero:'12060218',name:'RE Alzahraa – Turkey Alyahia',details:'Riyadh - KSA',date:'Feb-24',costAmt:6391074,valuation:6391074,rent:null,share:50,space:'1,250 m²',status:'active'},
-    {id:'re6',accXero:'12060209',name:'RE Property Ottawa',details:'Canada',date:'May-16',costAmt:2022942,valuation:2000000,rent:155451,share:100,space:'403,317 m²',status:'active'}
-  ],
-  sectors:[
-    {s:'Retail',p:32,c:'#1A7A4A'},{s:'Venture Capital & Fund',p:23,c:'#1A5FA8'},{s:'Real Estate KSA',p:21.9,c:'#B8860B'},
-    {s:'Real Estate Outside KSA',p:7,c:'#D4A017'},{s:'Logistics & Dist.',p:6,c:'#C45E00'},{s:'SAAS',p:4,c:'#6B4FA8'},
-    {s:'Education',p:3,c:'#0A7A72'},{s:'Entertainment',p:2,c:'#C0392B'},{s:'Hospitality',p:1,c:'#2E86AB'},{s:'Const.',p:0.2,c:'#888'}
-  ],
-  timeline:[
-    {year:2003,co:'Anoosh'},{year:2008,co:'Matajer'},{year:2010,co:'Road Logistics'},{year:2013,co:'Bedayaat'},
-    {year:2015,co:'9 Round'},{year:2016,co:'Jisr'},{year:2017,co:'Salasa'},{year:2020,co:'Seedra Fund I'},
-    {year:2021,co:'Pipe'},{year:2021,co:'Kease'},{year:2021,co:'Prefab'},{year:2022,co:'Signit'},
-    {year:2022,co:'404'},{year:2022,co:'18 Degree'},{year:2022,co:'Any Move'},{year:2024,co:'Seedra Fund II'}
-  ],
-  geoPresence:['KSA','UAE','Jordan','Kuwait','Egypt','Canada','USA','Germany'],
-  documents:[]
+// ─────────────────────────────────────────────
+// DATA STORE
+// ─────────────────────────────────────────────
+let investmentTree = {
+  id: 'thabat',
+  name: 'Thabat Holding',
+  icon: 'icon-holding',
+  initials: 'ث',
+  desc: 'Principal investment vehicle of the Almunif family',
+  docs: [],
+  expanded: true,
+  children: [
+    {
+      id: 'companies',
+      name: 'Companies',
+      icon: 'icon-category',
+      initials: '🏢',
+      desc: 'Portfolio companies held by Thabat Holding',
+      docs: [],
+      expanded: false,
+      children: [
+        { id: 'anoosh', name: 'Anoosh', icon: 'icon-company', initials: 'AN', desc: 'Food & Beverage', docs: [], expanded: false, ownership: '70%', children: [] },
+        { id: 'nineround', name: '9 Round', icon: 'icon-company', initials: '9R', desc: 'Sports & Fitness', docs: [], expanded: false, ownership: '100%', children: [] },
+        { id: 'road', name: 'Road Logistics', icon: 'icon-company', initials: 'RL', desc: 'Logistics & Transport', docs: [], expanded: false, ownership: '100%', children: [] },
+        { id: 'bedayaat', name: 'Bedayaat', icon: 'icon-company', initials: 'BD', desc: 'Investment & Incubation', docs: [], expanded: false, ownership: '100%', children: [] },
+      ]
+    },
+    {
+      id: 'funds',
+      name: 'Funds',
+      icon: 'icon-category',
+      initials: '📈',
+      desc: 'Investment funds',
+      docs: [],
+      expanded: false,
+      children: [
+        { id: 'fund1', name: 'Growth Fund I', icon: 'icon-fund', initials: 'GF', desc: 'Private equity fund', docs: [], expanded: false, ownership: '100%', children: [] },
+        { id: 'fund2', name: 'Real Assets Fund', icon: 'icon-fund', initials: 'RF', desc: 'Real assets & infrastructure', docs: [], expanded: false, ownership: '100%', children: [] },
+      ]
+    },
+    {
+      id: 'realestate',
+      name: 'Real Estate',
+      icon: 'icon-category',
+      initials: '🏗',
+      desc: 'Real estate portfolio',
+      docs: [],
+      expanded: false,
+      children: [
+        { id: 'olaya', name: 'Olaya Project', icon: 'icon-realestate', initials: 'OP', desc: 'Olaya District, Riyadh', docs: [], expanded: false, ownership: '100%', children: [] },
+        { id: 'northriyadh', name: 'North Riyadh Plot', icon: 'icon-realestate', initials: 'NR', desc: 'Residential land, North Riyadh', docs: [], expanded: false, ownership: '100%', children: [] },
+        { id: 'jeddah', name: 'Jeddah Commercial', icon: 'icon-realestate', initials: 'JC', desc: 'Commercial property, Jeddah', docs: [], expanded: false, ownership: '100%', children: [] },
+      ]
+    }
+  ]
 };
 
-function sar(n){if(!n&&n!==0)return'—';if(n>=1e9)return'SAR '+(n/1e9).toFixed(2)+'B';if(n>=1e6)return'SAR '+(n/1e6).toFixed(2)+'M';if(n>=1e3)return'SAR '+Math.round(n/1000)+'K';return'SAR '+n.toLocaleString();}
-function sc(s){const m={'Retail':'#1A7A4A','VC & Fund':'#1A5FA8','SAAS':'#6B4FA8','Logistics & Distribution':'#C45E00','Education':'#0A7A72','Hospitality':'#2E86AB','Entertainment':'#C0392B','Real Estate':'#B8860B'};return m[s]||'#555';}
-function se(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
+let shareholders = [
+  { id: 'sh-abdullah', name: 'Abdullah Almunif', role: 'Shareholder', initials: 'AB', thabat_pct: '25%' },
+  { id: 'sh-munif',    name: 'Munif Almunif',    role: 'Shareholder', initials: 'MN', thabat_pct: '16.5%' },
+  { id: 'sh-maree',    name: 'Maree Almunif',    role: 'Shareholder', initials: 'MR', thabat_pct: '16.5%' },
+  { id: 'sh-ibrahim',  name: 'Ibrahim Almunif',  role: 'Shareholder', initials: 'IB', thabat_pct: '16.5%' },
+  { id: 'sh-maha',     name: 'Maha Almunif',     role: 'Shareholder', initials: 'MA', thabat_pct: '12.75%' },
+  { id: 'sh-ali',      name: 'Ali Almunif',      role: 'Shareholder', initials: 'AL', thabat_pct: '12.75%' },
+];
 
-function rdash(){
-  const s=D.stats;
-  se('sfv',sar(s.totalPortfolioFV));se('sco',D.companies.length);se('sre',D.realEstate.filter(r=>r.status!='cancelled').length);se('srv',sar(s.totalRealEstateVal));se('sdv',sar(s.totalDividends));se('sgeo',D.geoPresence.length+' countries');se('semp','+'+s.employees.toLocaleString());se('sstr','+'+s.retailStores);se('scli','+'+s.clients.toLocaleString());se('sfnd',s.founded);
-  const tp=document.getElementById('tperf');
-  if(tp){const sr=[...D.companies].filter(c=>c.fvMarket).sort((a,b)=>b.fvMarket-a.fvMarket).slice(0,6);
-    tp.innerHTML=sr.map(c=>{const col=sc(c.sector);const bp=Math.min(100,(c.fvMarket/(sr[0].fvMarket||1))*100);return`<div class="ar"><div class="ac" style="background:${col}"></div><div class="an">${c.name}</div><div class="abw"><div class="abb"><div class="abf" style="width:${bp}%;background:${col}"></div></div></div><div class="aa">${sar(c.fvMarket)}</div></div>`;}).join('');}
-  const svg=document.getElementById('ssvg');const leg=document.getElementById('sleg');
-  if(svg&&leg){const r=46,cx=70,cy=70,sw=18,ci=2*Math.PI*r;let cum=0;
-    svg.innerHTML=D.sectors.map(s=>{const da=(s.p/100)*ci;const off=ci-(cum/100)*ci;cum+=s.p;return`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.c}" stroke-width="${sw}" stroke-dasharray="${da} ${ci-da}" stroke-dashoffset="${off}" transform="rotate(-90 ${cx} ${cy})"/>`;}).join('')+`<text x="${cx}" y="${cy-4}" text-anchor="middle" font-size="9" fill="#9B9B90" font-family="Geist,sans-serif">Total</text><text x="${cx}" y="${cy+9}" text-anchor="middle" font-size="12" fill="#1A1A18" font-weight="600" font-family="Geist,sans-serif">100%</text>`;
-    leg.innerHTML=D.sectors.map(s=>`<div class="lr"><div class="ld" style="background:${s.c}"></div><div class="ln">${s.s}</div><div class="lp">${s.p}%</div></div>`).join('');}
-}
-
-function rport(){
-  let cos=[...D.companies];
-  const sq=(document.getElementById('psrch')||{}).value||'';
-  const sf=(document.getElementById('psec')||{}).value||'';
-  const gf=(document.getElementById('pgeo')||{}).value||'';
-  if(sq)cos=cos.filter(c=>c.name.toLowerCase().includes(sq.toLowerCase())||c.sector.toLowerCase().includes(sq.toLowerCase()));
-  if(sf)cos=cos.filter(c=>c.sector===sf);if(gf)cos=cos.filter(c=>c.geo===gf);
-  let tC=0,tF=0,tD=0;cos.forEach(c=>{tC+=(c.cumInv||0);tF+=(c.fvMarket||0);tD+=(c.dividends||0);});
-  const tb=document.getElementById('ptbody');if(!tb)return;
-  tb.innerHTML=cos.map(c=>{const col=sc(c.sector);const g=c.unrealized;const gc=g>0?'pos':g<0?'neg':'';const gs=g!=null?(g>0?'+':'')+sar(g):'—';
-    return`<tr onclick="odet('company','${c.id}')"><td><div class="cc"><div class="ci" style="background:${col}20;color:${col}">${c.name.substring(0,2).toUpperCase()}</div><div><div class="cn">${c.name}</div><div class="cty">${c.sector}</div></div></div></td><td><span class="gt">${c.geo}</span></td><td>${c.year}</td><td><strong>${c.ownership!=null?c.ownership+'%':'—'}</strong></td><td>${sar(c.cumInv)}</td><td>${sar(c.fvMarket)}</td><td>${c.moic||'—'}</td><td class="${gc}">${gs}</td><td>${sar(c.dividends)}</td><td><span class="sp ${c.status}">${c.status}</span></td></tr>`;}).join('')+
-    `<tr class="ttr"><td colspan="4"><strong>Total</strong></td><td><strong>${sar(tC)}</strong></td><td><strong>${sar(tF)}</strong></td><td colspan="2"></td><td><strong>${sar(tD)}</strong></td><td></td></tr>`;
-}
-
-function rre(){
-  const ksa=D.realEstate.filter(r=>!r.details.toLowerCase().includes('canada')&&!r.details.toLowerCase().includes('germany')&&!r.details.toLowerCase().includes('usa'));
-  const out=D.realEstate.filter(r=>r.details.toLowerCase().includes('canada')||r.details.toLowerCase().includes('germany')||r.details.toLowerCase().includes('usa'));
-  function rows(arr,sr){return arr.map(r=>{const cl=r.status==='cancelled';return`<tr onclick="odet('realestate','${r.id}')" ${cl?'style="opacity:.5"':''}><td>${r.accXero}</td><td><div class="cn" ${cl?'style="text-decoration:line-through"':''}>${r.name}</div><div class="cty">${r.details}</div></td><td>${r.date}</td><td>${sar(r.costAmt)}</td><td>${sar(r.valuation)}</td>${sr?`<td>${r.rent?sar(r.rent):'—'}</td>`:''}<td>${r.share}%</td><td>${r.space}</td><td><span class="sp ${r.status}">${r.status}</span></td></tr>`}).join('');}
-  let kc=0,kv=0,oc=0,ov=0,or2=0;ksa.forEach(r=>{kc+=r.costAmt||0;kv+=r.valuation||0;});out.forEach(r=>{oc+=r.costAmt||0;ov+=r.valuation||0;or2+=r.rent||0;});
-  const kt=document.getElementById('reksa');if(kt)kt.innerHTML=rows(ksa,false)+`<tr class="ttr"><td colspan="3"><strong>Total</strong></td><td><strong>${sar(kc)}</strong></td><td><strong>${sar(kv)}</strong></td><td colspan="3"></td></tr>`;
-  const ot=document.getElementById('reout');if(ot)ot.innerHTML=rows(out,true)+`<tr class="ttr"><td colspan="2"><strong>Total</strong></td><td></td><td><strong>${sar(oc)}</strong></td><td><strong>${sar(ov)}</strong></td><td><strong>${sar(or2)}</strong></td><td colspan="2"></td></tr>`;
-  const gt=document.getElementById('retot');if(gt)gt.innerHTML=`<td colspan="3"><strong>Total Current</strong></td><td><strong>${sar(kc+oc)}</strong></td><td><strong>${sar(kv+ov)}</strong></td><td><strong>${sar(or2)}</strong></td><td colspan="2"></td>`;
-}
-
-let _sf=null;
-function rown(fid){
-  _sf=fid||null;const con=document.getElementById('owncont');if(!con)return;
-  const shCards=D.shareholders.map(sh=>{const isF=_sf&&_sf!=='all'&&sh.id!==_sf;const isH=_sf===sh.id;
-    return`<div class="shc ${isF?'dm':''} ${isH?'hl':''}" onclick="rown('${sh.id}')"><div class="shav">${sh.initials}</div><div class="shn">${sh.name}</div><div class="shp">${sh.pct}%</div><div class="shl">${sh.role}</div></div>`;}).join('');
-  let bk='';
-  if(_sf&&_sf!=='all'){
-    const sh=D.shareholders.find(s=>s.id===_sf);
-    if(sh){const top=[...D.companies].filter(c=>c.fvMarket).sort((a,b)=>b.fvMarket-a.fvMarket).slice(0,8);const eff=top.map(c=>({...c,ep:c.ownership?((sh.pct/100)*(c.ownership/100)*100).toFixed(3):null,ev:c.fvMarket?(sh.pct/100)*c.fvMarket:null}));const tev=eff.reduce((a,c)=>a+(c.ev||0),0);
-      bk=`<div class="bp"><div class="bph"><div class="bpav">${sh.initials}</div><div><div class="bpn">${sh.name}</div><div class="bps">${sh.pct}% of Thabat Holding · ${sh.role}</div></div><button class="cfb" onclick="rown('all')">✕ Clear</button></div>
-      <div class="bpm"><div class="bmi"><div class="bml">Ownership in Thabat</div><div class="bmv">${sh.pct}%</div></div><div class="bmi"><div class="bml">Effective Portfolio FV</div><div class="bmv">${sar(tev)}</div></div><div class="bmi"><div class="bml">Investments tracked</div><div class="bmv">${D.companies.length}</div></div></div>
-      <div style="border:1px solid var(--border);border-radius:var(--rs);overflow:hidden"><table class="dt"><thead><tr><th>Investment</th><th>Sector</th><th>Thabat %</th><th>${sh.name.split(' ')[0]}'s Eff. %</th><th>Fair Value</th><th>Eff. Value</th></tr></thead>
-      <tbody>${eff.map(c=>`<tr><td><div class="cn">${c.name}</div></td><td>${c.sector}</td><td>${c.ownership!=null?c.ownership+'%':'—'}</td><td><strong>${c.ep!=null?c.ep+'%':'—'}</strong></td><td>${sar(c.fvMarket)}</td><td class="pos">${sar(c.ev)}</td></tr>`).join('')}</tbody></table></div></div>`;}
+// Direct investments per shareholder (not via Thabat Holding)
+let directInvestments = [
+  {
+    id: 'olaya-direct',
+    name: 'Olaya Project',
+    type: 'realestate',
+    owners: [
+      { shId: 'sh-abdullah', pct: '50%' },
+      { shId: 'sh-ibrahim',  pct: '25%' },
+      { shId: 'sh-ali',      pct: '25%' },
+    ]
   }
-  con.innerHTML=`<div class="sl">SHAREHOLDER STRUCTURE — ALMUNIF FAMILY</div><div class="shg">${shCards}</div>
-  <div class="fh" ${_sf&&_sf!=='all'?'style="display:none"':''}>💡 Click any shareholder to see their investment breakdown</div>${bk}
-  <div class="otc"><div class="ott">Thabat Holding — Investment Structure</div>
-  <svg class="tsvg" viewBox="0 0 1000 270" xmlns="http://www.w3.org/2000/svg" style="font-family:'Geist',sans-serif">
-    <rect x="380" y="10" width="240" height="50" rx="8" fill="#1A1A18"/>
-    <text x="500" y="31" text-anchor="middle" fill="#F7F6F2" font-size="13" font-weight="600">⬡ Thabat Holding</text>
-    <text x="500" y="49" text-anchor="middle" fill="rgba(247,246,242,.5)" font-size="10">Since 1998 · Almunif Family</text>
-    <line x1="500" y1="60" x2="500" y2="88" stroke="#D4D1C8" stroke-width="1.5"/>
-    <line x1="90" y1="88" x2="910" y2="88" stroke="#D4D1C8" stroke-width="1.5"/>
-    ${[{x:90,l:'Anoosh',s:'70%',c:'#1A7A4A'},{x:230,l:'9 Round',s:'47.95%',c:'#1A7A4A'},{x:370,l:'Seedra Fund I',s:'21.08%',c:'#1A5FA8'},{x:510,l:'Seedra Fund II',s:'3.84%',c:'#1A5FA8'},{x:650,l:'Real Estate',s:'6 assets',c:'#B8860B'},{x:790,l:'Companies',s:'14 more',c:'#6B4FA8'}].map(n=>`<line x1="${n.x+65}" y1="88" x2="${n.x+65}" y2="108" stroke="#D4D1C8" stroke-width="1.5"/><rect x="${n.x}" y="108" width="130" height="44" rx="7" fill="white" stroke="#E5E3DC" stroke-width="1.5"/><text x="${n.x+65}" y="127" text-anchor="middle" fill="#1A1A18" font-size="10.5" font-weight="500">${n.l}</text><text x="${n.x+65}" y="142" text-anchor="middle" fill="${n.c}" font-size="9">${n.s}</text>`).join('')}
-  </svg></div>`;
+];
+
+// Anoosh shareholders (combined with Thabat)
+let investmentShareholderMap = {
+  'anoosh': [
+    { name: 'Thabat Holding', type: 'holding', pct: '70%' },
+    { shId: 'sh-abdullah', pct: '5.25%' },
+    { shId: 'sh-munif',    pct: '4.95%' },
+    { shId: 'sh-maree',    pct: '4.95%' },
+    { shId: 'sh-ibrahim',  pct: '4.95%' },
+    { shId: 'sh-ali',      pct: '4.95%' },
+    { shId: 'sh-maha',     pct: '4.95%' },
+  ]
+};
+
+// ─────────────────────────────────────────────
+// AUTH
+// ─────────────────────────────────────────────
+let currentUser = null;
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
 }
 
-function rtl(){
-  const con=document.getElementById('tlcont');if(!con)return;
-  const yrs=[...new Set(D.timeline.map(t=>t.year))].sort();const mn=yrs[0],mx=yrs[yrs.length-1];
-  con.innerHTML=`<div class="twrap"><div class="tline"></div>${yrs.map(yr=>{const cos=D.timeline.filter(t=>t.year===yr);const p=((yr-mn)/(mx-mn))*100;return`<div class="tp" style="left:${p}%"><div class="tdot"></div><div class="tyr">${yr}</div><div class="tcos">${cos.map(c=>`<div class="tco">${c.co}</div>`).join('')}</div></div>`;}).join('')}</div>
-  <div class="tstats"><div class="tsi"><span class="tsn">1998</span><span class="tsl">Founded</span></div><div class="tsi"><span class="tsn">+700</span><span class="tsl">Employees</span></div><div class="tsi"><span class="tsn">+130</span><span class="tsl">Retail Stores</span></div><div class="tsi"><span class="tsn">+20K</span><span class="tsl">Clients</span></div><div class="tsi"><span class="tsn">+40</span><span class="tsl">Investments</span></div><div class="tsi"><span class="tsn">8</span><span class="tsl">Countries</span></div></div>`;
+async function doLogin() {
+  const u = document.getElementById('login-user').value.trim().toLowerCase();
+  const p = document.getElementById('login-pass').value;
+  const err = document.getElementById('login-error');
+  err.style.display = 'none';
+  if (!PORTAL_CONFIG) { err.textContent = 'Config not loaded.'; err.style.display = 'block'; return; }
+  const uh = await sha256(u);
+  const user = PORTAL_CONFIG.users.find(x => x.uk === uh);
+  if (!user) { err.style.display = 'block'; return; }
+  const ph = await sha256(p + user.s);
+  if (ph !== user.h) { err.style.display = 'block'; return; }
+  currentUser = user;
+  document.getElementById('topbar-avatar').textContent = user.i;
+  document.getElementById('topbar-name').textContent = user.n;
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+  renderInvestmentTree();
+  renderShareholderGrid();
+  renderShInvestmentList();
 }
 
-function rdocs(){
-  const con=document.getElementById('docscont');if(!con)return;const docs=D.documents||[];
-  if(!docs.length){con.innerHTML='<div class="emp"><div class="empi">📂</div><div class="empt">No documents yet</div><div class="emps">Open any investment or shareholder to upload documents.</div></div>';return;}
-  const grp={};docs.forEach(d=>{if(!grp[d.entityType])grp[d.entityType]=[];grp[d.entityType].push(d);});
-  con.innerHTML=Object.entries(grp).map(([t,items])=>`<div class="sl">${t.toUpperCase()}</div><div class="dg">${items.map(d=>`<div class="di"><div class="dii">📄</div><div><div class="din">${d.name}</div><div class="dime">${d.type} · ${d.date}</div></div></div>`).join('')}</div>`).join('');
+document.getElementById('login-pass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+document.getElementById('login-user').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+
+function doLogout() {
+  currentUser = null;
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
 }
 
-function odet(type,id){
-  let html='';
-  if(type==='company'){
-    const c=D.companies.find(x=>x.id===id);if(!c)return;const docs=(D.documents||[]).filter(d=>d.entityId===id);const col=sc(c.sector);
-    html=`<div class="meh"><div class="mei" style="background:${col}20;color:${col}">${c.name.substring(0,2).toUpperCase()}</div><div><div class="men">${c.name}</div><div class="mes">${c.sector} · ${c.geo} · Since ${c.year}</div></div><span class="sp ${c.status}">${c.status}</span></div>
-    <div class="mmet"><div class="mmi"><div class="mml">Ownership</div><div class="mmv">${c.ownership!=null?c.ownership+'%':'—'}</div></div><div class="mmi"><div class="mml">Cum. Investment</div><div class="mmv">${sar(c.cumInv)}</div></div><div class="mmi"><div class="mml">Fair Value (Mkt)</div><div class="mmv">${sar(c.fvMarket)}</div></div><div class="mmi"><div class="mml">MOIC</div><div class="mmv">${c.moic||'—'}</div></div><div class="mmi"><div class="mml">Unrealized G/L</div><div class="mmv ${(c.unrealized||0)>=0?'pos':'neg'}">${c.unrealized!=null?(c.unrealized>=0?'+':'')+sar(c.unrealized):'—'}</div></div><div class="mmi"><div class="mml">Dividends</div><div class="mmv">${sar(c.dividends)}</div></div></div>
-    <div class="mst">Documents <button class="udb" onclick="oupl('${id}','company')">+ Upload</button></div>
-    ${docs.length?docs.map(d=>`<div class="di"><div class="dii">📄</div><div><div class="din">${d.name}</div><div class="dime">${d.type} · ${d.date}</div></div></div>`).join(''):'<div class="ndoc">No documents yet. Click + Upload to add files.</div>'}`;
-  } else if(type==='realestate'){
-    const r=D.realEstate.find(x=>x.id===id);if(!r)return;const docs=(D.documents||[]).filter(d=>d.entityId===id);
-    html=`<div class="meh"><div class="mei" style="background:#B8860B20;color:#B8860B">RE</div><div><div class="men">${r.name}</div><div class="mes">${r.details} · ${r.date}</div></div><span class="sp ${r.status}">${r.status}</span></div>
-    <div class="mmet"><div class="mmi"><div class="mml">Acc. Xero</div><div class="mmv" style="font-size:13px">${r.accXero}</div></div><div class="mmi"><div class="mml">Cost Amount</div><div class="mmv">${sar(r.costAmt)}</div></div><div class="mmi"><div class="mml">Valuation</div><div class="mmv">${sar(r.valuation)}</div></div><div class="mmi"><div class="mml">Share</div><div class="mmv">${r.share}%</div></div><div class="mmi"><div class="mml">Space</div><div class="mmv" style="font-size:12px">${r.space}</div></div>${r.rent?`<div class="mmi"><div class="mml">Annual Rent</div><div class="mmv">${sar(r.rent)}</div></div>`:''}</div>
-    <div class="mst">Documents <button class="udb" onclick="oupl('${id}','realestate')">+ Upload</button></div>
-    ${docs.length?docs.map(d=>`<div class="di"><div class="dii">📄</div><div><div class="din">${d.name}</div><div class="dime">${d.type} · ${d.date}</div></div></div>`).join(''):'<div class="ndoc">No documents yet.</div>'}`;
-  } else if(type==='shareholder'){
-    const sh=D.shareholders.find(x=>x.id===id);if(!sh)return;const docs=(D.documents||[]).filter(d=>d.entityId===id);
-    html=`<div class="meh"><div class="mei" style="background:#1A1A1820;color:#1A1A18;font-weight:700;font-size:15px">${sh.initials}</div><div><div class="men">${sh.name}</div><div class="mes">${sh.role}</div></div></div>
-    <div class="mmet"><div class="mmi"><div class="mml">Ownership</div><div class="mmv">${sh.pct}%</div></div><div class="mmi"><div class="mml">Role</div><div class="mmv" style="font-size:12px">${sh.role}</div></div></div>
-    <div class="mst">Documents (ID, Passport, etc.) <button class="udb" onclick="oupl('${id}','shareholder')">+ Upload</button></div>
-    ${docs.length?docs.map(d=>`<div class="di"><div class="dii">📄</div><div><div class="din">${d.name}</div><div class="dime">${d.type} · ${d.date}</div></div></div>`).join(''):'<div class="ndoc">No documents yet. Click + Upload to add ID, Passport, etc.</div>'}`;
+// ─────────────────────────────────────────────
+// TABS
+// ─────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.nav-tab').forEach((t,i) => {
+    const tabs = ['overview','ownership','documents','reports'];
+    t.classList.toggle('active', tabs[i] === name);
+  });
+  ['overview','ownership','documents','reports'].forEach(t => {
+    document.getElementById('tab-'+t).style.display = t===name ? 'block' : 'none';
+  });
+}
+
+function switchInner(name) {
+  document.querySelectorAll('.inner-tab').forEach((t,i) => {
+    const tabs = ['investment','shareholders'];
+    t.classList.toggle('active', tabs[i] === name);
+  });
+  document.getElementById('inner-investment').classList.toggle('active', name==='investment');
+  document.getElementById('inner-shareholders').classList.toggle('active', name==='shareholders');
+  document.getElementById('inner-investment').style.display = name==='investment' ? 'block' : 'none';
+  document.getElementById('inner-shareholders').style.display = name==='shareholders' ? 'block' : 'none';
+}
+
+// ─────────────────────────────────────────────
+// INVESTMENT TREE RENDER
+// ─────────────────────────────────────────────
+function renderInvestmentTree() {
+  const container = document.getElementById('investment-tree');
+  container.innerHTML = '';
+  container.appendChild(renderNode(investmentTree, 0));
+}
+
+function renderNode(node, depth) {
+  const div = document.createElement('div');
+  div.className = 'tree-node';
+  div.dataset.id = node.id;
+
+  const hasChildren = node.children && node.children.length > 0;
+
+  div.innerHTML = `
+    <div class="tree-node-header">
+      <div class="tree-toggle ${hasChildren ? 'has-children' : 'no-children'}" onclick="toggleNode('${node.id}')" title="${node.expanded ? 'Collapse' : 'Expand'}">
+        ${hasChildren ? (node.expanded ? '−' : '+') : ''}
+      </div>
+      <div class="tree-icon ${node.icon}">${node.initials}</div>
+      <div class="tree-label">
+        <div class="tree-label-name">${node.name}</div>
+        ${node.desc ? `<div class="tree-label-sub">${node.desc}</div>` : ''}
+      </div>
+      ${node.ownership ? `<div class="ownership-badge">${node.ownership}</div>` : ''}
+      <div class="tree-actions">
+        <button class="tree-action-btn" onclick="openEditModal('${node.id}')">✏️ Edit</button>
+        <button class="tree-action-btn docs" onclick="openDocsModal('${node.id}')">📎 Docs${node.docs && node.docs.length ? ' ('+node.docs.length+')' : ''}</button>
+      </div>
+    </div>
+    ${hasChildren ? `<div class="tree-children ${node.expanded ? '' : 'collapsed'}" id="children-${node.id}"></div>` : ''}
+  `;
+
+  if (hasChildren) {
+    const childContainer = div.querySelector(`#children-${node.id}`);
+    node.children.forEach(child => {
+      childContainer.appendChild(renderNode(child, depth + 1));
+    });
   }
-  document.getElementById('m-det-body').innerHTML=html;openMo('m-det');
+
+  return div;
 }
 
-function oupl(eid,ety){
-  closeMo('m-det');const f=document.getElementById('m-upl-form');
-  f.innerHTML=`<input type="hidden" id="ueid" value="${eid}"/><input type="hidden" id="uety" value="${ety}"/>
-  <div class="ff"><label>Document Type</label><select id="utype"><option>National ID</option><option>Passport</option><option>Commercial Registration (CR)</option><option>Articles of Association (AOA)</option><option>Share Certificate</option><option>Investment Agreement</option><option>Financial Statement</option><option>Property Deed</option><option>Other</option></select></div>
-  <div class="ff"><label>Name / Description</label><input type="text" id="unm" placeholder="e.g. Abdullah Passport 2024"/></div>
-  <div class="udz"><div class="udzi">📁</div><div class="udzt">Click to select file</div><div class="udzs">PDF, JPG, PNG, DOCX</div><input type="file" id="ufile" style="position:absolute;inset:0;opacity:0;cursor:pointer" accept=".pdf,.jpg,.jpeg,.png,.docx"/></div>
-  <div id="usel" style="display:none;padding:7px 10px;background:var(--green-bg);border:1px solid var(--green-border);border-radius:var(--rs);font-size:11px;color:var(--green);margin-top:6px"></div>`;
-  document.getElementById('ufile').addEventListener('change',function(){if(this.files[0]){const s=document.getElementById('usel');s.style.display='block';s.textContent='✓ '+this.files[0].name+' ('+Math.round(this.files[0].size/1024)+'KB)';}});
-  openMo('m-upl');
-}
-function submitUpl(){
-  const eid=document.getElementById('ueid').value,ety=document.getElementById('uety').value,typ=document.getElementById('utype').value,nm=document.getElementById('unm').value||typ,fi=document.getElementById('ufile');
-  if(!fi.files[0]){alert('Please select a file.');return;}
-  if(!D.documents)D.documents=[];
-  D.documents.push({id:'d'+Date.now(),entityId:eid,entityType:ety,name:nm,type:typ,filename:fi.files[0].name,size:fi.files[0].size,date:new Date().toLocaleDateString('en-SA',{year:'numeric',month:'short',day:'numeric'}),by:_s?.n||'Admin'});
-  closeMo('m-upl');rdocs();alert('✓ Document "'+nm+'" uploaded.');
+function toggleNode(id) {
+  const node = findNode(id, investmentTree);
+  if (!node) return;
+  node.expanded = !node.expanded;
+  renderInvestmentTree();
 }
 
-function submitInv(){
-  const nm=document.getElementById('ainm').value.trim();if(!nm){alert('Name required.');return;}
-  D.companies.push({id:'c'+Date.now(),name:nm,sector:document.getElementById('aisec').value,geo:document.getElementById('aigeo').value||'KSA',year:parseInt(document.getElementById('aiyr').value)||new Date().getFullYear(),ownership:parseFloat(document.getElementById('aiown').value)||null,cumInv:parseFloat((document.getElementById('aicum').value||'').replace(/,/g,''))||null,fvMarket:parseFloat((document.getElementById('aifv').value||'').replace(/,/g,''))||null,moic:null,unrealized:null,dividends:0,status:'active'});
-  closeMo('m-ainv');rport();rdash();alert('✓ '+nm+' added.');
-}
-function submitRE(){
-  const nm=document.getElementById('renm').value.trim();if(!nm){alert('Name required.');return;}
-  D.realEstate.push({id:'re'+Date.now(),accXero:'NEW',name:nm,details:document.getElementById('redet').value||'KSA',date:new Date().toLocaleDateString('en-SA',{month:'short',year:'2-digit'}),costAmt:parseFloat((document.getElementById('recost').value||'').replace(/,/g,''))||0,valuation:parseFloat((document.getElementById('reval').value||'').replace(/,/g,''))||0,rent:null,share:parseFloat(document.getElementById('resh').value)||0,space:document.getElementById('resp').value||'—',status:'active'});
-  closeMo('m-are');rre();alert('✓ Property added.');
-}
-
-let _st2;
-function onsi(e){clearTimeout(_st2);const q=e.target.value.trim();if(q.length<2){hdrop();return;}_st2=setTimeout(()=>sdrop2(q),180);}
-function oski(e){if(e.key==='Enter'){dosearch(e.target.value);hdrop();}}
-function sdrop2(q){
-  const dd=document.getElementById('sdrop');if(!dd)return;const ql=q.toLowerCase();const res=[];
-  D.companies.forEach(c=>{if(c.name.toLowerCase().includes(ql)||c.sector.toLowerCase().includes(ql))res.push({ico:'🏢',lbl:c.name,sub:c.sector,id:c.id,ty:'company'});});
-  D.realEstate.forEach(r=>{if(r.name.toLowerCase().includes(ql)||r.details.toLowerCase().includes(ql))res.push({ico:'🏠',lbl:r.name,sub:r.details,id:r.id,ty:'realestate'});});
-  D.shareholders.forEach(s=>{if(s.name.toLowerCase().includes(ql))res.push({ico:'👤',lbl:s.name,sub:s.role,id:s.id,ty:'shareholder'});});
-  if(!res.length){dd.innerHTML='<div class="sde">No results</div>';dd.style.display='block';return;}
-  dd.innerHTML=res.slice(0,7).map(r=>`<div class="sdi" onclick="odet('${r.ty}','${r.id}');hdrop()"><span class="sdic">${r.ico}</span><span class="sdil">${r.lbl}</span><span class="sdis">${r.sub}</span></div>`).join('')+(res.length>7?`<div class="sdm" onclick="dosearch('${q}');hdrop()">View all ${res.length} results →</div>`:'');
-  dd.style.display='block';
-}
-function hdrop(){const dd=document.getElementById('sdrop');if(dd)dd.style.display='none';}
-document.addEventListener('click',e=>{if(!e.target.closest('.sw'))hdrop();});
-function dosearch(q){
-  if(!q||q.trim().length<2)return;const ql=q.toLowerCase();const res=[];
-  D.companies.forEach(c=>{if(c.name.toLowerCase().includes(ql)||c.sector.toLowerCase().includes(ql)||c.geo.toLowerCase().includes(ql))res.push({ty:'Company',ico:'🏢',nm:c.name,sub:c.sector+' · '+c.geo,id:c.id,et:'company'});});
-  D.realEstate.forEach(r=>{if(r.name.toLowerCase().includes(ql)||r.details.toLowerCase().includes(ql))res.push({ty:'Real Estate',ico:'🏠',nm:r.name,sub:r.details,id:r.id,et:'realestate'});});
-  D.shareholders.forEach(s=>{if(s.name.toLowerCase().includes(ql))res.push({ty:'Shareholder',ico:'👤',nm:s.name,sub:s.role,id:s.id,et:'shareholder'});});
-  pg('search',null);const con=document.getElementById('srcont');if(!con)return;
-  if(!res.length){con.innerHTML='<div class="emp"><div class="empi">🔍</div><div class="empt">No results for "'+q+'"</div><div class="emps">Try a company name, sector, or shareholder</div></div>';return;}
-  const grp={};res.forEach(r=>{if(!grp[r.ty])grp[r.ty]=[];grp[r.ty].push(r);});
-  con.innerHTML='<div class="srm">'+res.length+' result'+(res.length!==1?'s':'')+' for "<strong>'+q+'</strong>"</div>'+Object.entries(grp).map(([t,items])=>`<div class="srg"><div class="srgl">${t}</div>${items.map(i=>`<div class="sri" onclick="odet('${i.et}','${i.id||''}')"><div class="srio">${i.ico}</div><div><div class="srin">${i.nm}</div><div class="sris">${i.sub}</div></div><div class="sria">→</div></div>`).join('')}</div>`).join('');
+function findNode(id, node) {
+  if (node.id === id) return node;
+  if (node.children) {
+    for (let c of node.children) {
+      const found = findNode(id, c);
+      if (found) return found;
+    }
+  }
+  return null;
 }
 
-function radmin(){
-  const con=document.getElementById('adcont');if(!con)return;
-  con.innerHTML='<div class="aurl">'+__E.map(e=>`<div class="aurr"><div class="auav">${e.i}</div><div><div class="aun">${e.n}</div><div class="auro">${e.r}${e.admin?' · <span style="color:var(--gold)">Admin</span>':''}</div></div><div class="aup">${e.p}%</div></div>`).join('')+'</div>'+
-  '<div class="ns gld" style="margin-top:10px">🔒 To add or change users/passwords: contact us and we will generate an updated portal for you.</div>';
+function getAllNodes(node, arr = []) {
+  arr.push(node);
+  if (node.children) node.children.forEach(c => getAllNodes(c, arr));
+  return arr;
 }
 
-function openMo(id){document.querySelectorAll('.mo').forEach(m=>m.classList.remove('open'));const m=document.getElementById(id);if(m)m.classList.add('open');}
-function closeMo(id){const m=document.getElementById(id);if(m)m.classList.remove('open');}
+// ─────────────────────────────────────────────
+// EDIT MODAL
+// ─────────────────────────────────────────────
+let editingNodeId = null;
+
+function openEditModal(id) {
+  editingNodeId = id;
+  const node = findNode(id, investmentTree);
+  document.getElementById('edit-modal-title').textContent = 'Edit — ' + node.name;
+  document.getElementById('edit-name').value = node.name;
+  document.getElementById('edit-desc').value = node.desc || '';
+  document.getElementById('edit-pct').value = node.ownership || '';
+  document.getElementById('edit-pct-field').style.display = node.ownership !== undefined ? 'block' : 'none';
+  document.getElementById('edit-modal').classList.add('open');
+}
+
+function closeEditModal() {
+  document.getElementById('edit-modal').classList.remove('open');
+  editingNodeId = null;
+}
+
+function saveEditModal() {
+  if (!editingNodeId) return;
+  const node = findNode(editingNodeId, investmentTree);
+  node.name = document.getElementById('edit-name').value.trim() || node.name;
+  node.desc = document.getElementById('edit-desc').value.trim();
+  if (node.ownership !== undefined) node.ownership = document.getElementById('edit-pct').value.trim();
+  closeEditModal();
+  renderInvestmentTree();
+}
+
+// ─────────────────────────────────────────────
+// DOCS MODAL
+// ─────────────────────────────────────────────
+let docsNodeId = null;
+
+function openDocsModal(id) {
+  docsNodeId = id;
+  const node = findNode(id, investmentTree);
+  document.getElementById('docs-modal-title').textContent = 'Documents — ' + node.name;
+  renderDocsList(node);
+  document.getElementById('docs-modal').classList.add('open');
+}
+
+function renderDocsList(node) {
+  const list = document.getElementById('docs-list');
+  if (!node.docs || node.docs.length === 0) {
+    list.innerHTML = '<div style="font-size:13px;color:var(--ink-dim);text-align:center;padding:12px 0;">No documents attached yet.</div>';
+    return;
+  }
+  list.innerHTML = node.docs.map((d, i) => `
+    <div class="doc-item">
+      <span class="doc-item-type type-${d.type}">${d.type.toUpperCase()}</span>
+      <span class="doc-item-name">${d.name}</span>
+      <button class="doc-remove" onclick="removeDoc(${i})" title="Remove">×</button>
+    </div>
+  `).join('');
+}
+
+function removeDoc(idx) {
+  const node = findNode(docsNodeId, investmentTree);
+  node.docs.splice(idx, 1);
+  renderDocsList(node);
+}
+
+function addDocument() {
+  const name = document.getElementById('new-doc-name').value.trim();
+  if (!name) return;
+  const type = document.getElementById('new-doc-type').value;
+  const node = findNode(docsNodeId, investmentTree);
+  node.docs.push({ name, type });
+  document.getElementById('new-doc-name').value = '';
+  renderDocsList(node);
+  renderInvestmentTree();
+}
+
+function closeDocsModal() {
+  document.getElementById('docs-modal').classList.remove('open');
+  docsNodeId = null;
+}
+
+// ─────────────────────────────────────────────
+// SHAREHOLDER GRID
+// ─────────────────────────────────────────────
+function renderShareholderGrid() {
+  const grid = document.getElementById('sh-grid');
+  grid.innerHTML = shareholders.map(sh => `
+    <div class="sh-card">
+      <button class="sh-edit-btn" onclick="openShEditModal('${sh.id}')">✏️ Edit</button>
+      <div class="sh-avatar">${sh.initials}</div>
+      <div class="sh-name">${sh.name}</div>
+      <div class="sh-role">${sh.role}</div>
+    </div>
+  `).join('');
+}
+
+// ─────────────────────────────────────────────
+// SHAREHOLDER INVESTMENT LIST
+// ─────────────────────────────────────────────
+function renderShInvestmentList() {
+  const container = document.getElementById('sh-investment-list');
+
+  // Via Thabat Holding
+  let html = `<div style="font-size:12px;font-weight:600;color:var(--ink-dim);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Via Thabat Holding</div>`;
+  const allNodes = getAllNodes(investmentTree).filter(n => n.ownership !== undefined && n.id !== 'thabat');
+  
+  allNodes.forEach(node => {
+    const shInfo = investmentShareholderMap[node.id];
+    html += `
+      <div class="hier-node" style="margin-bottom:8px;">
+        <div class="tree-icon ${node.icon}" style="width:30px;height:30px;font-size:12px;">${node.initials}</div>
+        <div class="hier-node-label">${node.name}</div>
+        <div class="hier-node-role" style="font-size:12px;color:var(--ink-soft);">${node.desc||''}</div>
+        ${node.ownership ? `<div class="hier-pct">${node.ownership}</div>` : ''}
+      </div>
+    `;
+    if (shInfo) {
+      html += `<div class="hier-indent">`;
+      shInfo.forEach(s => {
+        const shName = s.type === 'holding' ? 'Thabat Holding' : (shareholders.find(x=>x.id===s.shId)||{}).name||s.shId;
+        html += `<div class="hier-node" style="margin-bottom:4px;">
+          <div class="sh-avatar" style="width:24px;height:24px;font-size:10px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">${s.type==='holding'?'ث':(shareholders.find(x=>x.id===s.shId)||{}).initials||'?'}</div>
+          <div class="hier-node-label" style="font-size:13px;">${shName}</div>
+          <div class="hier-pct">${s.pct}</div>
+        </div>`;
+      });
+      html += `</div>`;
+    }
+  });
+
+  // Direct investments
+  if (directInvestments.length) {
+    html += `<div style="font-size:12px;font-weight:600;color:var(--ink-dim);text-transform:uppercase;letter-spacing:0.06em;margin:18px 0 10px;">Direct Investments (not via Thabat Holding)</div>`;
+    directInvestments.forEach(inv => {
+      html += `<div class="hier-node" style="margin-bottom:6px;">
+        <div class="tree-icon icon-realestate" style="width:30px;height:30px;font-size:12px;">🏗</div>
+        <div class="hier-node-label">${inv.name}</div>
+        <div class="hier-node-role" style="font-size:12px;color:var(--ink-soft);">Direct ownership</div>
+      </div>
+      <div class="hier-indent">`;
+      inv.owners.forEach(o => {
+        const sh = shareholders.find(x=>x.id===o.shId);
+        if (!sh) return;
+        html += `<div class="hier-node" style="margin-bottom:4px;">
+          <div class="sh-avatar" style="width:24px;height:24px;font-size:10px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">${sh.initials}</div>
+          <div class="hier-node-label" style="font-size:13px;">${sh.name}</div>
+          <div class="hier-pct">${o.pct}</div>
+        </div>`;
+      });
+      html += `</div>`;
+    });
+  }
+
+  container.innerHTML = html;
+}
+
+// ─────────────────────────────────────────────
+// SHAREHOLDER EDIT MODAL
+// ─────────────────────────────────────────────
+let editingShId = null;
+
+function openShEditModal(id) {
+  editingShId = id;
+  const sh = shareholders.find(x => x.id === id);
+  document.getElementById('sh-edit-name').value = sh.name;
+  document.getElementById('sh-edit-role').value = sh.role;
+  document.getElementById('sh-edit-initials').value = sh.initials;
+  document.getElementById('sh-edit-modal').classList.add('open');
+}
+
+function closeShEditModal() {
+  document.getElementById('sh-edit-modal').classList.remove('open');
+  editingShId = null;
+}
+
+function saveShEdit() {
+  const sh = shareholders.find(x => x.id === editingShId);
+  sh.name = document.getElementById('sh-edit-name').value.trim() || sh.name;
+  sh.role = document.getElementById('sh-edit-role').value.trim() || sh.role;
+  sh.initials = document.getElementById('sh-edit-initials').value.trim().toUpperCase() || sh.initials;
+  closeShEditModal();
+  renderShareholderGrid();
+  renderShInvestmentList();
+}
+
+// ─────────────────────────────────────────────
+// SEARCH + AUTOCOMPLETE
+// ─────────────────────────────────────────────
+function getSearchableEntities() {
+  const entities = [];
+  // Thabat Holding
+  entities.push({ id: 'thabat', name: 'Thabat Holding', type: 'holding', icon: 'icon-holding', initials: 'ث' });
+  // All investment nodes
+  getAllNodes(investmentTree).filter(n => n.id !== 'thabat').forEach(n => {
+    entities.push({ id: n.id, name: n.name, type: n.icon.replace('icon-',''), icon: n.icon, initials: n.initials });
+  });
+  // Shareholders
+  shareholders.forEach(sh => {
+    entities.push({ id: sh.id, name: sh.name, type: 'shareholder', icon: 'icon-shareholder', initials: sh.initials });
+  });
+  // Direct investments
+  directInvestments.forEach(inv => {
+    if (!entities.find(e => e.name === inv.name)) {
+      entities.push({ id: inv.id, name: inv.name, type: 'realestate', icon: 'icon-realestate', initials: '🏗' });
+    }
+  });
+  return entities;
+}
+
+function onSearchInput(val) {
+  const sug = document.getElementById('sh-suggestions');
+  if (!val.trim()) { sug.style.display = 'none'; return; }
+  const entities = getSearchableEntities();
+  const matches = entities.filter(e => e.name.toLowerCase().startsWith(val.trim().toLowerCase()) || e.name.toLowerCase().includes(val.trim().toLowerCase()));
+  if (!matches.length) { sug.style.display = 'none'; return; }
+  sug.innerHTML = matches.slice(0, 8).map(m => `
+    <div class="search-suggestion-item" onmousedown="selectEntity('${m.id}')">
+      <div class="sug-icon ${m.icon}">${m.initials}</div>
+      <span>${highlightMatch(m.name, val)}</span>
+      <span class="sug-type">${typeLabel(m.type)}</span>
+    </div>
+  `).join('');
+  sug.style.display = 'block';
+}
+
+function highlightMatch(name, val) {
+  const idx = name.toLowerCase().indexOf(val.toLowerCase());
+  if (idx < 0) return name;
+  return name.slice(0,idx) + `<strong style="color:var(--gold);">${name.slice(idx,idx+val.length)}</strong>` + name.slice(idx+val.length);
+}
+
+function typeLabel(type) {
+  const map = { holding: 'Holding', company: 'Company', fund: 'Fund', realestate: 'Real Estate', category: 'Category', shareholder: 'Shareholder' };
+  return map[type] || type;
+}
+
+function hideSuggestionsDelay() {
+  setTimeout(() => { document.getElementById('sh-suggestions').style.display = 'none'; }, 200);
+}
+
+function selectEntity(id) {
+  const entities = getSearchableEntities();
+  const entity = entities.find(e => e.id === id);
+  if (!entity) return;
+  document.getElementById('sh-search').value = entity.name;
+  document.getElementById('sh-suggestions').style.display = 'none';
+  showHierarchy(id, entity);
+}
+
+// ─────────────────────────────────────────────
+// HIERARCHY VIEW
+// ─────────────────────────────────────────────
+function showHierarchy(id, entity) {
+  const view = document.getElementById('hierarchy-view');
+  const content = document.getElementById('hierarchy-content');
+  document.getElementById('hierarchy-entity-name').textContent = entity.name;
+  const iconEl = document.getElementById('hierarchy-entity-icon');
+  iconEl.className = 'tree-icon ' + entity.icon;
+  iconEl.style.cssText = 'width:32px;height:32px;font-size:13px;';
+  iconEl.textContent = entity.initials;
+
+  let html = '';
+
+  if (id === 'thabat') {
+    // Show all shareholders + their % in Thabat
+    html += `<div class="hier-section"><div class="hier-section-title">Shareholders of Thabat Holding</div>`;
+    shareholders.forEach(sh => {
+      html += `<div class="hier-node">
+        <div class="sh-avatar" style="width:28px;height:28px;font-size:11px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">${sh.initials}</div>
+        <div class="hier-node-label">${sh.name}</div>
+        <div class="hier-node-role">${sh.role}</div>
+        <div class="hier-pct">${sh.thabat_pct}</div>
+      </div>`;
+    });
+    html += `</div>`;
+    // Show all investments
+    html += `<div class="hier-section"><div class="hier-section-title">Investments</div>`;
+    getAllNodes(investmentTree).filter(n => n.ownership !== undefined && n.id !== 'thabat').forEach(n => {
+      html += `<div class="hier-node">
+        <div class="tree-icon ${n.icon}" style="width:28px;height:28px;font-size:11px;">${n.initials}</div>
+        <div class="hier-node-label">${n.name}</div>
+        <div class="hier-node-role">${n.desc||''}</div>
+        <div class="hier-pct">${n.ownership}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  } else if (entity.type === 'shareholder') {
+    const sh = shareholders.find(x => x.id === id);
+    // Show % in Thabat
+    html += `<div class="hier-section"><div class="hier-section-title">Ownership in Thabat Holding</div>`;
+    html += `<div class="hier-node">
+      <div class="tree-icon icon-holding" style="width:28px;height:28px;font-size:11px;">ث</div>
+      <div class="hier-node-label">Thabat Holding</div>
+      <div class="hier-pct">${sh.thabat_pct}</div>
+    </div></div>`;
+    // Check direct investments
+    const directs = directInvestments.filter(inv => inv.owners.some(o => o.shId === id));
+    if (directs.length) {
+      html += `<div class="hier-section"><div class="hier-section-title">Direct Investments</div>`;
+      directs.forEach(inv => {
+        const owner = inv.owners.find(o => o.shId === id);
+        html += `<div class="hier-node">
+          <div class="tree-icon icon-realestate" style="width:28px;height:28px;font-size:11px;">🏗</div>
+          <div class="hier-node-label">${inv.name}</div>
+          <div class="hier-node-role">Direct</div>
+          <div class="hier-pct">${owner.pct}</div>
+        </div>`;
+      });
+      html += `</div>`;
+    }
+    // Check company-level ownership
+    const companyOwnership = Object.entries(investmentShareholderMap).filter(([, owners]) => owners.some(o => o.shId === id));
+    if (companyOwnership.length) {
+      html += `<div class="hier-section"><div class="hier-section-title">Direct Company Ownership</div>`;
+      companyOwnership.forEach(([nodeId, owners]) => {
+        const node = findNode(nodeId, investmentTree);
+        const o = owners.find(x => x.shId === id);
+        if (!node || !o) return;
+        html += `<div class="hier-node">
+          <div class="tree-icon ${node.icon}" style="width:28px;height:28px;font-size:11px;">${node.initials}</div>
+          <div class="hier-node-label">${node.name}</div>
+          <div class="hier-node-role">${node.desc||''}</div>
+          <div class="hier-pct">${o.pct}</div>
+        </div>`;
+      });
+      html += `</div>`;
+    }
+  } else {
+    // Investment node
+    const node = findNode(id, investmentTree);
+    const dirInv = directInvestments.find(x => x.name === entity.name || x.id === id);
+    const shMap = investmentShareholderMap[id];
+
+    if (shMap) {
+      html += `<div class="hier-section"><div class="hier-section-title">Ownership Structure</div>`;
+      shMap.forEach(s => {
+        const shName = s.type === 'holding' ? 'Thabat Holding' : (shareholders.find(x=>x.id===s.shId)||{}).name||s.shId;
+        const initials = s.type === 'holding' ? 'ث' : (shareholders.find(x=>x.id===s.shId)||{}).initials||'?';
+        html += `<div class="hier-node">
+          <div class="sh-avatar" style="width:28px;height:28px;font-size:11px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">${initials}</div>
+          <div class="hier-node-label">${shName}</div>
+          <div class="hier-pct">${s.pct}</div>
+        </div>`;
+      });
+      html += `</div>`;
+    } else if (dirInv) {
+      html += `<div class="hier-section"><div class="hier-section-title">Direct Owners</div>`;
+      dirInv.owners.forEach(o => {
+        const sh = shareholders.find(x=>x.id===o.shId);
+        if (!sh) return;
+        html += `<div class="hier-node">
+          <div class="sh-avatar" style="width:28px;height:28px;font-size:11px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">${sh.initials}</div>
+          <div class="hier-node-label">${sh.name}</div>
+          <div class="hier-pct">${o.pct}</div>
+        </div>`;
+      });
+      html += `</div>`;
+    } else if (node) {
+      html += `<div class="hier-section"><div class="hier-section-title">Held By</div>`;
+      html += `<div class="hier-node">
+        <div class="tree-icon icon-holding" style="width:28px;height:28px;font-size:11px;">ث</div>
+        <div class="hier-node-label">Thabat Holding</div>
+        <div class="hier-pct">${node.ownership||'—'}</div>
+      </div></div>`;
+    }
+  }
+
+  content.innerHTML = html || '<div style="font-size:13px;color:var(--ink-dim);padding:8px 0;">No ownership data available.</div>';
+  view.classList.add('visible');
+}
+
+function closeHierarchy() {
+  document.getElementById('hierarchy-view').classList.remove('visible');
+  document.getElementById('sh-search').value = '';
+}
+
+// Close modals on overlay click
+document.getElementById('edit-modal').addEventListener('click', function(e) { if(e.target===this) closeEditModal(); });
+document.getElementById('docs-modal').addEventListener('click', function(e) { if(e.target===this) closeDocsModal(); });
+document.getElementById('sh-edit-modal').addEventListener('click', function(e) { if(e.target===this) closeShEditModal(); });
+
+// Inner tabs init
+document.getElementById('inner-shareholders').style.display = 'none';
 </script>
 </body>
 </html>
