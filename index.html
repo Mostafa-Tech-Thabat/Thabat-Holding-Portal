@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0045)file:///C:/Users/mhusi/Downloads/index_2.html -->
+<!-- saved from url=(0045)file:///C:/Users/mhusi/Downloads/index_3.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Thabat Holding — Investor Portal</title>
@@ -23,9 +23,9 @@
 .ff input{width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:12px 14px;font-family:'Geist',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}
 .ff input:focus{border-color:var(--gold);background:var(--surface);box-shadow:0 0 0 3px rgba(184,134,11,.08)}
 .lbtn{width:100%;background:var(--ink);color:#F7F6F2;border:none;border-radius:var(--rs);padding:13px;font-family:'Geist',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-top:8px;transition:background .15s}
-.lbtn:hover{background:#2D2D28}.lbtn:disabled{opacity:.6;cursor:not-allowed}
+.lbtn:hover{background:#2D2D28}.lbtn:disabled{opacity:.8;cursor:not-allowed;background:#2D2D28}
 .lerr{background:var(--red-bg);border:1px solid rgba(192,57,43,.2);color:var(--red);border-radius:var(--rs);padding:10px 14px;font-size:13px;margin-top:12px;display:none}
-.lld{background:var(--gold-bg);border:1px solid var(--gold-border);color:var(--gold);border-radius:var(--rs);padding:10px 14px;font-size:13px;margin-top:12px;display:none}
+.lld{background:var(--gold-bg);border:1px solid var(--gold-border);color:var(--gold);border-radius:var(--rs);padding:12px 14px;font-size:13px;margin-top:12px;display:none;text-align:center;font-weight:500}
 #app{display:none;min-height:100vh}
 .sb{position:fixed;left:0;top:0;bottom:0;width:218px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;overflow-y:auto}
 .sbh{padding:16px 13px 12px;border-bottom:1px solid var(--border)}
@@ -202,7 +202,7 @@
       <div class="ff"><label>Username</label><input type="text" id="fu" autocomplete="off" spellcheck="false" placeholder="Enter your username"></div>
       <div class="ff"><label>Password</label><input type="password" id="fp" autocomplete="off" placeholder="Enter your password"></div>
       <button class="lbtn" id="lbtn" onclick="doLogin()">Access Portal →</button>
-      <div class="lld" id="lld">⏳ Verifying…</div>
+      <div class="lld" id="lld">🔐 Verifying credentials… this may take a moment</div>
       <div class="lerr" id="lerr"></div>
     </div>
   </div>
@@ -399,7 +399,7 @@
 
 <script>
 // AUTH — hashes only, no plain passwords
-const __E=[{"h":"61706cd28510f39ee00a6795f761772f27159ffc18fac29e165489e1feb02c8c4efe1a0176b67b9666c62150a8bb0042dc789d92a2e3b87980e77bb064c53bb1","s":"e75167f42c2e7f9bfc3ebbfb4077db2b92e12e750bebe994d94223fb3692c1f5","n":"Abdullah Almunif","r":"Chairman & Group CEO","i":"AA","p":"17.5","t":"Chairman & Group CEO · Thabat Holding","admin":true,"uk":"7d38852ae00d6bc23def586df1f3de8a22ec7d09cd5f32aea01cfe9c1140a2db"},{"h":"549a89cdbfea83700b59a43e8b28fc43fb8ca40c0b20979bb913b9d2f71e3930a15082fe5c47eb49a126616d1418c983355fb3060f42a13e8f2ed939dab4be8b","s":"7f75d838283f6c60a2ec376e66384b736201396999acd2e157f74ca22d3dc81a","n":"Ali Almunif","r":"Shareholder","i":"AL","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"94419b99b12c11133a4dfeccc3e17885974beb48f7827c48239aabfbcad238d8"},{"h":"4955b0ab0554cf6b7662e157f1ecd70c7c45431c945e5ca892ac6247a7da104746ce66ef9d57d8cf5c07988a220a9f9ebc8bb7655fa913772788e37bf13a596d","s":"ff6f8c8a598b1cc7baa927c2d6043cd26f3b47ebb954275a7beeaf616487002b","n":"Ibrahim Almunif","r":"Shareholder","i":"IA","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"9711bcc773b67df9d02c1adc26240b1332048ab8ec17a23732ace9e0c030e0bd"},{"h":"b42dbf6ae57af6b765785e7ac8eb8d7931e4e91bd44fc181931e9be346f941149f146265dc0e8e4dddafcbc3a45fbd105e1d4321e4be7aa86ba8e0a41f55ad2b","s":"19d8983d45bc7b854a23f6ef45f9336ad5fc8f8af3c00fd5e66ba078fe8c1d3d","n":"Maha Almunif","r":"Shareholder","i":"MA","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"d980e1b9ef2c97be6f16b2bbb18e71891a9257942412d69e101524c511642d96"},{"h":"dac6a0dda984c03ad9a5a90b3294404f7edb61dd312abac85c28e435a8578a7398e32d71efeb98233193bcd44e567f2d0a00b8339685576cf1894c18f865330a","s":"c70425dbccb9ff2debde6e2f384e997eab939cbfb23f74f13856c2aa79bc056e","n":"Mari Almunif","r":"Shareholder","i":"MR","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"fbc835d2c63c85a2af298286581b9b77e8f1d5436a7ccbe391fceecce2a4729e"},{"h":"fdac725ea4484bf02dbc8a96bba4b316743db4c12074096240029dacdd4560fb3b7bef9059be01955cd6f7b87c3f628a358d24af6c7c738dcbb39b89b137be24","s":"f5491cade86217ddf4048d4ef22132974475689614a55129ef41bed273fd2572","n":"Munif Almunif","r":"Shareholder","i":"MN","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"4414be8ba7bd32dab555569e9d21acf5e6077112f4ba42c457774954f8e80344"},{"h":"7e5066f7043363b9e08f9763706eb410b2e5dedd0ae67c8ee416f343cc82bd3fed40baa9707a4ece4416d1213f9d90a4bd40580342a15fc0d11078640375a16d","s":"5c5c650bad9480c8f60cc6eed1191a549f6ccc74fc6035724d8a95aac60aec1d","n":"Portal Admin","r":"Administrator","i":"AD","p":"—","t":"Administrator · Thabat Holding","admin":true,"uk":"8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"}];const __L={"7d38852ae00d6bc23def586df1f3de8a22ec7d09cd5f32aea01cfe9c1140a2db":0,"94419b99b12c11133a4dfeccc3e17885974beb48f7827c48239aabfbcad238d8":1,"9711bcc773b67df9d02c1adc26240b1332048ab8ec17a23732ace9e0c030e0bd":2,"d980e1b9ef2c97be6f16b2bbb18e71891a9257942412d69e101524c511642d96":3,"fbc835d2c63c85a2af298286581b9b77e8f1d5436a7ccbe391fceecce2a4729e":4,"4414be8ba7bd32dab555569e9d21acf5e6077112f4ba42c457774954f8e80344":5,"8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918":6};
+const __E=[{"h":"a9d13166f768258dfef23ed75c6373988f017780fcf012adc483371d9496403b5e1b27e6f2ec66deea6b1c96ac233b15a13b5ee550fb473ed4da2783461d0cad","s":"5482c0f6c5f695793d71d42123390e0aa6d862871f215aafb8d3dffc69af86ee","n":"Abdullah Almunif","r":"Chairman & Group CEO","i":"AA","p":"17.5","t":"Chairman & Group CEO · Thabat Holding","admin":true,"uk":"7d38852ae00d6bc23def586df1f3de8a22ec7d09cd5f32aea01cfe9c1140a2db"},{"h":"1210cc8b02be43c2008b6aaf1d527b847d5aee60192ca80ee95d2faa29be7039e3d546d330e644db06f91cb65e4473ebfef50cea805c14a4fd7d669f0660cc7d","s":"8e633118541c2549d6f519034399d0038df7b8a1edb3bb4ffc4de23aaa3b26d9","n":"Ali Almunif","r":"Shareholder","i":"AL","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"94419b99b12c11133a4dfeccc3e17885974beb48f7827c48239aabfbcad238d8"},{"h":"668fcc1536288ac13d203a5d1a84f8554fd24fa95806e98453305862d2b3243b37f29bd98cc2e21328fdcdbeef2393efac61d649e4894890c5c060d501d4596a","s":"74173bf6fea81ecb9866f51bf84b5a260d0a1d8a233262dc82186415af312c37","n":"Ibrahim Almunif","r":"Shareholder","i":"IA","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"9711bcc773b67df9d02c1adc26240b1332048ab8ec17a23732ace9e0c030e0bd"},{"h":"6d2c921741b3a2d42a2986234586711ab0b6fcac83798da9eedf87e81772d932ccc6069cb61366c75026001fba6c17b1c8d7f38228302d5fa33deee2c4f3960a","s":"fc7cc5b02f09077ac003d7cd509187bb0802508a21e246d7fe1d7f9b2803b199","n":"Maha Almunif","r":"Shareholder","i":"MA","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"d980e1b9ef2c97be6f16b2bbb18e71891a9257942412d69e101524c511642d96"},{"h":"173577d5b5702db78ce9f9f23af0046965ac277beedbc6e98943b8be39a20f4dd58e1cc31d2ee9433382ded37fad10d3a0cae7c894e06d131235bab39d9133bf","s":"c7ae3af5e1922efb9722ae8d9a91507e4985057645e2495a074ac135f77bb84d","n":"Mari Almunif","r":"Shareholder","i":"MR","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"f0fad92f38e50241b1a6b0e711783409a42496d5494cc94ffa974ed8c3b93287"},{"h":"65e29c42877940d765dbf5c60f26de153022a1da14d78fea1912ce032e1e1090fdca0e65f191219d063c61a00784df25a169160de45310cb6917389d40b1d591","s":"cbdc71e85864b85987b65cf073a2656bff72353b3663a65ac0a0349c12e64a2f","n":"Munif Almunif","r":"Shareholder","i":"MN","p":"16.5","t":"Shareholder · Thabat Holding","admin":false,"uk":"4414be8ba7bd32dab555569e9d21acf5e6077112f4ba42c457774954f8e80344"},{"h":"57b3e0d45974fad69df578951029bd6c45aebcfa87fef0d81524c1d1561304634ed22fa0dd3c7d51db7a01be0d27f1a3e6a6cdee6d0e573f959651e410d075d4","s":"3402662489c8abd99281835b103adaf48eb3e74be84652320225c545bd658062","n":"Portal Admin","r":"Administrator","i":"AD","p":"—","t":"Administrator · Thabat Holding","admin":true,"uk":"8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"}];const __L={"7d38852ae00d6bc23def586df1f3de8a22ec7d09cd5f32aea01cfe9c1140a2db":0,"94419b99b12c11133a4dfeccc3e17885974beb48f7827c48239aabfbcad238d8":1,"9711bcc773b67df9d02c1adc26240b1332048ab8ec17a23732ace9e0c030e0bd":2,"d980e1b9ef2c97be6f16b2bbb18e71891a9257942412d69e101524c511642d96":3,"f0fad92f38e50241b1a6b0e711783409a42496d5494cc94ffa974ed8c3b93287":4,"4414be8ba7bd32dab555569e9d21acf5e6077112f4ba42c457774954f8e80344":5,"8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918":6};
 
 const _rl={a:0,lu:0};
 async function h256(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
@@ -411,7 +411,7 @@ async function doLogin(){
   const u=document.getElementById('fu').value.trim().toLowerCase();
   const p=document.getElementById('fp').value;
   if(!u||!p){serr('Please enter username and password.');return;}
-  const btn=document.getElementById('lbtn');btn.disabled=true;
+  const btn=document.getElementById('lbtn');btn.disabled=true;btn.textContent='Verifying…';
   document.getElementById('lld').style.display='block';
   document.getElementById('lerr').style.display='none';
   try{
@@ -419,20 +419,20 @@ async function doLogin(){
     const idx=__L[uh];
     if(idx===undefined)throw new Error('user not found');
     const e=__E[idx];
-    const comp=await pbkdf(p,e.s,100000,64);
+    const comp=await pbkdf(p,e.s,5000,64);
     if(comp!==e.h)throw new Error('wrong password');
     _rl.a=0;
-    document.getElementById('lld').style.display='none';
+    document.getElementById('lld').style.display='none';document.getElementById('lbtn').textContent='Access Portal →';
     boot({n:e.n,r:e.r,i:e.i,p:e.p,t:e.t,admin:!!e.admin});
   }catch(err){
     _rl.a++;
-    document.getElementById('lld').style.display='none';
+    document.getElementById('lld').style.display='none';btn.textContent='Access Portal →';
     btn.disabled=false;
     if(_rl.a>=5){_rl.lu=Date.now()+30000;_rl.a=0;serr('Locked for 30 seconds.');}
     else serr('Invalid username or password. '+(5-_rl.a)+' attempt(s) left.');
   }
 }
-function serr(m){const e=document.getElementById('lerr');e.textContent=m;e.style.display='block';document.getElementById('lbtn').disabled=false;document.getElementById('lld').style.display='none';}
+function serr(m){const e=document.getElementById('lerr');e.textContent=m;e.style.display='block';const lb=document.getElementById('lbtn');lb.disabled=false;lb.textContent='Access Portal →';document.getElementById('lld').style.display='none';}
 ['fu','fp'].forEach(id=>document.getElementById(id).addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();}));
 
 let _s=null;
