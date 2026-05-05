@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!-- saved from url=(0045)file:///C:/Users/mhusi/Downloads/index_2.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Thabat Holding — Investor Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="./Index_files/css2" rel="stylesheet">
 <style>
 :root{--bg:#F7F6F2;--surface:#FFF;--surface-2:#F2F1EC;--border:#E5E3DC;--ink:#1A1A18;--ink-mid:#3D3D38;--ink-soft:#6B6B63;--ink-dim:#9B9B90;--gold:#B8860B;--gold-light:#D4A017;--gold-bg:#FBF7EE;--gold-border:#E8D5A0;--green:#1A7A4A;--green-bg:#EBF7F1;--green-border:#A8D9BC;--red:#C0392B;--red-bg:#FDEDEC;--blue:#1A5FA8;--blue-bg:#EBF2FB;--teal:#0A7A72;--orange:#C45E00;--purple:#6B4FA8;--sh:0 1px 3px rgba(0,0,0,.06);--shm:0 4px 12px rgba(0,0,0,.08);--shl:0 12px 32px rgba(0,0,0,.12);--r:12px;--rs:8px;--rl:16px}
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Geist',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;font-size:14px;line-height:1.5}
@@ -99,7 +99,7 @@
 .cn{font-size:12px;font-weight:500;color:var(--ink)}.cty{font-size:10px;color:var(--ink-dim)}
 .sp{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:500}
 .sp::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
-.sp.active{background:var(--green-bg);color:var(--green)}.sp.cancelled{background:var(--red-bg);color:var(--red)}
+.sp.active{background:var(--green-bg);color:var(--green)}.sp.inactive{background:#FFF8E6;color:#B8860B;border:1px solid #E8D5A0}.sp.closed{background:var(--red-bg);color:var(--red)}.sp.cancelled{background:var(--red-bg);color:var(--red)}
 .gt{background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:10px;color:var(--ink-soft)}
 .pos{color:var(--green)}.neg{color:var(--red)}
 .shg{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:13px}
@@ -194,13 +194,13 @@
 <div id="ls">
   <div class="lw">
     <div class="ll">
-      <div class="lli"><div class="llogo">⬡</div><h1>Thabat<br/>Holding</h1><p style="margin-top:12px">Almunif Family · Investor Portal<br/>بوابة المستثمرين</p><p style="margin-top:14px;font-size:11px;color:rgba(247,246,242,.22)">Founded 1998 · +40 Investments · 8 Countries</p></div>
+      <div class="lli"><div class="llogo">⬡</div><h1>Thabat<br>Holding</h1><p style="margin-top:12px">Almunif Family · Investor Portal<br>بوابة المستثمرين</p><p style="margin-top:14px;font-size:11px;color:rgba(247,246,242,.22)">Founded 1998 · +40 Investments · 8 Countries</p></div>
       <div class="llf">Portfolio valuations conducted in accordance with IFRS and CMA guidelines. All amounts in SAR unless otherwise stated.</div>
     </div>
     <div class="lr2">
       <h2>Sign In</h2><p class="lsub">Enter your credentials to access the portal</p>
-      <div class="ff"><label>Username</label><input type="text" id="fu" autocomplete="off" spellcheck="false" placeholder="Enter your username"/></div>
-      <div class="ff"><label>Password</label><input type="password" id="fp" autocomplete="off" placeholder="Enter your password"/></div>
+      <div class="ff"><label>Username</label><input type="text" id="fu" autocomplete="off" spellcheck="false" placeholder="Enter your username"></div>
+      <div class="ff"><label>Password</label><input type="password" id="fp" autocomplete="off" placeholder="Enter your password"></div>
       <button class="lbtn" id="lbtn" onclick="doLogin()">Access Portal →</button>
       <div class="lld" id="lld">⏳ Verifying…</div>
       <div class="lerr" id="lerr"></div>
@@ -216,15 +216,15 @@
       <div class="sbu"><div class="sbav" id="sbav"></div><div><div class="sbun" id="sbun"></div><div class="sbur" id="sbur"></div></div></div>
     </div>
     <div class="sbnav">
-      <div class="ni active" onclick="pg('dashboard',this)"><span class="nii">⊞</span>Dashboard</div>
-      <div class="ni" onclick="pg('portfolio',this)"><span class="nii">◫</span>Portfolio</div>
-      <div class="ni" onclick="pg('realestate',this)"><span class="nii">⌂</span>Real Estate</div>
-      <div class="ni" onclick="pg('ownership',this)"><span class="nii">◉</span>Ownership</div>
-      <div class="ni" onclick="pg('timeline',this)"><span class="nii">◷</span>Journey</div>
-      <div class="ni" onclick="pg('documents',this);rdocs()"><span class="nii">☐</span>Documents</div>
-      <div id="adnav" style="display:none"><div class="nl">Admin</div><div class="ni" onclick="pg('admin',this)"><span class="nii">⚙</span>Manage</div></div>
+      <div class="ni active" onclick="pg(&#39;dashboard&#39;,this)"><span class="nii">⊞</span>Dashboard</div>
+      <div class="ni" onclick="pg(&#39;portfolio&#39;,this)"><span class="nii">◫</span>Portfolio</div>
+      <div class="ni" onclick="pg(&#39;realestate&#39;,this)"><span class="nii">⌂</span>Real Estate</div>
+      <div class="ni" onclick="pg(&#39;ownership&#39;,this)"><span class="nii">◉</span>Ownership</div>
+      <div class="ni" onclick="pg(&#39;timeline&#39;,this)"><span class="nii">◷</span>Journey</div>
+      <div class="ni" onclick="pg(&#39;documents&#39;,this);rdocs()"><span class="nii">☐</span>Documents</div>
+      <div id="adnav" style="display:none"><div class="nl">Admin</div><div class="ni" onclick="pg(&#39;admin&#39;,this)"><span class="nii">⚙</span>Manage</div></div>
       <div class="nl">Account</div>
-      <div class="ni" onclick="pg('profile',this)"><span class="nii">👤</span>My Profile</div>
+      <div class="ni" onclick="pg(&#39;profile&#39;,this)"><span class="nii">👤</span>My Profile</div>
     </div>
     <div class="sbft"><button class="lout" onclick="doLogout()">⏻ Sign Out</button></div>
   </nav>
@@ -232,18 +232,18 @@
     <div class="tb">
       <div class="tbl">
         <div class="tbt" id="pgtitle">Dashboard</div>
-        <div class="sw"><span class="sico">🔍</span><input class="sinp" id="gs" placeholder="Search companies, assets, shareholders…" oninput="onsi(event)" onkeydown="oski(event)" autocomplete="off"/><div class="sdrop" id="sdrop"></div></div>
+        <div class="sw"><span class="sico">🔍</span><input class="sinp" id="gs" placeholder="Search companies, assets, shareholders…" oninput="onsi(event)" onkeydown="oski(event)" autocomplete="off"><div class="sdrop" id="sdrop"></div></div>
       </div>
       <div class="tbr">
-        <button class="scbtn" onclick="alert('Contact: admin@thabatholding.com')">📅 Schedule Call</button>
+        <button class="scbtn" onclick="alert(&#39;Contact: admin@thabatholding.com&#39;)">📅 Schedule Call</button>
         <div class="tbc"><span class="dot"></span><span id="tdate"></span></div>
       </div>
     </div>
 
     <!-- DASHBOARD -->
     <div class="page active" id="page-dashboard">
-      <div style="margin-bottom:14px"><div style="font-family:'Instrument Serif',serif;font-size:26px;color:var(--ink)" id="wname">Welcome</div><div style="font-size:12px;color:var(--ink-soft)">Thabat Holding · Investor Portal · Valuation: <strong>Dec 31, 2025</strong></div></div>
-      <div class="ns">📊 Portfolio valuations conducted annually by an independent third-party valuer — IFRS & CMA. All amounts in SAR.</div>
+      <div style="margin-bottom:14px"><div style="font-family:&#39;Instrument Serif&#39;,serif;font-size:26px;color:var(--ink)" id="wname">Welcome</div><div style="font-size:12px;color:var(--ink-soft)">Thabat Holding · Investor Portal · Valuation: <strong>Dec 31, 2025</strong></div></div>
+      <div class="ns">📊 Portfolio valuations conducted annually by an independent third-party valuer — IFRS &amp; CMA. All amounts in SAR.</div>
       <div class="sl">PORTFOLIO OVERVIEW</div>
       <div class="mr">
         <div class="mc"><div class="mcl">Fair Value (Market)</div><div class="mcv go" id="sfv">—</div></div>
@@ -269,10 +269,10 @@
     <div class="page" id="page-portfolio">
       <div class="tw">
         <div class="ttb">
-          <input type="text" id="psrch" placeholder="🔍 Search…" oninput="rport()" style="min-width:150px"/>
+          <input type="text" id="psrch" placeholder="🔍 Search…" oninput="rport()" style="min-width:150px">
           <select id="psec" onchange="rport()"><option value="">All Sectors</option><option>Retail</option><option>VC &amp; Fund</option><option>SAAS</option><option>Logistics &amp; Distribution</option><option>Education</option><option>Hospitality</option><option>Entertainment</option><option>Real Estate</option></select>
           <select id="pgeo" onchange="rport()"><option value="">All Regions</option><option>KSA</option><option>USA</option><option>Germany</option></select>
-          <button class="adb" onclick="openMo('m-ainv')">+ Add Investment</button>
+          <button class="adb" onclick="openMo(&#39;m-ainv&#39;)">+ Add Investment</button>
         </div>
         <table class="dt"><thead><tr><th>Company</th><th>Region</th><th>Year</th><th>Ownership</th><th>Cum. Investment</th><th>Fair Value (Mkt)</th><th>MOIC</th><th>Unrealized G/L</th><th>Dividends</th><th>Status</th></tr></thead><tbody id="ptbody"></tbody></table>
       </div>
@@ -280,7 +280,7 @@
 
     <!-- REAL ESTATE -->
     <div class="page" id="page-realestate">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px"><div style="font-family:'Instrument Serif',serif;font-size:19px">Real Estate Portfolio</div><button class="adb" onclick="openMo('m-are')">+ Add Property</button></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px"><div style="font-family:&#39;Instrument Serif&#39;,serif;font-size:19px">Real Estate Portfolio</div><button class="adb" onclick="openMo(&#39;m-are&#39;)">+ Add Property</button></div>
       <div class="sl">INSIDE KSA</div>
       <div class="tw"><table class="dt"><thead><tr><th>Acc.Xero</th><th>Description</th><th>Date</th><th>Cost Amt</th><th>Valuation</th><th>Share %</th><th>Space</th><th>Status</th></tr></thead><tbody id="reksa"></tbody></table></div>
       <div class="sl">OUTSIDE KSA</div>
@@ -289,27 +289,69 @@
     </div>
 
     <!-- OWNERSHIP -->
-    <div class="page" id="page-ownership"><div id="owncont"></div></div>
+    <!-- OWNERSHIP -->
+    <div class="page" id="page-ownership">
+      <!-- Tabs -->
+      <div style="display:flex;border-bottom:1px solid var(--border);margin-bottom:16px">
+        <button id="otab-inv" onclick="switchOwnTab(&#39;inv&#39;)" style="padding:9px 18px;font-size:12px;font-weight:500;cursor:pointer;border:none;background:none;border-bottom:2px solid var(--gold);color:var(--gold);font-family:&#39;Geist&#39;,sans-serif">Investment Structure</button>
+        <button id="otab-sh" onclick="switchOwnTab(&#39;sh&#39;)" style="padding:9px 18px;font-size:12px;font-weight:500;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;color:var(--ink-soft);font-family:&#39;Geist&#39;,sans-serif">Shareholder Structure</button>
+      </div>
+
+      <!-- INVESTMENT STRUCTURE -->
+      <div id="own-inv-pane">
+        <div style="font-size:11px;color:var(--ink-dim);margin-bottom:12px">Click +/− to expand. Hover any row to edit or attach documents.</div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px;box-shadow:var(--sh)" id="inv-tree-root"></div>
+      </div>
+
+      <!-- SHAREHOLDER STRUCTURE -->
+      <div id="own-sh-pane" style="display:none">
+        <!-- Search -->
+        <div style="position:relative;margin-bottom:16px">
+          <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink-dim);font-size:13px;pointer-events:none">🔍</span>
+          <input id="osh-inp" type="text" autocomplete="off" placeholder="Search entity, investor, or investment… (e.g. Thab, Anoosh, Abdullah)" style="width:100%;padding:11px 14px 11px 36px;border:1.5px solid var(--border);border-radius:20px;font-family:&#39;Geist&#39;,sans-serif;font-size:13px;color:var(--ink);background:var(--surface);outline:none;transition:border-color .15s" oninput="oshSearch(this.value)" onblur="setTimeout(oshHideDrop,180)" onfocus="oshSearch(this.value)">
+          <div id="osh-drop" style="position:absolute;top:calc(100% + 5px);left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shm);z-index:200;display:none;max-height:280px;overflow-y:auto"></div>
+        </div>
+        <!-- Hierarchy result -->
+        <div id="osh-hier" style="display:none;background:var(--surface);border:1.5px solid var(--gold-border);border-radius:var(--r);padding:16px;margin-bottom:16px;box-shadow:var(--shm)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)">
+            <div id="osh-hier-ico" style="width:36px;height:36px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#1A1A18;color:#F7F6F2">⬡</div>
+            <div style="flex:1">
+              <div id="osh-hier-name" style="font-family:&#39;Instrument Serif&#39;,serif;font-size:16px;color:var(--ink)"></div>
+              <div id="osh-hier-sub" style="font-size:11px;color:var(--ink-soft);margin-top:1px"></div>
+            </div>
+            <button onclick="oshCloseHier()" style="background:none;border:1px solid var(--border);border-radius:var(--rs);padding:4px 10px;font-size:11px;color:var(--ink-soft);cursor:pointer;font-family:&#39;Geist&#39;,sans-serif">✕ Close</button>
+          </div>
+          <div id="osh-hier-body"></div>
+        </div>
+        <!-- Shareholder cards -->
+        <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:9px">SHAREHOLDERS — ALMUNIF FAMILY</div>
+        <div id="osh-sh-grid" style="display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:10px"></div>
+        <div id="sh-filter-hint" style="display:none;font-size:12px;padding:8px 12px;border-radius:var(--rs);background:var(--gold-bg);border:1px solid var(--gold-border);margin-bottom:14px"></div>
+        <!-- Investment ownership list -->
+        <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:9px">ALL INVESTMENTS — OWNERSHIP STRUCTURE</div>
+        <div id="osh-inv-list"></div>
+      </div>
+    </div>
 
     <!-- TIMELINE -->
     <div class="page" id="page-timeline">
-      <div style="font-family:'Instrument Serif',serif;font-size:22px;margin-bottom:3px">Thabat Journey</div>
+      <div style="font-family:&#39;Instrument Serif&#39;,serif;font-size:22px;margin-bottom:3px">Thabat Journey</div>
       <div style="font-size:12px;color:var(--ink-soft);margin-bottom:16px">Since 1998 — building a diversified investment holding across 8 countries</div>
       <div id="tlcont"></div>
     </div>
 
     <!-- DOCUMENTS -->
     <div class="page" id="page-documents">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px"><div style="font-family:'Instrument Serif',serif;font-size:19px">Documents</div><div style="font-size:11px;color:var(--ink-dim)">Click any investment or shareholder to upload</div></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px"><div style="font-family:&#39;Instrument Serif&#39;,serif;font-size:19px">Documents</div><div style="font-size:11px;color:var(--ink-dim)">Click any investment or shareholder to upload</div></div>
       <div id="docscont"><div class="emp"><div class="empi">📂</div><div class="empt">No documents yet</div><div class="emps">Open any investment or shareholder to upload documents.</div></div></div>
     </div>
 
     <!-- SEARCH -->
-    <div class="page" id="page-search"><div style="font-family:'Instrument Serif',serif;font-size:19px;margin-bottom:13px">Search Results</div><div id="srcont"></div></div>
+    <div class="page" id="page-search"><div style="font-family:&#39;Instrument Serif&#39;,serif;font-size:19px;margin-bottom:13px">Search Results</div><div id="srcont"></div></div>
 
     <!-- ADMIN -->
     <div class="page" id="page-admin">
-      <div style="font-family:'Instrument Serif',serif;font-size:19px;margin-bottom:13px">Admin — Manage Portal</div>
+      <div style="font-family:&#39;Instrument Serif&#39;,serif;font-size:19px;margin-bottom:13px">Admin — Manage Portal</div>
       <div class="ns gld">⚠️ Admin access only.</div>
       <div class="sl">USERS</div><div id="adcont"></div>
     </div>
@@ -325,7 +367,7 @@
           <div class="ait"><div class="aii">📅</div><div class="aitxt"><strong>Valuation Date:</strong> Dec 31, 2025</div></div>
         </div></div>
         <div class="card"><div class="ch"><div class="ct">My Shareholding</div></div><div class="cb" style="display:flex;flex-direction:column;align-items:center;padding:22px;text-align:center">
-          <div id="ppct" style="font-family:'Instrument Serif',serif;font-size:48px;color:var(--gold);line-height:1">—%</div>
+          <div id="ppct" style="font-family:&#39;Instrument Serif&#39;,serif;font-size:48px;color:var(--gold);line-height:1">—%</div>
           <div style="font-size:12px;color:var(--ink-soft);margin-top:6px">Ownership in Thabat Holding</div>
           <div style="margin-top:9px;font-size:10px;color:var(--ink-dim)">Almunif Family · 6 shareholders</div>
         </div></div>
@@ -335,25 +377,25 @@
 </div>
 
 <!-- MODALS -->
-<div class="mo" id="m-det" onclick="if(event.target===this)closeMo('m-det')"><div class="mb"><div class="mh"><div class="mt2">Details</div><button class="mc2" onclick="closeMo('m-det')">✕</button></div><div class="mbd" id="m-det-body"></div></div></div>
-<div class="mo" id="m-upl" onclick="if(event.target===this)closeMo('m-upl')"><div class="mb nw"><div class="mh"><div class="mt2">Upload Document</div><button class="mc2" onclick="closeMo('m-upl')">✕</button></div><div class="mbd"><div id="m-upl-form"></div></div><div class="mft"><button class="bs" onclick="closeMo('m-upl')">Cancel</button><button class="bp2" onclick="submitUpl()">Upload</button></div></div></div>
-<div class="mo" id="m-ainv" onclick="if(event.target===this)closeMo('m-ainv')"><div class="mb nw"><div class="mh"><div class="mt2">Add Investment</div><button class="mc2" onclick="closeMo('m-ainv')">✕</button></div><div class="mbd">
-  <div class="ff"><label>Company Name *</label><input type="text" id="ainm" placeholder="e.g. TechCo"/></div>
+<div class="mo" id="m-det" onclick="if(event.target===this)closeMo(&#39;m-det&#39;)"><div class="mb"><div class="mh"><div class="mt2">Details</div><button class="mc2" onclick="closeMo(&#39;m-det&#39;)">✕</button></div><div class="mbd" id="m-det-body"></div></div></div>
+<div class="mo" id="m-upl" onclick="if(event.target===this)closeMo(&#39;m-upl&#39;)"><div class="mb nw"><div class="mh"><div class="mt2">Upload Document</div><button class="mc2" onclick="closeMo(&#39;m-upl&#39;)">✕</button></div><div class="mbd"><div id="m-upl-form"></div></div><div class="mft"><button class="bs" onclick="closeMo(&#39;m-upl&#39;)">Cancel</button><button class="bp2" onclick="submitUpl()">Upload</button></div></div></div>
+<div class="mo" id="m-ainv" onclick="if(event.target===this)closeMo(&#39;m-ainv&#39;)"><div class="mb nw"><div class="mh"><div class="mt2">Add Investment</div><button class="mc2" onclick="closeMo(&#39;m-ainv&#39;)">✕</button></div><div class="mbd">
+  <div class="ff"><label>Company Name *</label><input type="text" id="ainm" placeholder="e.g. TechCo"></div>
   <div class="ff"><label>Sector</label><select id="aisec"><option>Retail</option><option>VC &amp; Fund</option><option>SAAS</option><option>Logistics &amp; Distribution</option><option>Education</option><option>Hospitality</option><option>Entertainment</option><option>Real Estate</option><option>Other</option></select></div>
-  <div class="ff"><label>Geography</label><input type="text" id="aigeo" value="KSA"/></div>
-  <div class="ff"><label>Year of Investment</label><input type="number" id="aiyr" placeholder="2025"/></div>
-  <div class="ff"><label>Ownership %</label><input type="number" id="aiown" placeholder="25"/></div>
-  <div class="ff"><label>Cumulative Investment (SAR)</label><input type="text" id="aicum" placeholder="1,000,000"/></div>
-  <div class="ff"><label>Fair Value Market (SAR)</label><input type="text" id="aifv" placeholder="2,500,000"/></div>
-</div><div class="mft"><button class="bs" onclick="closeMo('m-ainv')">Cancel</button><button class="bp2" onclick="submitInv()">Add Investment</button></div></div></div>
-<div class="mo" id="m-are" onclick="if(event.target===this)closeMo('m-are')"><div class="mb nw"><div class="mh"><div class="mt2">Add Real Estate Asset</div><button class="mc2" onclick="closeMo('m-are')">✕</button></div><div class="mbd">
-  <div class="ff"><label>Property Name *</label><input type="text" id="renm" placeholder="RE New Property Riyadh"/></div>
-  <div class="ff"><label>Location / Details</label><input type="text" id="redet" placeholder="Riyadh - KSA"/></div>
-  <div class="ff"><label>Share %</label><input type="number" id="resh" placeholder="50"/></div>
-  <div class="ff"><label>Cost Amount (SAR)</label><input type="text" id="recost" placeholder="1,500,000"/></div>
-  <div class="ff"><label>Valuation (SAR)</label><input type="text" id="reval" placeholder="2,000,000"/></div>
-  <div class="ff"><label>Space</label><input type="text" id="resp" placeholder="500 m²"/></div>
-</div><div class="mft"><button class="bs" onclick="closeMo('m-are')">Cancel</button><button class="bp2" onclick="submitRE()">Add Property</button></div></div></div>
+  <div class="ff"><label>Geography</label><input type="text" id="aigeo" value="KSA"></div>
+  <div class="ff"><label>Year of Investment</label><input type="number" id="aiyr" placeholder="2025"></div>
+  <div class="ff"><label>Ownership %</label><input type="number" id="aiown" placeholder="25"></div>
+  <div class="ff"><label>Cumulative Investment (SAR)</label><input type="text" id="aicum" placeholder="1,000,000"></div>
+  <div class="ff"><label>Fair Value Market (SAR)</label><input type="text" id="aifv" placeholder="2,500,000"></div>
+</div><div class="mft"><button class="bs" onclick="closeMo(&#39;m-ainv&#39;)">Cancel</button><button class="bp2" onclick="submitInv()">Add Investment</button></div></div></div>
+<div class="mo" id="m-are" onclick="if(event.target===this)closeMo(&#39;m-are&#39;)"><div class="mb nw"><div class="mh"><div class="mt2">Add Real Estate Asset</div><button class="mc2" onclick="closeMo(&#39;m-are&#39;)">✕</button></div><div class="mbd">
+  <div class="ff"><label>Property Name *</label><input type="text" id="renm" placeholder="RE New Property Riyadh"></div>
+  <div class="ff"><label>Location / Details</label><input type="text" id="redet" placeholder="Riyadh - KSA"></div>
+  <div class="ff"><label>Share %</label><input type="number" id="resh" placeholder="50"></div>
+  <div class="ff"><label>Cost Amount (SAR)</label><input type="text" id="recost" placeholder="1,500,000"></div>
+  <div class="ff"><label>Valuation (SAR)</label><input type="text" id="reval" placeholder="2,000,000"></div>
+  <div class="ff"><label>Space</label><input type="text" id="resp" placeholder="500 m²"></div>
+</div><div class="mft"><button class="bs" onclick="closeMo(&#39;m-are&#39;)">Cancel</button><button class="bp2" onclick="submitRE()">Add Property</button></div></div></div>
 
 <script>
 // AUTH — hashes only, no plain passwords
@@ -491,46 +533,606 @@ function rport(){
   let tC=0,tF=0,tD=0;cos.forEach(c=>{tC+=(c.cumInv||0);tF+=(c.fvMarket||0);tD+=(c.dividends||0);});
   const tb=document.getElementById('ptbody');if(!tb)return;
   tb.innerHTML=cos.map(c=>{const col=sc(c.sector);const g=c.unrealized;const gc=g>0?'pos':g<0?'neg':'';const gs=g!=null?(g>0?'+':'')+sar(g):'—';
-    return`<tr onclick="odet('company','${c.id}')"><td><div class="cc"><div class="ci" style="background:${col}20;color:${col}">${c.name.substring(0,2).toUpperCase()}</div><div><div class="cn">${c.name}</div><div class="cty">${c.sector}</div></div></div></td><td><span class="gt">${c.geo}</span></td><td>${c.year}</td><td><strong>${c.ownership!=null?c.ownership+'%':'—'}</strong></td><td>${sar(c.cumInv)}</td><td>${sar(c.fvMarket)}</td><td>${c.moic||'—'}</td><td class="${gc}">${gs}</td><td>${sar(c.dividends)}</td><td><span class="sp ${c.status}">${c.status}</span></td></tr>`;}).join('')+
+    return`<tr onclick="odet('company','${c.id}')"><td><div class="cc"><div class="ci" style="background:${col}20;color:${col}">${c.name.substring(0,2).toUpperCase()}</div><div><div class="cn">${c.name}</div><div class="cty">${c.sector}</div></div></div></td><td><span class="gt">${c.geo}</span></td><td>${c.year}</td><td><strong>${c.ownership!=null?c.ownership+'%':'—'}</strong></td><td>${sar(c.cumInv)}</td><td>${sar(c.fvMarket)}</td><td>${c.moic||'—'}</td><td class="${gc}">${gs}</td><td>${sar(c.dividends)}</td><td onclick="event.stopPropagation()"><select class="sp ${c.status}" onchange="chgStatus('company','${c.id}',this)" style="border:none;cursor:pointer;font-family:Geist,sans-serif;font-size:11px;font-weight:600;padding:2px 4px;border-radius:var(--rs);outline:none;background:inherit"><option value="active" ${c.status==='active'?'selected':''}>active</option><option value="inactive" ${c.status==='inactive'?'selected':''}>inactive</option><option value="closed" ${c.status==='closed'?'selected':''}>closed</option></select></td></tr>`;}).join('')+
     `<tr class="ttr"><td colspan="4"><strong>Total</strong></td><td><strong>${sar(tC)}</strong></td><td><strong>${sar(tF)}</strong></td><td colspan="2"></td><td><strong>${sar(tD)}</strong></td><td></td></tr>`;
 }
 
 function rre(){
   const ksa=D.realEstate.filter(r=>!r.details.toLowerCase().includes('canada')&&!r.details.toLowerCase().includes('germany')&&!r.details.toLowerCase().includes('usa'));
   const out=D.realEstate.filter(r=>r.details.toLowerCase().includes('canada')||r.details.toLowerCase().includes('germany')||r.details.toLowerCase().includes('usa'));
-  function rows(arr,sr){return arr.map(r=>{const cl=r.status==='cancelled';return`<tr onclick="odet('realestate','${r.id}')" ${cl?'style="opacity:.5"':''}><td>${r.accXero}</td><td><div class="cn" ${cl?'style="text-decoration:line-through"':''}>${r.name}</div><div class="cty">${r.details}</div></td><td>${r.date}</td><td>${sar(r.costAmt)}</td><td>${sar(r.valuation)}</td>${sr?`<td>${r.rent?sar(r.rent):'—'}</td>`:''}<td>${r.share}%</td><td>${r.space}</td><td><span class="sp ${r.status}">${r.status}</span></td></tr>`}).join('');}
+  function rows(arr,sr){return arr.map(r=>{const cl=r.status==='cancelled';return`<tr onclick="odet('realestate','${r.id}')" ${cl?'style="opacity:.5"':''}><td>${r.accXero}</td><td><div class="cn" ${cl?'style="text-decoration:line-through"':''}>${r.name}</div><div class="cty">${r.details}</div></td><td>${r.date}</td><td>${sar(r.costAmt)}</td><td>${sar(r.valuation)}</td>${sr?`<td>${r.rent?sar(r.rent):'—'}</td>`:''}<td>${r.share}%</td><td>${r.space}</td><td onclick="event.stopPropagation()"><select class="sp ${r.status}" onchange="chgStatus('realestate','${r.id}',this)" style="border:none;cursor:pointer;font-family:Geist,sans-serif;font-size:11px;font-weight:600;padding:2px 4px;border-radius:var(--rs);outline:none;background:inherit"><option value="active" ${r.status==='active'?'selected':''}>active</option><option value="inactive" ${r.status==='inactive'?'selected':''}>inactive</option><option value="closed" ${r.status==='closed'?'selected':''}>closed</option><option value="cancelled" ${r.status==='cancelled'?'selected':''}>cancelled</option></select></td></tr>`}).join('');}
   let kc=0,kv=0,oc=0,ov=0,or2=0;ksa.forEach(r=>{kc+=r.costAmt||0;kv+=r.valuation||0;});out.forEach(r=>{oc+=r.costAmt||0;ov+=r.valuation||0;or2+=r.rent||0;});
   const kt=document.getElementById('reksa');if(kt)kt.innerHTML=rows(ksa,false)+`<tr class="ttr"><td colspan="3"><strong>Total</strong></td><td><strong>${sar(kc)}</strong></td><td><strong>${sar(kv)}</strong></td><td colspan="3"></td></tr>`;
   const ot=document.getElementById('reout');if(ot)ot.innerHTML=rows(out,true)+`<tr class="ttr"><td colspan="2"><strong>Total</strong></td><td></td><td><strong>${sar(oc)}</strong></td><td><strong>${sar(ov)}</strong></td><td><strong>${sar(or2)}</strong></td><td colspan="2"></td></tr>`;
   const gt=document.getElementById('retot');if(gt)gt.innerHTML=`<td colspan="3"><strong>Total Current</strong></td><td><strong>${sar(kc+oc)}</strong></td><td><strong>${sar(kv+ov)}</strong></td><td><strong>${sar(or2)}</strong></td><td colspan="2"></td>`;
 }
 
-let _sf=null;
-function rown(fid){
-  _sf=fid||null;const con=document.getElementById('owncont');if(!con)return;
-  const shCards=D.shareholders.map(sh=>{const isF=_sf&&_sf!=='all'&&sh.id!==_sf;const isH=_sf===sh.id;
-    return`<div class="shc ${isF?'dm':''} ${isH?'hl':''}" onclick="rown('${sh.id}')"><div class="shav">${sh.initials}</div><div class="shn">${sh.name}</div><div class="shp">${sh.pct}%</div><div class="shl">${sh.role}</div></div>`;}).join('');
-  let bk='';
-  if(_sf&&_sf!=='all'){
-    const sh=D.shareholders.find(s=>s.id===_sf);
-    if(sh){const top=[...D.companies].filter(c=>c.fvMarket).sort((a,b)=>b.fvMarket-a.fvMarket).slice(0,8);const eff=top.map(c=>({...c,ep:c.ownership?((sh.pct/100)*(c.ownership/100)*100).toFixed(3):null,ev:c.fvMarket?(sh.pct/100)*c.fvMarket:null}));const tev=eff.reduce((a,c)=>a+(c.ev||0),0);
-      bk=`<div class="bp"><div class="bph"><div class="bpav">${sh.initials}</div><div><div class="bpn">${sh.name}</div><div class="bps">${sh.pct}% of Thabat Holding · ${sh.role}</div></div><button class="cfb" onclick="rown('all')">✕ Clear</button></div>
-      <div class="bpm"><div class="bmi"><div class="bml">Ownership in Thabat</div><div class="bmv">${sh.pct}%</div></div><div class="bmi"><div class="bml">Effective Portfolio FV</div><div class="bmv">${sar(tev)}</div></div><div class="bmi"><div class="bml">Investments tracked</div><div class="bmv">${D.companies.length}</div></div></div>
-      <div style="border:1px solid var(--border);border-radius:var(--rs);overflow:hidden"><table class="dt"><thead><tr><th>Investment</th><th>Sector</th><th>Thabat %</th><th>${sh.name.split(' ')[0]}'s Eff. %</th><th>Fair Value</th><th>Eff. Value</th></tr></thead>
-      <tbody>${eff.map(c=>`<tr><td><div class="cn">${c.name}</div></td><td>${c.sector}</td><td>${c.ownership!=null?c.ownership+'%':'—'}</td><td><strong>${c.ep!=null?c.ep+'%':'—'}</strong></td><td>${sar(c.fvMarket)}</td><td class="pos">${sar(c.ev)}</td></tr>`).join('')}</tbody></table></div></div>`;}
-  }
-  con.innerHTML=`<div class="sl">SHAREHOLDER STRUCTURE — ALMUNIF FAMILY</div><div class="shg">${shCards}</div>
-  <div class="fh" ${_sf&&_sf!=='all'?'style="display:none"':''}>💡 Click any shareholder to see their investment breakdown</div>${bk}
-  <div class="otc"><div class="ott">Thabat Holding — Investment Structure</div>
-  <svg class="tsvg" viewBox="0 0 1000 270" xmlns="http://www.w3.org/2000/svg" style="font-family:'Geist',sans-serif">
-    <rect x="380" y="10" width="240" height="50" rx="8" fill="#1A1A18"/>
-    <text x="500" y="31" text-anchor="middle" fill="#F7F6F2" font-size="13" font-weight="600">⬡ Thabat Holding</text>
-    <text x="500" y="49" text-anchor="middle" fill="rgba(247,246,242,.5)" font-size="10">Since 1998 · Almunif Family</text>
-    <line x1="500" y1="60" x2="500" y2="88" stroke="#D4D1C8" stroke-width="1.5"/>
-    <line x1="90" y1="88" x2="910" y2="88" stroke="#D4D1C8" stroke-width="1.5"/>
-    ${[{x:90,l:'Anoosh',s:'70%',c:'#1A7A4A'},{x:230,l:'9 Round',s:'47.95%',c:'#1A7A4A'},{x:370,l:'Seedra Fund I',s:'21.08%',c:'#1A5FA8'},{x:510,l:'Seedra Fund II',s:'3.84%',c:'#1A5FA8'},{x:650,l:'Real Estate',s:'6 assets',c:'#B8860B'},{x:790,l:'Companies',s:'14 more',c:'#6B4FA8'}].map(n=>`<line x1="${n.x+65}" y1="88" x2="${n.x+65}" y2="108" stroke="#D4D1C8" stroke-width="1.5"/><rect x="${n.x}" y="108" width="130" height="44" rx="7" fill="white" stroke="#E5E3DC" stroke-width="1.5"/><text x="${n.x+65}" y="127" text-anchor="middle" fill="#1A1A18" font-size="10.5" font-weight="500">${n.l}</text><text x="${n.x+65}" y="142" text-anchor="middle" fill="${n.c}" font-size="9">${n.s}</text>`).join('')}
-  </svg></div>`;
+
+// ═══════════════════════════════════════════════════════
+// OWNERSHIP — DATA
+// ═══════════════════════════════════════════════════════
+
+// Direct investments (not via Thabat Holding)
+
+// ═══════════════════════════════════════════════════════
+// OWNERSHIP DATA STORE
+// ═══════════════════════════════════════════════════════
+
+// Company legal types
+const LEGAL_TYPES = [
+  'Limited Liability Company (LLC)',
+  'Closed Joint Stock Company (CJSC)',
+  'Joint Stock Company (JSC)',
+  'Closed Fund',
+  'Open-Ended Fund',
+  'Sole Proprietorship',
+  'Partnership',
+  'Branch',
+  'Other'
+];
+
+// Per-investment shareholder registry: { investmentId: [ {name, initials, role, pct, isExternal} ] }
+// isExternal = true means they are NOT in D.shareholders (outside investors)
+let INV_SHAREHOLDERS = {
+  'c1': [ // Anoosh
+    {id:'s-c1-1', name:'Thabat Holding',   initials:'⬡', role:'Holding Company', pct:70,   isExternal:false, isHolding:true},
+    {id:'s-c1-2', name:'Abdullah Almunif', initials:'AA', role:'Shareholder',     pct:5.25, isExternal:false, shId:'sh1'},
+    {id:'s-c1-3', name:'Munif Almunif',    initials:'MN', role:'Shareholder',     pct:4.95, isExternal:false, shId:'sh6'},
+    {id:'s-c1-4', name:'Mari Almunif',     initials:'MR', role:'Shareholder',     pct:4.95, isExternal:false, shId:'sh5'},
+    {id:'s-c1-5', name:'Ibrahim Almunif',  initials:'IA', role:'Shareholder',     pct:4.95, isExternal:false, shId:'sh3'},
+    {id:'s-c1-6', name:'Ali Almunif',      initials:'AL', role:'Shareholder',     pct:4.95, isExternal:false, shId:'sh2'},
+    {id:'s-c1-7', name:'Maha Almunif',     initials:'MA', role:'Shareholder',     pct:4.95, isExternal:false, shId:'sh4'}
+  ],
+  'di-olaya': [
+    {id:'s-ol-1', name:'Abdullah Almunif', initials:'AA', role:'Shareholder', pct:50, isExternal:false, shId:'sh1'},
+    {id:'s-ol-2', name:'Ibrahim Almunif',  initials:'IA', role:'Shareholder', pct:25, isExternal:false, shId:'sh3'},
+    {id:'s-ol-3', name:'Ali Almunif',      initials:'AL', role:'Shareholder', pct:25, isExternal:false, shId:'sh2'}
+  ]
+};
+
+// Company legal type store: { companyId: legalType }
+let INV_LEGAL_TYPE = {
+  'c1': 'Limited Liability Company (LLC)',
+  'c2': 'Closed Fund',
+  'c3': 'Closed Fund'
+};
+
+// Direct investments not via Thabat (real estate direct ownership)
+const D_DIRECT_IDS = ['di-olaya'];
+let D_DIRECT_META = {
+  'di-olaya': {id:'di-olaya', name:'Olaya Project', category:'Real Estate'}
+};
+
+// Filter state
+let _shFilter = null; // shId being filtered, or null = show all
+
+// ── INVESTMENT TREE
+let INV_TREE = {
+  id:'thabat', name:'Thabat Holding', ico:'⬡', bg:'#1A1A18', fg:'#F7F6F2',
+  desc:'Since 1998 · Almunif Family', exp:true, docs:[], children:[
+    { id:'cat-co',    name:'Companies',   ico:'🏢', bg:'#EBF2FB', fg:'#1A5FA8', desc:'Portfolio companies', exp:false, docs:[], children:[] },
+    { id:'cat-funds', name:'Funds',       ico:'📈', bg:'#EBF7F1', fg:'#1A7A4A', desc:'Investment funds',    exp:false, docs:[], children:[
+        {id:'c2',name:'Seedra Fund I', ico:'SF',bg:'#EBF7F120',fg:'#1A7A4A',desc:'Closed Fund · KSA',exp:false,docs:[],own:'21.08%',legalType:'Closed Fund',children:[]},
+        {id:'c3',name:'Seedra Fund II',ico:'S2',bg:'#EBF7F120',fg:'#1A7A4A',desc:'Closed Fund · KSA',exp:false,docs:[],own:'3.84%', legalType:'Closed Fund',children:[]}
+    ]},
+    { id:'cat-re',    name:'Real Estate', ico:'🏗', bg:'#FBF7EE', fg:'#B8860B', desc:'Real estate assets',  exp:false, docs:[], children:[] }
+  ]
+};
+
+function _buildTree(){
+  const coNode=INV_TREE.children[0], reNode=INV_TREE.children[2];
+  coNode.children=D.companies.filter(c=>c.sector!=='VC & Fund'&&c.id!=='c2'&&c.id!=='c3')
+    .map(c=>({id:c.id,name:c.name,ico:c.name.substring(0,2).toUpperCase(),
+      bg:sc(c.sector)+'22',fg:sc(c.sector),
+      desc:(INV_LEGAL_TYPE[c.id]||c.sector)+' · '+c.geo,
+      exp:false,docs:[],own:c.ownership!=null?c.ownership+'%':null,legalType:INV_LEGAL_TYPE[c.id]||'',children:[]}));
+  reNode.children=D.realEstate.map(r=>({id:r.id,name:r.name,ico:'RE',
+    bg:'#B8860B18',fg:'#B8860B',desc:r.details,exp:false,docs:[],
+    own:r.share?r.share+'%':null,legalType:INV_LEGAL_TYPE[r.id]||'',children:[]}));
+  // Also add direct investments as RE children if not already
+  D_DIRECT_IDS.forEach(did=>{
+    const dm=D_DIRECT_META[did];if(!dm)return;
+    if(dm.category==='Real Estate'&&!reNode.children.find(x=>x.id===did)){
+      reNode.children.push({id:did,name:dm.name,ico:'RE',bg:'#B8860B18',fg:'#B8860B',
+        desc:'Direct ownership · Real Estate',exp:false,docs:[],own:null,legalType:'',children:[]});
+    }
+  });
 }
+
+// ═══════════════════════════════════════════════════════
+// TAB SWITCHER
+// ═══════════════════════════════════════════════════════
+function switchOwnTab(tab){
+  document.getElementById('own-inv-pane').style.display=tab==='inv'?'block':'none';
+  document.getElementById('own-sh-pane').style.display=tab==='sh'?'block':'none';
+  const bi=document.getElementById('otab-inv'),bs=document.getElementById('otab-sh');
+  if(bi){bi.style.borderBottom=tab==='inv'?'2px solid var(--gold)':'2px solid transparent';bi.style.color=tab==='inv'?'var(--gold)':'var(--ink-soft)';}
+  if(bs){bs.style.borderBottom=tab==='sh'?'2px solid var(--gold)':'2px solid transparent';bs.style.color=tab==='sh'?'var(--gold)':'var(--ink-soft)';}
+}
+
+// ═══════════════════════════════════════════════════════
+// INVESTMENT TREE RENDER
+// ═══════════════════════════════════════════════════════
+function _findNode(id,node){
+  if(node.id===id)return node;
+  for(const c of (node.children||[])){const f=_findNode(id,c);if(f)return f;}
+  return null;
+}
+function _toggleNode(id){const n=_findNode(id,INV_TREE);if(n){n.exp=!n.exp;_renderTree();}}
+function _renderTree(){
+  const root=document.getElementById('inv-tree-root');if(!root)return;
+  root.innerHTML='';root.appendChild(_buildNodeEl(INV_TREE,0));
+}
+function _buildNodeEl(node,depth){
+  const wrap=document.createElement('div');wrap.style.marginBottom='3px';
+  const hasKids=(node.children||[]).length>0;
+  const row=document.createElement('div');
+  row.style.cssText='display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:var(--rs);border:1px solid transparent;transition:all .12s';
+  row.onmouseenter=()=>{row.style.background='var(--surface-2)';row.style.borderColor='var(--border)';acts.style.opacity='1';};
+  row.onmouseleave=()=>{row.style.background='';row.style.borderColor='transparent';acts.style.opacity='0';};
+  const tog=document.createElement('div');
+  tog.style.cssText='width:18px;height:18px;border-radius:4px;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink-soft);flex-shrink:0;user-select:none;transition:all .12s';
+  if(hasKids){tog.style.cursor='pointer';tog.textContent=node.exp?'−':'+';tog.onclick=e=>{e.stopPropagation();_toggleNode(node.id);};tog.onmouseenter=()=>{tog.style.background='var(--gold-bg)';tog.style.borderColor='var(--gold-border)';tog.style.color='var(--gold)';};tog.onmouseleave=()=>{tog.style.background='var(--surface)';tog.style.borderColor='var(--border)';tog.style.color='var(--ink-soft)';};}
+  else{tog.style.opacity='0';tog.style.pointerEvents='none';}
+  const ico=document.createElement('div');
+  ico.style.cssText=`width:32px;height:32px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;background:${node.bg};color:${node.fg}`;
+  ico.textContent=node.ico;
+  const lbl=document.createElement('div');lbl.style.cssText='flex:1;min-width:0';
+  const lt=node.legalType?`<span style="font-size:9px;padding:1px 6px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);color:var(--ink-dim);margin-left:5px">${node.legalType}</span>`:'';
+  lbl.innerHTML=`<div style="font-size:13px;font-weight:500;color:var(--ink);display:flex;align-items:center">${node.name}${lt}</div>${node.desc?`<div style="font-size:10px;color:var(--ink-soft);margin-top:1px">${node.desc}</div>`:''}`;
+  const acts=document.createElement('div');acts.style.cssText='display:flex;align-items:center;gap:5px;opacity:0;transition:opacity .12s;flex-shrink:0';
+  if(node.own){const ob=document.createElement('span');ob.style.cssText='font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)';ob.textContent=node.own;acts.appendChild(ob);}
+  // Shareholders btn (only for leaf investment nodes)
+  const isLeaf=!hasKids&&node.depth!==0&&!['thabat','cat-co','cat-funds','cat-re'].includes(node.id);
+  if(isLeaf||(!hasKids&&depth>0)){
+    const shBtn=document.createElement('button');
+    const shCount=(INV_SHAREHOLDERS[node.id]||[]).length;
+    shBtn.textContent='👥 Shareholders'+(shCount?` (${shCount})`:'');
+    shBtn.style.cssText='padding:3px 9px;border-radius:5px;font-size:11px;border:1px solid rgba(26,122,74,.35);background:var(--green-bg,#EBF7F1);color:#1A7A4A;cursor:pointer;font-family:Geist,sans-serif;white-space:nowrap';
+    shBtn.onclick=e=>{e.stopPropagation();_openShModal(node.id,node.name);};
+    acts.appendChild(shBtn);
+  }
+  const editBtn=document.createElement('button');editBtn.textContent='✏️ Edit';
+  editBtn.style.cssText='padding:3px 9px;border-radius:5px;font-size:11px;border:1px solid var(--border);background:var(--surface);color:var(--ink-soft);cursor:pointer;font-family:Geist,sans-serif;white-space:nowrap';
+  editBtn.onclick=e=>{e.stopPropagation();_openNodeEdit(node.id);};
+  editBtn.onmouseenter=()=>{editBtn.style.background='var(--gold-bg)';editBtn.style.borderColor='var(--gold-border)';editBtn.style.color='var(--gold)';};
+  editBtn.onmouseleave=()=>{editBtn.style.background='var(--surface)';editBtn.style.borderColor='var(--border)';editBtn.style.color='var(--ink-soft)';};
+  const docBtn=document.createElement('button');const dc=(node.docs||[]).length;
+  docBtn.textContent='📎 Docs'+(dc?` (${dc})`:'');
+  docBtn.style.cssText='padding:3px 9px;border-radius:5px;font-size:11px;border:1px solid rgba(26,95,168,.35);background:var(--blue-bg);color:var(--blue);cursor:pointer;font-family:Geist,sans-serif;white-space:nowrap';
+  docBtn.onclick=e=>{e.stopPropagation();_openNodeDocs(node.id);};
+  acts.appendChild(editBtn);acts.appendChild(docBtn);
+  row.appendChild(tog);row.appendChild(ico);row.appendChild(lbl);row.appendChild(acts);
+  wrap.appendChild(row);
+  if(hasKids&&node.exp){
+    const cw=document.createElement('div');
+    cw.style.cssText=`margin-left:${depth===0?20:18}px;padding-left:14px;border-left:1px dashed var(--border);margin-top:2px`;
+    (node.children||[]).forEach(c=>cw.appendChild(_buildNodeEl(c,depth+1)));
+    wrap.appendChild(cw);
+  }
+  return wrap;
+}
+
+// ── Node Edit Modal (now includes Legal Type)
+let _editNid=null;
+function _openNodeEdit(id){
+  _editNid=id;const n=_findNode(id,INV_TREE);if(!n)return;
+  const ltOptions=LEGAL_TYPES.map(t=>`<option${(n.legalType||'')==t?' selected':''}>${t}</option>`).join('');
+  document.getElementById('m-ne-body').innerHTML=`
+    <div style="font-family:'Instrument Serif',serif;font-size:16px;margin-bottom:16px">Edit — ${n.name}</div>
+    <div class="ff"><label>Name</label><input id="ne-nm" value="${n.name}" style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-family:Geist,sans-serif;font-size:13px;color:var(--ink);outline:none;width:100%"/></div>
+    <div class="ff"><label>Description / Notes</label><input id="ne-ds" value="${n.desc||''}" style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-family:Geist,sans-serif;font-size:13px;color:var(--ink);outline:none;width:100%"/></div>
+    <div class="ff"><label>Legal Type</label><select id="ne-lt" style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-family:Geist,sans-serif;font-size:13px;color:var(--ink);outline:none;width:100%"><option value="">— None —</option>${ltOptions}</select></div>
+    ${n.own!==undefined?`<div class="ff"><label>Thabat Ownership %</label><input id="ne-ow" value="${n.own||''}" style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-family:Geist,sans-serif;font-size:13px;color:var(--ink);outline:none;width:100%"/></div>`:''}
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px">
+      <button onclick="closeMo('m-ne')" style="padding:8px 16px;border-radius:var(--rs);border:1px solid var(--border);background:none;font-family:Geist,sans-serif;font-size:12px;cursor:pointer">Cancel</button>
+      <button onclick="_saveNodeEdit()" style="padding:8px 16px;border-radius:var(--rs);border:none;background:var(--ink);color:#F7F6F2;font-family:Geist,sans-serif;font-size:12px;font-weight:500;cursor:pointer">Save</button>
+    </div>`;
+  openMo('m-ne');
+}
+function _saveNodeEdit(){
+  const n=_findNode(_editNid,INV_TREE);if(!n)return;
+  n.name=document.getElementById('ne-nm').value.trim()||n.name;
+  n.desc=document.getElementById('ne-ds').value.trim();
+  const lt=document.getElementById('ne-lt').value;
+  n.legalType=lt;if(lt)INV_LEGAL_TYPE[n.id]=lt;
+  const oe=document.getElementById('ne-ow');if(oe)n.own=oe.value.trim()||null;
+  closeMo('m-ne');_renderTree();_renderInvList();
+}
+
+// ── Node Docs Modal
+let _docsNid=null;
+const DOC_TYPES=['Commercial Registration (CR)','Articles of Association (AOA)','Audited Financials','Share Certificate','Investment Agreement','Board Resolution','Other'];
+function _openNodeDocs(id){_docsNid=id;_renderDocsMo();openMo('m-nd');}
+function _renderDocsMo(){
+  const n=_findNode(_docsNid,INV_TREE);if(!n)return;
+  const docs=n.docs||[];
+  const list=docs.length?docs.map((d,i)=>`
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:var(--rs);border:1px solid var(--border);margin-bottom:5px">
+      <span style="font-size:10px;padding:2px 7px;border-radius:8px;background:var(--blue-bg);color:var(--blue);font-weight:600;white-space:nowrap">${d.type.split('(')[0].trim()}</span>
+      <span style="flex:1;font-size:12px;color:var(--ink-mid)">${d.name}</span>
+      <span style="font-size:10px;color:var(--ink-dim)">${d.date||''}</span>
+      <button onclick="_rmDoc(${i})" style="background:none;border:none;color:var(--ink-dim);cursor:pointer;font-size:16px;line-height:1;padding:0 2px">×</button>
+    </div>`).join('')
+    :'<div style="font-size:12px;color:var(--ink-dim);text-align:center;padding:14px 0">No documents yet.</div>';
+  document.getElementById('m-nd-body').innerHTML=`
+    <div style="font-family:'Instrument Serif',serif;font-size:16px;margin-bottom:14px">Documents — ${n.name}</div>
+    <div id="nd-list">${list}</div>
+    <div style="border-top:1px solid var(--border);margin-top:14px;padding-top:14px">
+      <div style="font-size:11px;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Add Document</div>
+      <div style="display:flex;gap:7px;margin-bottom:8px">
+        <select id="nd-tp" style="flex:1;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 10px;font-family:Geist,sans-serif;font-size:12px;color:var(--ink);outline:none">${DOC_TYPES.map(t=>`<option>${t}</option>`).join('')}</select>
+        <input id="nd-nm" placeholder="Name / year e.g. CR 2024" style="flex:1.5;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 10px;font-family:Geist,sans-serif;font-size:12px;color:var(--ink);outline:none"/>
+      </div>
+      <button onclick="_addDoc()" style="width:100%;padding:9px;border-radius:var(--rs);border:none;background:var(--ink);color:#F7F6F2;font-family:Geist,sans-serif;font-size:12px;font-weight:500;cursor:pointer">+ Add Document</button>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:12px">
+      <button onclick="closeMo('m-nd')" style="padding:7px 14px;border-radius:var(--rs);border:1px solid var(--border);background:none;font-family:Geist,sans-serif;font-size:12px;cursor:pointer">Close</button>
+    </div>`;
+}
+function _addDoc(){
+  const n=_findNode(_docsNid,INV_TREE);if(!n)return;
+  const tp=document.getElementById('nd-tp').value;
+  const nm=document.getElementById('nd-nm').value.trim()||tp;
+  if(!n.docs)n.docs=[];
+  n.docs.push({type:tp,name:nm,date:new Date().toLocaleDateString('en-SA',{year:'numeric',month:'short'})});
+  _renderDocsMo();_renderTree();
+}
+function _rmDoc(i){const n=_findNode(_docsNid,INV_TREE);if(!n||!n.docs)return;n.docs.splice(i,1);_renderDocsMo();_renderTree();}
+
+// ═══════════════════════════════════════════════════════
+// PER-INVESTMENT SHAREHOLDERS MODAL
+// ═══════════════════════════════════════════════════════
+let _shModalInvId=null, _shModalInvName='';
+function _openShModal(invId, invName){
+  _shModalInvId=invId; _shModalInvName=invName;
+  if(!INV_SHAREHOLDERS[invId])INV_SHAREHOLDERS[invId]=[];
+  _renderShModal();openMo('m-inv-sh');
+}
+function _renderShModal(){
+  const rows=INV_SHAREHOLDERS[_shModalInvId]||[];
+  const totalPct=rows.reduce((s,r)=>s+parseFloat(r.pct||0),0);
+  const pctColor=Math.abs(totalPct-100)<0.01?'var(--green,#1A7A4A)':totalPct>100?'var(--red,#C0392B)':'var(--gold)';
+
+  // Build known shareholders dropdown options
+  const knownOpts=D.shareholders.map(s=>`<option value="${s.id}">${s.name}</option>`).join('');
+
+  const list=rows.map((r,i)=>`
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:var(--rs);border:1px solid var(--border);background:var(--surface-2);margin-bottom:5px">
+      <div style="width:28px;height:28px;border-radius:50%;background:${r.isHolding?'#1A1A18':'linear-gradient(135deg,#2D2D28,var(--ink))'};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#F7F6F2;flex-shrink:0">${r.initials}</div>
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:500;color:var(--ink)">${r.name}</div>
+        <div style="font-size:10px;color:var(--ink-soft)">${r.role}${r.isExternal?'<span style="margin-left:5px;font-size:9px;padding:1px 5px;border-radius:4px;background:#FBF7EE;color:#B8860B;border:1px solid #E8D5A0">External</span>':''}</div>
+      </div>
+      <span style="font-size:12px;font-weight:600;color:var(--gold);min-width:42px;text-align:right">${r.pct}%</span>
+      <button onclick="_editShRow(${i})" style="background:none;border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:10px;color:var(--ink-dim);cursor:pointer;font-family:Geist,sans-serif">✏️</button>
+      <button onclick="_rmShRow(${i})" style="background:none;border:none;color:var(--ink-dim);cursor:pointer;font-size:16px;line-height:1;padding:0 3px">×</button>
+    </div>`).join('') || '<div style="font-size:12px;color:var(--ink-dim);text-align:center;padding:14px 0">No shareholders yet.</div>';
+
+  document.getElementById('m-inv-sh-body').innerHTML=`
+    <div style="font-family:'Instrument Serif',serif;font-size:16px;margin-bottom:6px">Shareholders — ${_shModalInvName}</div>
+    <div style="font-size:11px;color:var(--ink-soft);margin-bottom:14px">Total allocated: <strong style="color:${pctColor}">${totalPct.toFixed(2)}%</strong> ${Math.abs(totalPct-100)<0.01?'✓':totalPct>100?'⚠️ Over 100%':'('+( 100-totalPct).toFixed(2)+'% unallocated)'}</div>
+    <div id="sh-modal-list">${list}</div>
+    <div style="border-top:1px solid var(--border);margin-top:14px;padding-top:14px" id="sh-add-form">
+      <div style="font-size:11px;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Add Shareholder</div>
+      <div style="display:flex;gap:6px;margin-bottom:8px;align-items:center">
+        <label style="font-size:11px;color:var(--ink-soft);white-space:nowrap">Type:</label>
+        <select id="sh-add-type" onchange="_toggleShAddType()" style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:8px 10px;font-family:Geist,sans-serif;font-size:12px;color:var(--ink);outline:none;flex:1">
+          <option value="holding">Thabat Holding</option>
+          <option value="known">Known Shareholder (Almunif family)</option>
+          <option value="external">External / New Shareholder</option>
+        </select>
+      </div>
+      <div id="sh-add-known-wrap" style="display:none;margin-bottom:8px">
+        <select id="sh-add-known" style="width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 10px;font-family:Geist,sans-serif;font-size:12px;color:var(--ink);outline:none">${knownOpts}</select>
+      </div>
+      <div id="sh-add-ext-wrap" style="display:none;margin-bottom:8px">
+        <input id="sh-add-ext-name" placeholder="Full name" style="width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 10px;font-family:Geist,sans-serif;font-size:12px;color:var(--ink);outline:none;margin-bottom:6px"/>
+        <input id="sh-add-ext-role" placeholder="Role (e.g. Investor, Partner)" style="width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 10px;font-family:Geist,sans-serif;font-size:12px;color:var(--ink);outline:none"/>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:10px">
+        <label style="font-size:11px;color:var(--ink-soft);white-space:nowrap">Ownership %:</label>
+        <input id="sh-add-pct" type="number" min="0" max="100" step="0.01" placeholder="e.g. 25" style="flex:1;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 10px;font-family:Geist,sans-serif;font-size:12px;color:var(--ink);outline:none"/>
+      </div>
+      <button onclick="_addShRow()" style="width:100%;padding:9px;border-radius:var(--rs);border:none;background:var(--ink);color:#F7F6F2;font-family:Geist,sans-serif;font-size:12px;font-weight:500;cursor:pointer">+ Add Shareholder</button>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:12px">
+      <button onclick="closeMo('m-inv-sh');_renderInvList();oshSearch(document.getElementById('osh-inp')?document.getElementById('osh-inp').value:'')" style="padding:7px 14px;border-radius:var(--rs);border:1px solid var(--border);background:none;font-family:Geist,sans-serif;font-size:12px;cursor:pointer">Done</button>
+    </div>`;
+  _toggleShAddType();
+}
+function _toggleShAddType(){
+  const t=document.getElementById('sh-add-type');if(!t)return;
+  document.getElementById('sh-add-known-wrap').style.display=t.value==='known'?'block':'none';
+  document.getElementById('sh-add-ext-wrap').style.display=t.value==='external'?'block':'none';
+}
+function _addShRow(){
+  const type=document.getElementById('sh-add-type').value;
+  const pct=parseFloat(document.getElementById('sh-add-pct').value||0);
+  if(!pct||isNaN(pct))return;
+  if(!INV_SHAREHOLDERS[_shModalInvId])INV_SHAREHOLDERS[_shModalInvId]=[];
+  if(type==='holding'){
+    INV_SHAREHOLDERS[_shModalInvId].push({id:'s-'+Date.now(),name:'Thabat Holding',initials:'⬡',role:'Holding Company',pct,isExternal:false,isHolding:true});
+  } else if(type==='known'){
+    const shId=document.getElementById('sh-add-known').value;
+    const sh=D.shareholders.find(x=>x.id===shId);if(!sh)return;
+    INV_SHAREHOLDERS[_shModalInvId].push({id:'s-'+Date.now(),name:sh.name,initials:sh.initials,role:'Shareholder',pct,isExternal:false,shId});
+  } else {
+    const name=document.getElementById('sh-add-ext-name').value.trim();if(!name)return;
+    const role=document.getElementById('sh-add-ext-role').value.trim()||'Investor';
+    const initials=name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+    INV_SHAREHOLDERS[_shModalInvId].push({id:'s-'+Date.now(),name,initials,role,pct,isExternal:true});
+  }
+  _renderShModal();
+}
+function _rmShRow(i){INV_SHAREHOLDERS[_shModalInvId].splice(i,1);_renderShModal();}
+function _editShRow(i){
+  const row=INV_SHAREHOLDERS[_shModalInvId][i];
+  const newPct=parseFloat(prompt(`Edit ownership % for ${row.name}:`, row.pct));
+  if(!isNaN(newPct)&&newPct>=0){row.pct=newPct;_renderShModal();}
+}
+
+// ═══════════════════════════════════════════════════════
+// SHAREHOLDER STRUCTURE — GRID + FILTER
+// ═══════════════════════════════════════════════════════
+function _renderShGrid(){
+  const g=document.getElementById('osh-sh-grid');if(!g)return;
+  g.innerHTML=D.shareholders.map(sh=>{
+    const isActive=_shFilter===sh.id;
+    return`<div style="background:var(--surface);border:${isActive?'2px solid var(--gold)':'1.5px solid var(--border)'};border-radius:var(--r);padding:12px 8px;text-align:center;box-shadow:var(--sh);position:relative;cursor:pointer;transition:all .15s"
+      onclick="_toggleShFilter('${sh.id}')" title="Click to filter by ${sh.name}">
+      ${isActive?`<div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);border-radius:var(--r) var(--r) 0 0"></div>`:''}
+      <button onclick="event.stopPropagation();_openShEdit('${sh.id}')" title="Edit" style="position:absolute;top:8px;right:6px;background:none;border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:10px;color:var(--ink-dim);cursor:pointer;font-family:Geist,sans-serif">✏️</button>
+      <div style="width:34px;height:34px;background:${isActive?'linear-gradient(135deg,var(--gold),#D4A017)':'linear-gradient(135deg,#2D2D28,var(--ink))'};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#F7F6F2;margin:0 auto 7px">${sh.initials}</div>
+      <div style="font-size:11px;font-weight:500;color:var(--ink);margin-bottom:2px">${sh.name}</div>
+      <div style="font-size:10px;color:var(--ink-dim)">${sh.role}</div>
+      ${isActive?`<div style="font-size:9px;color:var(--gold);font-weight:600;margin-top:4px">FILTERING ✓</div>`:''}
+    </div>`;}).join('');
+
+  // Filter hint
+  const hint=document.getElementById('sh-filter-hint');
+  if(hint){
+    if(_shFilter){
+      const sh=D.shareholders.find(x=>x.id===_shFilter);
+      hint.innerHTML=`<span style="color:var(--gold)">🔍 Showing investments for <strong>${sh?sh.name:''}</strong></span> <button onclick="_toggleShFilter(null)" style="margin-left:8px;background:none;border:1px solid var(--gold-border);border-radius:4px;padding:2px 8px;font-size:10px;color:var(--gold);cursor:pointer;font-family:Geist,sans-serif">✕ Clear filter</button>`;
+      hint.style.display='block';
+    } else {
+      hint.style.display='none';
+    }
+  }
+}
+function _toggleShFilter(shId){
+  _shFilter=(_shFilter===shId)?null:shId;
+  _renderShGrid();_renderInvList();
+}
+
+// Shareholder Edit Modal
+let _editShId=null;
+function _openShEdit(id){
+  _editShId=id;const sh=D.shareholders.find(x=>x.id===id);if(!sh)return;
+  document.getElementById('m-sh-body').innerHTML=`
+    <div style="font-family:'Instrument Serif',serif;font-size:16px;margin-bottom:16px">Edit Shareholder</div>
+    <div class="ff"><label>Full Name</label><input id="she-nm" value="${sh.name}" style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-family:Geist,sans-serif;font-size:13px;color:var(--ink);outline:none;width:100%"/></div>
+    <div class="ff"><label>Role / Title</label><input id="she-rl" value="${sh.role}" style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-family:Geist,sans-serif;font-size:13px;color:var(--ink);outline:none;width:100%"/></div>
+    <div class="ff"><label>Initials (2 letters)</label><input id="she-in" value="${sh.initials}" maxlength="2" style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-family:Geist,sans-serif;font-size:13px;color:var(--ink);outline:none;width:100%"/></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px">
+      <button onclick="closeMo('m-sh')" style="padding:8px 16px;border-radius:var(--rs);border:1px solid var(--border);background:none;font-family:Geist,sans-serif;font-size:12px;cursor:pointer">Cancel</button>
+      <button onclick="_saveShEdit()" style="padding:8px 16px;border-radius:var(--rs);border:none;background:var(--ink);color:#F7F6F2;font-family:Geist,sans-serif;font-size:12px;font-weight:500;cursor:pointer">Save</button>
+    </div>`;
+  openMo('m-sh');
+}
+function _saveShEdit(){
+  const sh=D.shareholders.find(x=>x.id===_editShId);if(!sh)return;
+  sh.name=document.getElementById('she-nm').value.trim()||sh.name;
+  sh.role=document.getElementById('she-rl').value.trim()||sh.role;
+  sh.initials=document.getElementById('she-in').value.trim().toUpperCase()||sh.initials;
+  closeMo('m-sh');_renderShGrid();_renderInvList();
+}
+
+// ═══════════════════════════════════════════════════════
+// INVESTMENT OWNERSHIP LIST (with filter + categories)
+// ═══════════════════════════════════════════════════════
+function _renderInvList(){
+  const con=document.getElementById('osh-inv-list');if(!con)return;
+  const fsh=_shFilter?D.shareholders.find(x=>x.id===_shFilter):null;
+
+  // Helper: does this investment involve the filtered shareholder?
+  function _invHasSh(invId, shId){
+    const rows=INV_SHAREHOLDERS[invId]||[];
+    return rows.some(r=>r.shId===shId||(r.isHolding&&false)); // holding is always included unless filtering
+  }
+
+  const av=(init,isH=false)=>`<div style="width:22px;height:22px;border-radius:50%;background:${isH?'#1A1A18':'linear-gradient(135deg,#2D2D28,var(--ink))'};display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#F7F6F2;flex-shrink:0">${init}</div>`;
+  const pctBadge=p=>`<span style="font-size:11px;font-weight:600;padding:2px 7px;border-radius:8px;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)">${p}%</span>`;
+  const secTitle=(t,ico)=>`<div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin:14px 0 8px;display:flex;align-items:center;gap:5px"><span>${ico}</span>${t}</div>`;
+  const ltBadge=lt=>lt?`<span style="font-size:9px;padding:1px 6px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);color:var(--ink-dim);margin-left:6px">${lt}</span>`:'';
+
+  function renderInvRow(invId, name, colBg, colFg, ico, detailText, thabatPct, lt){
+    const shRows=INV_SHAREHOLDERS[invId]||[];
+    // Filter: if shareholder filter active, only show if this investor is in the list
+    if(fsh&&!shRows.some(r=>r.shId===fsh.id))return '';
+    // If filter active, only show this shareholder's row
+    const displayRows=fsh?shRows.filter(r=>r.shId===fsh.id):shRows;
+    const hasRows=displayRows.length>0;
+    return`<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:10px 13px;margin-bottom:6px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:${hasRows?'9px':'0'}">
+        <div style="width:26px;height:26px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:${colBg};color:${colFg};flex-shrink:0">${ico}</div>
+        <div style="flex:1"><div style="font-size:12px;font-weight:500;color:var(--ink);display:flex;align-items:center">${name}${ltBadge(lt)}</div><div style="font-size:10px;color:var(--ink-dim)">${detailText}</div></div>
+        ${thabatPct?pctBadge(thabatPct):''}
+      </div>
+      ${hasRows?`<div style="margin-left:32px;border-left:1px dashed var(--border);padding-left:10px">
+        ${displayRows.map(r=>`<div style="display:flex;align-items:center;gap:7px;padding:4px 0;border-bottom:1px solid var(--border)">
+          ${av(r.initials,r.isHolding)}
+          <div style="flex:1;font-size:11px;color:var(--ink-mid)">${r.name}${r.isExternal?'<span style="margin-left:4px;font-size:9px;padding:1px 4px;border-radius:3px;background:#FBF7EE;color:#B8860B;border:1px solid #E8D5A0">Ext</span>':''}</div>
+          <span style="font-size:11px;font-weight:600;color:var(--gold)">${r.pct}%</span>
+        </div>`).join('')}
+      </div>`:''}
+    </div>`;
+  }
+
+  let h='';
+
+  // ── COMPANIES
+  const companies=D.companies.filter(c=>c.id!=='c2'&&c.id!=='c3');
+  const coRows=companies.map(c=>renderInvRow(c.id,c.name,sc(c.sector)+'20',sc(c.sector),c.name.substring(0,2).toUpperCase(),`${INV_LEGAL_TYPE[c.id]||c.sector} · ${c.geo}`,c.ownership,INV_LEGAL_TYPE[c.id]||'')).filter(Boolean);
+  if(!fsh||coRows.length){
+    h+=secTitle('COMPANIES','🏢');
+    h+=coRows.length?coRows.join(''):`<div style="font-size:12px;color:var(--ink-dim);padding:8px 10px">${fsh?'No company investments for this shareholder.':'No companies.'}</div>`;
+  }
+
+  // ── FUNDS
+  const funds=[{id:'c2',name:'Seedra Fund I',own:21.08},{id:'c3',name:'Seedra Fund II',own:3.84}];
+  const fundRows=funds.map(f=>renderInvRow(f.id,f.name,'#EBF7F1','#1A7A4A','📈',`${INV_LEGAL_TYPE[f.id]||'Closed Fund'} · KSA`,f.own,INV_LEGAL_TYPE[f.id]||'Closed Fund')).filter(Boolean);
+  if(!fsh||fundRows.length){
+    h+=secTitle('FUNDS','📈');
+    h+=fundRows.length?fundRows.join(''):`<div style="font-size:12px;color:var(--ink-dim);padding:8px 10px">${fsh?'No fund investments for this shareholder.':'No funds.'}</div>`;
+  }
+
+  // ── REAL ESTATE (via Thabat + direct)
+  const reRows=D.realEstate.map(r=>renderInvRow(r.id,r.name,'#B8860B18','#B8860B','RE',`${INV_LEGAL_TYPE[r.id]||'Real Estate'} · ${r.details}`,r.share,INV_LEGAL_TYPE[r.id]||'')).filter(Boolean);
+  const dirRows=D_DIRECT_IDS.map(did=>{
+    const dm=D_DIRECT_META[did];if(!dm||dm.category!=='Real Estate')return'';
+    return renderInvRow(did,dm.name,'#B8860B18','#B8860B','RE','Real Estate · Direct ownership',null,'');
+  }).filter(Boolean);
+  const allReRows=[...reRows,...dirRows];
+  if(!fsh||allReRows.length){
+    h+=secTitle('REAL ESTATE','🏗');
+    h+=allReRows.length?allReRows.join(''):`<div style="font-size:12px;color:var(--ink-dim);padding:8px 10px">${fsh?'No real estate investments for this shareholder.':'No real estate.'}</div>`;
+  }
+
+  con.innerHTML=h;
+}
+
+// ═══════════════════════════════════════════════════════
+// SEARCH + HIERARCHY
+// ═══════════════════════════════════════════════════════
+function _getSearchEntities(){
+  const e=[];
+  e.push({id:'thabat',name:'Thabat Holding',type:'Holding',ico:'⬡'});
+  D.shareholders.forEach(s=>e.push({id:s.id,name:s.name,type:'Shareholder',ico:'👤'}));
+  D.companies.forEach(c=>e.push({id:c.id,name:c.name,type:'Company',ico:'🏢'}));
+  D.realEstate.forEach(r=>e.push({id:r.id,name:r.name,type:'Real Estate',ico:'🏠'}));
+  D_DIRECT_IDS.forEach(did=>{const dm=D_DIRECT_META[did];if(dm&&!e.find(x=>x.name===dm.name))e.push({id:did,name:dm.name,type:'Direct Investment',ico:'🏗'});});
+  // Also add external shareholders from INV_SHAREHOLDERS
+  Object.values(INV_SHAREHOLDERS).forEach(rows=>rows.filter(r=>r.isExternal).forEach(r=>{if(!e.find(x=>x.name===r.name))e.push({id:r.id,name:r.name,type:'External Investor',ico:'👤'});}));
+  return e;
+}
+function oshSearch(val){
+  const dd=document.getElementById('osh-drop');if(!dd)return;
+  if(!val||val.trim().length<1){dd.style.display='none';return;}
+  const q=val.trim().toLowerCase();
+  const matches=_getSearchEntities().filter(e=>e.name.toLowerCase().startsWith(q)||e.name.toLowerCase().includes(q));
+  if(!matches.length){dd.innerHTML='<div style="padding:11px 13px;font-size:12px;color:var(--ink-dim);text-align:center">No results found</div>';dd.style.display='block';return;}
+  dd.innerHTML=matches.slice(0,8).map(m=>{
+    const safe=val.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const hl=m.name.replace(new RegExp('('+safe+')','gi'),'<strong style="color:var(--gold)">$1</strong>');
+    return`<div style="display:flex;align-items:center;gap:9px;padding:9px 13px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.04)" onmousedown="oshSelect('${m.id}')" onmouseenter="this.style.background='var(--surface-2)'" onmouseleave="this.style.background=''">
+      <span style="font-size:15px">${m.ico}</span>
+      <span style="font-size:12px;font-weight:500;color:var(--ink);flex:1">${hl}</span>
+      <span style="font-size:10px;color:var(--ink-dim)">${m.type}</span>
+    </div>`;}).join('');
+  dd.style.display='block';
+}
+function oshHideDrop(){const dd=document.getElementById('osh-drop');if(dd)dd.style.display='none';}
+function oshSelect(id){
+  oshHideDrop();const ent=_getSearchEntities().find(e=>e.id===id);
+  if(ent)document.getElementById('osh-inp').value=ent.name;
+  oshShowHier(id);
+}
+function oshShowHier(id){
+  const nm=document.getElementById('osh-hier-name'),sub=document.getElementById('osh-hier-sub'),
+        ico=document.getElementById('osh-hier-ico'),body=document.getElementById('osh-hier-body'),
+        view=document.getElementById('osh-hier');
+  let h='';
+  const hierRow=(i,name,role,pct,isExt=false)=>`<div style="display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--rs);border:1px solid var(--border);background:var(--surface-2);margin-bottom:5px">
+    <span style="font-size:13px">${i}</span>
+    <div style="flex:1"><div style="font-size:12px;font-weight:500;color:var(--ink)">${name}${isExt?'<span style="margin-left:5px;font-size:9px;padding:1px 5px;border-radius:4px;background:#FBF7EE;color:#B8860B;border:1px solid #E8D5A0">External</span>':''}</div><div style="font-size:10px;color:var(--ink-soft)">${role}</div></div>
+    <span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:8px;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)">${pct}</span>
+  </div>`;
+  const secT=t=>`<div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-dim);margin:12px 0 8px">${t}</div>`;
+
+  if(id==='thabat'){
+    nm.textContent='Thabat Holding';sub.textContent='Since 1998 · Almunif Family';
+    ico.textContent='⬡';ico.style.cssText='width:36px;height:36px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#1A1A18;color:#F7F6F2';
+    h+=secT('SHAREHOLDERS');D.shareholders.forEach(s=>h+=hierRow('👤',s.name,s.role,s.pct+'%'));
+    h+=secT('INVESTMENTS');
+    D.companies.filter(c=>c.id!=='c2'&&c.id!=='c3').forEach(c=>h+=hierRow('🏢',c.name,INV_LEGAL_TYPE[c.id]||c.sector,c.ownership!=null?c.ownership+'%':'—'));
+    D.realEstate.forEach(r=>h+=hierRow('🏠',r.name,r.details,r.share?r.share+'%':'—'));
+    D_DIRECT_IDS.forEach(did=>{const dm=D_DIRECT_META[did];if(dm)h+=hierRow('🏗',dm.name,'Direct Investment','—');});
+  } else {
+    const sh=D.shareholders.find(x=>x.id===id);
+    const co=D.companies.find(x=>x.id===id);
+    const re=D.realEstate.find(x=>x.id===id);
+    const di=D_DIRECT_IDS.includes(id)?D_DIRECT_META[id]:null;
+    // External investor search
+    let extRows=[];
+    Object.entries(INV_SHAREHOLDERS).forEach(([invId,rows])=>{
+      const r=rows.find(x=>x.id===id);
+      if(r&&r.isExternal)extRows.push({invId,r});
+    });
+
+    if(sh){
+      nm.textContent=sh.name;sub.textContent=sh.role+' · Thabat Holding';
+      ico.textContent=sh.initials;ico.style.cssText='width:36px;height:36px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;background:linear-gradient(135deg,#2D2D28,var(--ink));color:#F7F6F2';
+      h+=secT('OWNERSHIP IN THABAT HOLDING');h+=hierRow('⬡','Thabat Holding','Principal holding company',sh.pct+'%');
+      // Company stakes via INV_SHAREHOLDERS
+      const coStakes=Object.entries(INV_SHAREHOLDERS).filter(([,rows])=>rows.some(r=>r.shId===sh.id));
+      if(coStakes.length){
+        h+=secT('DIRECT COMPANY STAKES');
+        coStakes.forEach(([invId,rows])=>{
+          const r=rows.find(x=>x.shId===sh.id);
+          const c=D.companies.find(x=>x.id===invId);
+          const dm=D_DIRECT_META[invId];
+          const invName=c?c.name:(dm?dm.name:invId);
+          const lt=INV_LEGAL_TYPE[invId]||'';
+          h+=hierRow(c?'🏢':'🏗',invName,lt||'Investment',r?r.pct+'%':'—');
+        });
+      }
+    } else if(co){
+      nm.textContent=co.name;sub.textContent=(INV_LEGAL_TYPE[co.id]||co.sector)+' · '+co.geo;
+      ico.textContent=co.name.substring(0,2).toUpperCase();ico.style.cssText=`width:36px;height:36px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;background:${sc(co.sector)}22;color:${sc(co.sector)}`;
+      const shMap=INV_SHAREHOLDERS[co.id];
+      if(shMap&&shMap.length){
+        h+=secT('OWNERSHIP STRUCTURE');
+        shMap.forEach(r=>h+=hierRow(r.isHolding?'⬡':'👤',r.name,r.isHolding?'Holding company':r.role,r.pct+'%',r.isExternal));
+      } else {
+        h+=secT('HELD BY');h+=hierRow('⬡','Thabat Holding','Principal holding company',co.ownership!=null?co.ownership+'%':'—');
+      }
+    } else if(re){
+      nm.textContent=re.name;sub.textContent=re.details;
+      ico.textContent='RE';ico.style.cssText='width:36px;height:36px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;background:#B8860B18;color:#B8860B';
+      const shMap=INV_SHAREHOLDERS[re.id];
+      if(shMap&&shMap.length){h+=secT('OWNERS');shMap.forEach(r=>h+=hierRow('👤',r.name,r.role,r.pct+'%',r.isExternal));}
+      else{h+=secT('HELD BY');h+=hierRow('⬡','Thabat Holding','Principal holding company',re.share?re.share+'%':'—');}
+    } else if(di){
+      nm.textContent=di.name;sub.textContent=di.category+' · Direct';
+      ico.textContent='🏗';ico.style.cssText='width:36px;height:36px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#B8860B18;color:#B8860B';
+      const shMap=INV_SHAREHOLDERS[id];
+      if(shMap&&shMap.length){h+=secT('DIRECT OWNERS');shMap.forEach(r=>h+=hierRow('👤',r.name,r.role,r.pct+'%',r.isExternal));}
+    } else if(extRows.length){
+      // External investor
+      const extName=extRows[0].r.name;
+      nm.textContent=extName;sub.textContent='External Investor';
+      ico.textContent=extRows[0].r.initials||'?';ico.style.cssText='width:36px;height:36px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;background:#FBF7EE;color:#B8860B;border:1px solid #E8D5A0';
+      h+=secT('INVESTMENTS');
+      extRows.forEach(({invId,r})=>{
+        const c=D.companies.find(x=>x.id===invId);const dm=D_DIRECT_META[invId];
+        h+=hierRow(c?'🏢':'🏗',c?c.name:(dm?dm.name:invId),'Investment',r.pct+'%',false);
+      });
+    }
+  }
+  body.innerHTML=h||'<div style="font-size:12px;color:var(--ink-dim)">No data available.</div>';
+  view.style.display='block';
+}
+function oshCloseHier(){document.getElementById('osh-hier').style.display='none';document.getElementById('osh-inp').value='';}
+
+// ═══════════════════════════════════════════════════════
+// MAIN ENTRY
+// ═══════════════════════════════════════════════════════
+function rown(){
+  _buildTree();_renderTree();_renderShGrid();_renderInvList();switchOwnTab('inv');
+}
+
 
 function rtl(){
   const con=document.getElementById('tlcont');if(!con)return;
@@ -550,16 +1152,18 @@ function odet(type,id){
   let html='';
   if(type==='company'){
     const c=D.companies.find(x=>x.id===id);if(!c)return;const docs=(D.documents||[]).filter(d=>d.entityId===id);const col=sc(c.sector);
-    html=`<div class="meh"><div class="mei" style="background:${col}20;color:${col}">${c.name.substring(0,2).toUpperCase()}</div><div><div class="men">${c.name}</div><div class="mes">${c.sector} · ${c.geo} · Since ${c.year}</div></div><span class="sp ${c.status}">${c.status}</span></div>
-    <div class="mmet"><div class="mmi"><div class="mml">Ownership</div><div class="mmv">${c.ownership!=null?c.ownership+'%':'—'}</div></div><div class="mmi"><div class="mml">Cum. Investment</div><div class="mmv">${sar(c.cumInv)}</div></div><div class="mmi"><div class="mml">Fair Value (Mkt)</div><div class="mmv">${sar(c.fvMarket)}</div></div><div class="mmi"><div class="mml">MOIC</div><div class="mmv">${c.moic||'—'}</div></div><div class="mmi"><div class="mml">Unrealized G/L</div><div class="mmv ${(c.unrealized||0)>=0?'pos':'neg'}">${c.unrealized!=null?(c.unrealized>=0?'+':'')+sar(c.unrealized):'—'}</div></div><div class="mmi"><div class="mml">Dividends</div><div class="mmv">${sar(c.dividends)}</div></div></div>
+    html=`<div class="meh"><div class="mei" style="background:${col}20;color:${col}">${c.name.substring(0,2).toUpperCase()}</div><div><div class="men">${c.name}</div><div class="mes">${c.sector} · ${c.geo} · Since ${c.year}</div></div><select class="sp ${c.status}" onchange="chgStatus('company','${c.id}',this);this.className='sp '+this.value" style="border:none;cursor:pointer;font-family:Geist,sans-serif;font-size:11px;font-weight:600;padding:2px 6px;border-radius:var(--rs);outline:none"><option value="active" ${c.status==='active'?'selected':''}>active</option><option value="inactive" ${c.status==='inactive'?'selected':''}>inactive</option><option value="closed" ${c.status==='closed'?'selected':''}>closed</option></select></div>
+    <div class="mmet"><div class="mmi"><div class="mml">Ownership</div><div class="mmv" style="display:flex;align-items:center;gap:6px"><input id="det-own-${c.id}" type="number" value="${c.ownership||''}" placeholder="—" min="0" max="100" step="0.01" style="width:70px;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:4px 7px;font-family:Geist,sans-serif;font-size:13px;font-weight:600;color:var(--ink);outline:none" oninput="syncOwnership('${c.id}',this.value)"/>%</div></div><div class="mmi"><div class="mml">Cum. Investment</div><div class="mmv">${sar(c.cumInv)}</div></div><div class="mmi"><div class="mml">Fair Value (Mkt)</div><div class="mmv">${sar(c.fvMarket)}</div></div><div class="mmi"><div class="mml">MOIC</div><div class="mmv">${c.moic||'—'}</div></div><div class="mmi"><div class="mml">Unrealized G/L</div><div class="mmv ${(c.unrealized||0)>=0?'pos':'neg'}">${c.unrealized!=null?(c.unrealized>=0?'+':'')+sar(c.unrealized):'—'}</div></div><div class="mmi"><div class="mml">Dividends</div><div class="mmv">${sar(c.dividends)}</div></div></div>
+    <div style="font-size:11px;color:var(--ink-soft);padding:6px 0 12px;border-bottom:1px solid var(--border);margin-bottom:12px">✏️ Edit ownership % and status above — changes sync live to Portfolio and Ownership pages.</div>
     <div class="mst">Documents <button class="udb" onclick="oupl('${id}','company')">+ Upload</button></div>
-    ${docs.length?docs.map(d=>`<div class="di"><div class="dii">📄</div><div><div class="din">${d.name}</div><div class="dime">${d.type} · ${d.date}</div></div></div>`).join(''):'<div class="ndoc">No documents yet. Click + Upload to add files.</div>'}`;
+    ${docs.length?docs.map(d=>`<div class="di"><div class="dii">📄</div><div><div class="din">${d.name}</div><div class="dime">${d.type} · ${d.date}</div></div></div>`).join(''):'<div class="ndoc">No documents yet. Click + Upload to add files.</div>'}\`;
   } else if(type==='realestate'){
     const r=D.realEstate.find(x=>x.id===id);if(!r)return;const docs=(D.documents||[]).filter(d=>d.entityId===id);
-    html=`<div class="meh"><div class="mei" style="background:#B8860B20;color:#B8860B">RE</div><div><div class="men">${r.name}</div><div class="mes">${r.details} · ${r.date}</div></div><span class="sp ${r.status}">${r.status}</span></div>
-    <div class="mmet"><div class="mmi"><div class="mml">Acc. Xero</div><div class="mmv" style="font-size:13px">${r.accXero}</div></div><div class="mmi"><div class="mml">Cost Amount</div><div class="mmv">${sar(r.costAmt)}</div></div><div class="mmi"><div class="mml">Valuation</div><div class="mmv">${sar(r.valuation)}</div></div><div class="mmi"><div class="mml">Share</div><div class="mmv">${r.share}%</div></div><div class="mmi"><div class="mml">Space</div><div class="mmv" style="font-size:12px">${r.space}</div></div>${r.rent?`<div class="mmi"><div class="mml">Annual Rent</div><div class="mmv">${sar(r.rent)}</div></div>`:''}</div>
+    html=`<div class="meh"><div class="mei" style="background:#B8860B20;color:#B8860B">RE</div><div><div class="men">${r.name}</div><div class="mes">${r.details} · ${r.date}</div></div><select class="sp ${r.status}" onchange="chgStatus('realestate','${r.id}',this);this.className='sp '+this.value" style="border:none;cursor:pointer;font-family:Geist,sans-serif;font-size:11px;font-weight:600;padding:2px 6px;border-radius:var(--rs);outline:none"><option value="active" ${r.status==='active'?'selected':''}>active</option><option value="inactive" ${r.status==='inactive'?'selected':''}>inactive</option><option value="closed" ${r.status==='closed'?'selected':''}>closed</option><option value="cancelled" ${r.status==='cancelled'?'selected':''}>cancelled</option></select></div>
+    <div class="mmet"><div class="mmi"><div class="mml">Acc. Xero</div><div class="mmv" style="font-size:13px">${r.accXero}</div></div><div class="mmi"><div class="mml">Cost Amount</div><div class="mmv">${sar(r.costAmt)}</div></div><div class="mmi"><div class="mml">Valuation</div><div class="mmv">${sar(r.valuation)}</div></div><div class="mmi"><div class="mml">Share</div><div class="mmv" style="display:flex;align-items:center;gap:6px"><input id="det-sh-${r.id}" type="number" value="${r.share||''}" placeholder="—" min="0" max="100" step="0.01" style="width:70px;background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--rs);padding:4px 7px;font-family:Geist,sans-serif;font-size:13px;font-weight:600;color:var(--ink);outline:none" oninput="syncREShare('${r.id}',this.value)"/>%</div></div><div class="mmi"><div class="mml">Space</div><div class="mmv" style="font-size:12px">${r.space}</div></div>${r.rent?`<div class="mmi"><div class="mml">Annual Rent</div><div class="mmv">${sar(r.rent)}</div></div>`:''}</div>
+    <div style="font-size:11px;color:var(--ink-soft);padding:6px 0 12px;border-bottom:1px solid var(--border);margin-bottom:12px">✏️ Edit share % and status above — changes sync live to Portfolio and Ownership pages.</div>
     <div class="mst">Documents <button class="udb" onclick="oupl('${id}','realestate')">+ Upload</button></div>
-    ${docs.length?docs.map(d=>`<div class="di"><div class="dii">📄</div><div><div class="din">${d.name}</div><div class="dime">${d.type} · ${d.date}</div></div></div>`).join(''):'<div class="ndoc">No documents yet.</div>'}`;
+    ${docs.length?docs.map(d=>`<div class="di"><div class="dii">📄</div><div><div class="din">${d.name}</div><div class="dime">${d.type} · ${d.date}</div></div></div>`).join(''):'<div class="ndoc">No documents yet.</div>'}\`;
   } else if(type==='shareholder'){
     const sh=D.shareholders.find(x=>x.id===id);if(!sh)return;const docs=(D.documents||[]).filter(d=>d.entityId===id);
     html=`<div class="meh"><div class="mei" style="background:#1A1A1820;color:#1A1A18;font-weight:700;font-size:15px">${sh.initials}</div><div><div class="men">${sh.name}</div><div class="mes">${sh.role}</div></div></div>
@@ -568,6 +1172,51 @@ function odet(type,id){
     ${docs.length?docs.map(d=>`<div class="di"><div class="dii">📄</div><div><div class="din">${d.name}</div><div class="dime">${d.type} · ${d.date}</div></div></div>`).join(''):'<div class="ndoc">No documents yet. Click + Upload to add ID, Passport, etc.</div>'}`;
   }
   document.getElementById('m-det-body').innerHTML=html;openMo('m-det');
+}
+
+
+// ── Status change — syncs portfolio table, detail modal class, and ownership list
+function chgStatus(type, id, sel){
+  const newStatus = sel.value;
+  sel.className = 'sp ' + newStatus;
+  if(type==='company'){
+    const c=D.companies.find(x=>x.id===id);
+    if(c){c.status=newStatus;}
+  } else if(type==='realestate'){
+    const r=D.realEstate.find(x=>x.id===id);
+    if(r){r.status=newStatus;}
+  }
+  // Refresh portfolio table silently (without closing modal)
+  rport();
+}
+
+// ── Sync ownership % from detail modal → D.companies → portfolio table + ownership page
+function syncOwnership(id, val){
+  const c=D.companies.find(x=>x.id===id);
+  if(!c)return;
+  const pct=parseFloat(val);
+  c.ownership=isNaN(pct)?null:pct;
+  // Update the investment tree node ownership badge
+  const node=_findNode(id,INV_TREE);
+  if(node)node.own=isNaN(pct)||!pct?null:pct+'%';
+  // Update INV_SHAREHOLDERS holding row if exists
+  const shRows=INV_SHAREHOLDERS[id];
+  if(shRows){
+    const holdingRow=shRows.find(r=>r.isHolding);
+    if(holdingRow)holdingRow.pct=isNaN(pct)?0:pct;
+  }
+  rport();_renderTree();_renderInvList();
+}
+
+// ── Sync RE share % from detail modal → D.realEstate → portfolio + ownership page
+function syncREShare(id, val){
+  const r=D.realEstate.find(x=>x.id===id);
+  if(!r)return;
+  const pct=parseFloat(val);
+  r.share=isNaN(pct)?0:pct;
+  const node=_findNode(id,INV_TREE);
+  if(node)node.own=isNaN(pct)||!pct?null:pct+'%';
+  rre();_renderTree();_renderInvList();
 }
 
 function oupl(eid,ety){
@@ -591,12 +1240,12 @@ function submitUpl(){
 function submitInv(){
   const nm=document.getElementById('ainm').value.trim();if(!nm){alert('Name required.');return;}
   D.companies.push({id:'c'+Date.now(),name:nm,sector:document.getElementById('aisec').value,geo:document.getElementById('aigeo').value||'KSA',year:parseInt(document.getElementById('aiyr').value)||new Date().getFullYear(),ownership:parseFloat(document.getElementById('aiown').value)||null,cumInv:parseFloat((document.getElementById('aicum').value||'').replace(/,/g,''))||null,fvMarket:parseFloat((document.getElementById('aifv').value||'').replace(/,/g,''))||null,moic:null,unrealized:null,dividends:0,status:'active'});
-  closeMo('m-ainv');rport();rdash();alert('✓ '+nm+' added.');
+  closeMo('m-ainv');rport();rdash();_buildTree();_renderTree();_renderInvList();alert('✓ '+nm+' added to Portfolio & Ownership.');
 }
 function submitRE(){
   const nm=document.getElementById('renm').value.trim();if(!nm){alert('Name required.');return;}
   D.realEstate.push({id:'re'+Date.now(),accXero:'NEW',name:nm,details:document.getElementById('redet').value||'KSA',date:new Date().toLocaleDateString('en-SA',{month:'short',year:'2-digit'}),costAmt:parseFloat((document.getElementById('recost').value||'').replace(/,/g,''))||0,valuation:parseFloat((document.getElementById('reval').value||'').replace(/,/g,''))||0,rent:null,share:parseFloat(document.getElementById('resh').value)||0,space:document.getElementById('resp').value||'—',status:'active'});
-  closeMo('m-are');rre();alert('✓ Property added.');
+  closeMo('m-are');rre();_buildTree();_renderTree();_renderInvList();alert('✓ Property added to Portfolio & Ownership.');
 }
 
 let _st2;
@@ -633,5 +1282,14 @@ function radmin(){
 function openMo(id){document.querySelectorAll('.mo').forEach(m=>m.classList.remove('open'));const m=document.getElementById(id);if(m)m.classList.add('open');}
 function closeMo(id){const m=document.getElementById(id);if(m)m.classList.remove('open');}
 </script>
-</body>
-</html>
+<!-- Investment Shareholders Modal -->
+<div class="mo" id="m-inv-sh" onclick="if(event.target===this)closeMo(&#39;m-inv-sh&#39;)"><div class="mb" style="width:520px;max-width:95vw"><div class="mbd" id="m-inv-sh-body"></div></div></div>
+<!-- Node Edit Modal -->
+<div class="mo" id="m-ne" onclick="if(event.target===this)closeMo(&#39;m-ne&#39;)"><div class="mb nw"><div class="mbd" id="m-ne-body"></div></div></div>
+<!-- Node Docs Modal -->
+<div class="mo" id="m-nd" onclick="if(event.target===this)closeMo(&#39;m-nd&#39;)"><div class="mb nw"><div class="mbd" id="m-nd-body"></div></div></div>
+<!-- Shareholder Edit Modal -->
+<div class="mo" id="m-sh" onclick="if(event.target===this)closeMo(&#39;m-sh&#39;)"><div class="mb nw"><div class="mbd" id="m-sh-body"></div></div></div>
+
+
+</body></html>
